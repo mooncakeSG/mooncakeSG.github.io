@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Keawin Koesnel - Portfolio Website
 
 A modern, responsive portfolio website showcasing my work as a writer, poet, and web developer. Built with HTML, CSS, and JavaScript.
