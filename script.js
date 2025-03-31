@@ -60,14 +60,16 @@ const observer = new IntersectionObserver((entries, observer) => {
 }, observerOptions);
 
 sections.forEach(section => {
+    section.classList.add('fade-in');
     observer.observe(section);
 });
 
-// Form Validation
+// Form Validation and Submission
 const contactForm = document.querySelector('.contact-form');
 const formGroups = contactForm.querySelectorAll('.form-group');
+const submitButton = contactForm.querySelector('button[type="submit"]');
 
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     let isValid = true;
 
@@ -90,9 +92,39 @@ contactForm.addEventListener('submit', function(e) {
     });
 
     if (isValid) {
-        // Here you would typically send the form data to a server
-        alert('Form submitted successfully!');
-        contactForm.reset();
+        try {
+            // Add loading state
+            submitButton.classList.add('loading');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            // Submit form to Formspree
+            const response = await fetch('https://formspree.io/f/your-formspree-id', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                })
+            });
+
+            if (response.ok) {
+                showSuccess('Message sent successfully!');
+                contactForm.reset();
+            } else {
+                throw new Error('Failed to send message');
+            }
+        } catch (error) {
+            showError(submitButton, 'Failed to send message. Please try again.');
+        } finally {
+            // Remove loading state
+            submitButton.classList.remove('loading');
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send Message';
+        }
     }
 });
 
@@ -104,7 +136,22 @@ function showError(input, message) {
     formGroup.appendChild(error);
 }
 
+function showSuccess(message) {
+    const success = document.createElement('div');
+    success.className = 'success';
+    success.textContent = message;
+    contactForm.insertBefore(success, submitButton);
+    setTimeout(() => success.remove(), 3000);
+}
+
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-} 
+}
+
+// Add loading animation to project images
+document.querySelectorAll('.project-image img').forEach(img => {
+    img.addEventListener('load', function() {
+        this.classList.add('loaded');
+    });
+}); 
