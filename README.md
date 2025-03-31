@@ -70,8 +70,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 - GitHub: [@mooncakeSG](https://github.com/mooncakeSG)
-- LinkedIn: [Your LinkedIn Profile]
-- Email: [Your Email]
+- LinkedIn: www.linkedin.com/in/keawin-calvin-koesnel-612715235
+- Email: keawinkoesnel804@gmail.com
 
 ## 🙏 Acknowledgments
 
