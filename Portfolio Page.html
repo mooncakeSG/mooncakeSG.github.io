@@ -4,71 +4,590 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keawin Koesnel - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #f4f4f9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            color: #333;
+        :root {
+            --primary-color: #1abc9c;
+            --text-color: #333;
+            --bg-color: #f4f4f9;
+            --header-color: #2c3e50;
+            --section-bg: #ffffff;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-speed: 0.3s;
         }
+
+        [data-theme="dark"] {
+            --primary-color: #2ecc71;
+            --text-color: #f4f4f9;
+            --bg-color: #1a1a1a;
+            --header-color: #ecf0f1;
+            --section-bg: #2c2c2c;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
         header {
             text-align: center;
-            margin-bottom: 30px;
+            padding: 4rem 0 2rem;
+            background-color: var(--section-bg);
+            box-shadow: var(--card-shadow);
+            position: relative;
         }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--section-bg);
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+            z-index: 1000;
+            transition: background-color var(--transition-speed);
+        }
+
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        [data-theme="dark"] nav.scrolled {
+            background-color: rgba(26, 26, 26, 0.95);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color var(--transition-speed);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-color);
+        }
+
         h1 {
             font-size: 2.5em;
-            color: #2c3e50;
+            color: var(--header-color);
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease-out;
         }
+
         h2 {
             font-size: 1.5em;
-            color: #34495e;
+            color: var(--header-color);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
         }
+
         main {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            line-height: 1.6;
+            padding: 2rem;
         }
-        img {
+
+        section {
+            background-color: var(--section-bg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-speed);
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 2rem auto;
             display: block;
-            margin: 20px auto;
-            border-radius: 15px;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-speed);
+            background-color: var(--bg-color);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: all var(--transition-speed);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            background-color: var(--bg-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all var(--transition-speed);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 4px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform var(--transition-speed);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-form {
             max-width: 600px;
+            margin: 0 auto;
         }
-        a {
-            color: #1abc9c;
-            text-decoration: none;
-            font-weight: bold;
+
+        .form-group {
+            margin-bottom: 1.5rem;
         }
-        a:hover {
-            text-decoration: underline;
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
         }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all var(--transition-speed);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(26, 188, 156, 0.2);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background-color: #16a085;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
         footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #7f8c8d;
+            padding: 2rem;
+            background-color: var(--section-bg);
+            margin-top: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <header>
-        <h1>Welcome to My Portfolio!</h1>
-        <h2>I’m Keawin Koesnel</h2>
+        <h1>Keawin Koesnel</h1>
+        <h2>Writer, Poet & Web Developer</h2>
+        <img src="https://avatars.githubusercontent.com/u/72624370?v=4&size=64" 
+             alt="Keawin Koesnel" 
+             class="profile-image">
+        <div class="social-links">
+            <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:your.email@example.com" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
     </header>
+
     <main>
-        <p>I’m a passionate writer, poet, and aspiring web developer. My work explores themes of self-expression, storytelling, and the beauty of simplicity in both words and code. This portfolio showcases a collection of my creative endeavors from poetry and short stories to projects in software development.</p>
-        <p>As a student in Police Science and a Cybersecurity professional, my journey in technology is fueled by a deep desire to understand how things work and to contribute to building safer, more innovative solutions. My passion for creative expression is matched by my commitment to developing accessible, user-friendly web applications.</p>
-        <img src="https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-             alt="A person coding on a laptop with a cup of coffee nearby" 
-             width="600">
-        <p>Explore my work, connect with me, and feel free to reach out if you’d like to collaborate or share thoughts on any of my projects. Let’s create something great together!</p>
-        <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer">View My GitHub Profile</a>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a passionate writer, poet, and aspiring web developer. My work explores themes of self-expression, storytelling, and the beauty of simplicity in both words and code. This portfolio showcases a collection of my creative endeavors from poetry and short stories to projects in software development.</p>
+            <p>As a student in Police Science and a Cybersecurity professional, my journey in technology is fueled by a deep desire to understand how things work and to contribute to building safer, more innovative solutions. My passion for creative expression is matched by my commitment to developing accessible, user-friendly web applications.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Project 1</h3>
+                    <p>Description of your first project goes here.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Project 2</h3>
+                    <p>Description of your second project goes here.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h3>Project 3</h3>
+                    <p>Description of your third project goes here.</p>
+                    <a href="#" class="project-link">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
     </main>
+
     <footer>
         <p>&copy; 2025 Keawin Koesnel. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Dark mode toggle with localStorage persistence and system preference detection
+        const themeToggle = document.getElementById('theme-toggle');
+        const icon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+            document.body.dataset.theme = savedTheme;
+            icon.classList.toggle('fa-moon', savedTheme === 'light');
+            icon.classList.toggle('fa-sun', savedTheme === 'dark');
+        } else if (prefersDark) {
+            document.body.dataset.theme = 'dark';
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.dataset.theme;
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.body.dataset.theme = newTheme;
+            localStorage.setItem('theme', newTheme);
+            
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                document.body.dataset.theme = e.matches ? 'dark' : 'light';
+                icon.classList.toggle('fa-moon', !e.matches);
+                icon.classList.toggle('fa-sun', e.matches);
+            }
+        });
+
+        // Enhanced navbar scroll effect with throttling
+        const nav = document.querySelector('nav');
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Enhanced form validation and submission with better UX
+        const contactForm = document.getElementById('contact-form');
+        const formInputs = contactForm.querySelectorAll('input, textarea');
+        
+        formInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                validateField(input);
+            });
+            
+            input.addEventListener('blur', () => {
+                validateField(input);
+            });
+        });
+
+        function validateField(field) {
+            const value = field.value.trim();
+            const errorElement = field.nextElementSibling?.classList.contains('error-message') 
+                ? field.nextElementSibling 
+                : createErrorElement(field);
+            
+            if (!value) {
+                showError(field, errorElement, 'This field is required');
+                return false;
+            }
+            
+            if (field.type === 'email' && !isValidEmail(value)) {
+                showError(field, errorElement, 'Please enter a valid email address');
+                return false;
+            }
+            
+            hideError(field, errorElement);
+            return true;
+        }
+
+        function createErrorElement(field) {
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            field.parentNode.insertBefore(errorElement, field.nextSibling);
+            return errorElement;
+        }
+
+        function showError(field, errorElement, message) {
+            field.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError(field, errorElement) {
+            field.classList.remove('error');
+            errorElement.style.display = 'none';
+        }
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            let isValid = true;
+            formInputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Add your form submission logic here
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+            }, 1000);
+        });
+
+        // Enhanced smooth scrolling with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations with better performance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
