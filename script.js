@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Theme Management Module
 const ThemeManager = {
     init() {
@@ -47,7 +46,7 @@ const ScrollManager = {
     },
 
     setupSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => this.handleSmoothScroll(e));
         });
     },
@@ -57,41 +56,6 @@ const ScrollManager = {
         const target = document.querySelector(e.currentTarget.getAttribute('href'));
         if (!target) return;
 
-=======
-// Theme Toggle Functionality
-const themeToggle = document.querySelector('.theme-toggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-// Load saved theme from localStorage or use system preference
-const currentTheme = localStorage.getItem('theme') || 
-    (prefersDarkScheme.matches ? 'dark' : 'light');
-document.documentElement.setAttribute('data-theme', currentTheme);
-updateThemeIcon();
-
-// Theme toggle event listener
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon();
-});
-
-// Update theme icon based on current theme
-function updateThemeIcon() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    themeToggle.innerHTML = currentTheme === 'light' 
-        ? '<i class="fas fa-moon"></i>' 
-        : '<i class="fas fa-sun"></i>';
-}
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
->>>>>>> origin/main
         const headerOffset = 80;
         const elementPosition = target.offsetTop;
         const offsetPosition = elementPosition - headerOffset;
@@ -100,29 +64,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             top: offsetPosition,
             behavior: 'smooth'
         });
-<<<<<<< HEAD
     },
 
     setupScrollAnimations() {
-        const observerOptions = {
-            root: null,
-            threshold: 0.1,
-            rootMargin: '0px'
-        };
+const observerOptions = {
+    root: null,
+    threshold: 0.1,
+    rootMargin: '0px'
+};
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 
         document.querySelectorAll('.section').forEach(section => {
-            section.classList.add('fade-in');
-            observer.observe(section);
-        });
+    section.classList.add('fade-in');
+    observer.observe(section);
+});
     }
 };
 
@@ -141,7 +104,7 @@ const FormManager = {
     },
 
     async handleSubmit(e) {
-        e.preventDefault();
+    e.preventDefault();
         
         if (!this.validateForm()) return;
 
@@ -153,16 +116,16 @@ const FormManager = {
     },
 
     validateForm() {
-        let isValid = true;
+    let isValid = true;
         this.clearErrors();
 
         this.formGroups.forEach(group => {
-            const input = group.querySelector('input, textarea');
-            if (!input.value.trim()) {
-                isValid = false;
+        const input = group.querySelector('input, textarea');
+        if (!input.value.trim()) {
+            isValid = false;
                 this.showError(input, 'This field is required');
             } else if (input.type === 'email' && !this.isValidEmail(input.value)) {
-                isValid = false;
+            isValid = false;
                 this.showError(input, 'Please enter a valid email address');
             }
         });
@@ -179,11 +142,11 @@ const FormManager = {
             message: document.getElementById('message').value
         };
 
-        const response = await fetch('https://formspree.io/f/your-formspree-id', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            const response = await fetch('https://formspree.io/f/your-formspree-id', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             body: JSON.stringify(formData)
         });
 
@@ -363,9 +326,9 @@ const BlogManager = {
     },
 
     showError(message) {
-        const error = document.createElement('div');
+    const error = document.createElement('div');
         error.className = 'error-message';
-        error.textContent = message;
+    error.textContent = message;
         error.setAttribute('role', 'alert');
         this.blogGrid.insertBefore(error, this.loadMoreButton);
         
@@ -421,30 +384,250 @@ const BlogManager = {
 };
 
 // Project Management Module
-const ProjectManager = {
-    init() {
+class ProjectManager {
+    constructor() {
+        this.projectsGrid = document.querySelector('.projects-grid');
+        this.filterButtons = document.querySelectorAll('.filter-btn');
         this.projectCards = document.querySelectorAll('.project-card');
-        this.setupAnimations();
+        this.currentFilter = 'all';
+    }
+
+    init() {
+        if (!this.projectsGrid || !this.filterButtons || !this.projectCards.length) {
+            console.warn('Project elements not found');
+            return;
+        }
+
+        this.setupFilterButtons();
+        this.setupProjectAnimations();
+        this.ensureProjectsVisible();
+    }
+
+    setupFilterButtons() {
+        this.filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                this.filterProjects(filter);
+            });
+        });
+    }
+
+    filterProjects(filter) {
+        if (this.currentFilter === filter) return;
+        
+        this.currentFilter = filter;
+        this.updateFilterButtons();
+        
+        this.projectCards.forEach(card => {
+            const shouldShow = filter === 'all' || card.dataset.category === filter;
+            
+            if (shouldShow) {
+                card.style.display = 'block';
+                card.style.opacity = '1';
+                card.style.visibility = 'visible';
+                card.style.transform = 'translateY(0)';
+            } else {
+                card.style.opacity = '0';
+                card.style.visibility = 'hidden';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+    }
+
+    updateFilterButtons() {
+        this.filterButtons.forEach(button => {
+            button.classList.toggle('active', button.dataset.filter === this.currentFilter);
+        });
+    }
+
+    setupProjectAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+
+        this.projectCards.forEach(card => {
+            observer.observe(card);
+        });
+    }
+
+    ensureProjectsVisible() {
+        this.projectCards.forEach(card => {
+            card.style.display = 'block';
+            card.style.opacity = '1';
+            card.style.visibility = 'visible';
+            card.style.transform = 'translateY(0)';
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease';
+        });
+    }
+}
+
+// Mobile Menu Management
+class MobileMenuManager {
+    constructor() {
+        this.hamburger = document.querySelector('.hamburger');
+        this.navWrapper = document.querySelector('.nav-wrapper');
+        this.body = document.body;
+        this.isOpen = false;
+        this.init();
+    }
+
+    init() {
+        if (!this.hamburger || !this.navWrapper) return;
+
+        // Set initial ARIA attributes
+        this.hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+        this.hamburger.setAttribute('aria-expanded', 'false');
+        this.hamburger.setAttribute('aria-controls', 'nav-wrapper');
+        this.navWrapper.setAttribute('role', 'navigation');
+
+        // Add event listeners
+        this.hamburger.addEventListener('click', () => this.toggleMenu());
+        document.addEventListener('click', (e) => this.handleOutsideClick(e));
+        document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && this.isOpen) {
+                this.closeMenu();
+            }
+        });
+
+        // Handle navigation links
+        const navLinks = this.navWrapper.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (this.isOpen) {
+                    this.closeMenu();
+                }
+            });
+        });
+    }
+
+    toggleMenu() {
+        this.isOpen = !this.isOpen;
+        this.hamburger.setAttribute('aria-expanded', this.isOpen.toString());
+        this.navWrapper.classList.toggle('open');
+        this.body.classList.toggle('menu-open');
+    }
+
+    closeMenu() {
+        this.isOpen = false;
+        this.hamburger.setAttribute('aria-expanded', 'false');
+        this.navWrapper.classList.remove('open');
+        this.body.classList.remove('menu-open');
+    }
+
+    handleOutsideClick(event) {
+        if (this.isOpen && 
+            !this.navWrapper.contains(event.target) && 
+            !this.hamburger.contains(event.target)) {
+            this.closeMenu();
+        }
+    }
+
+    handleKeyPress(event) {
+        if (event.key === 'Escape' && this.isOpen) {
+            this.closeMenu();
+        }
+    }
+}
+
+// Skills Management Module
+const SkillsManager = {
+    init() {
+        this.setupSkillAnimations();
     },
 
-    setupAnimations() {
+    setupSkillAnimations() {
         const observerOptions = {
             root: null,
-            threshold: 0.1,
+            threshold: 0.5,
             rootMargin: '0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                    const progressBar = entry.target;
+                    const progress = progressBar.getAttribute('data-progress');
+                    progressBar.style.width = `${progress}%`;
+                    observer.unobserve(progressBar);
                 }
             });
         }, observerOptions);
 
-        this.projectCards.forEach(card => {
-            observer.observe(card);
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            observer.observe(bar);
+        });
+    }
+};
+
+// Timeline Management Module
+const TimelineManager = {
+    init() {
+        this.timelineItems = document.querySelectorAll('.timeline-item');
+        this.setupTimelineAnimations();
+    },
+
+    setupTimelineAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                    const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
+                    entry.target.style.transitionDelay = `${index * 0.2}s`;
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        this.timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    }
+};
+
+// Section Managers
+const SectionManager = {
+    init() {
+        this.sections = document.querySelectorAll('.section');
+        this.setupIntersectionObserver();
+    },
+
+    setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        this.sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
         });
     }
 };
@@ -456,122 +639,10 @@ document.addEventListener('DOMContentLoaded', () => {
     FormManager.init();
     ImageLoader.init();
     BlogManager.init();
-    ProjectManager.init();
-=======
-    });
-});
-
-// Scroll Animation
-const sections = document.querySelectorAll('.section');
-const observerOptions = {
-    root: null,
-    threshold: 0.1,
-    rootMargin: '0px'
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-sections.forEach(section => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-});
-
-// Form Validation and Submission
-const contactForm = document.querySelector('.contact-form');
-const formGroups = contactForm.querySelectorAll('.form-group');
-const submitButton = contactForm.querySelector('button[type="submit"]');
-
-contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    let isValid = true;
-
-    // Clear previous errors
-    formGroups.forEach(group => {
-        const error = group.querySelector('.error');
-        if (error) error.remove();
-    });
-
-    // Validate each field
-    formGroups.forEach(group => {
-        const input = group.querySelector('input, textarea');
-        if (!input.value.trim()) {
-            isValid = false;
-            showError(input, 'This field is required');
-        } else if (input.type === 'email' && !isValidEmail(input.value)) {
-            isValid = false;
-            showError(input, 'Please enter a valid email address');
-        }
-    });
-
-    if (isValid) {
-        try {
-            // Add loading state
-            submitButton.classList.add('loading');
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-
-            // Submit form to Formspree
-            const response = await fetch('https://formspree.io/f/your-formspree-id', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    message: document.getElementById('message').value
-                })
-            });
-
-            if (response.ok) {
-                showSuccess('Message sent successfully!');
-                contactForm.reset();
-            } else {
-                throw new Error('Failed to send message');
-            }
-        } catch (error) {
-            showError(submitButton, 'Failed to send message. Please try again.');
-        } finally {
-            // Remove loading state
-            submitButton.classList.remove('loading');
-            submitButton.disabled = false;
-            submitButton.textContent = 'Send Message';
-        }
-    }
-});
-
-function showError(input, message) {
-    const formGroup = input.closest('.form-group');
-    const error = document.createElement('div');
-    error.className = 'error';
-    error.textContent = message;
-    formGroup.appendChild(error);
-}
-
-function showSuccess(message) {
-    const success = document.createElement('div');
-    success.className = 'success';
-    success.textContent = message;
-    contactForm.insertBefore(success, submitButton);
-    setTimeout(() => success.remove(), 3000);
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Add loading animation to project images
-document.querySelectorAll('.project-image img').forEach(img => {
-    img.addEventListener('load', function() {
-        this.classList.add('loaded');
-    });
->>>>>>> origin/main
+    const projectManager = new ProjectManager();
+    projectManager.init();
+    new MobileMenuManager();
+    SkillsManager.init();
+    TimelineManager.init();
+    SectionManager.init();
 }); 

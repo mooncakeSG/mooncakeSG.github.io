@@ -30,232 +30,452 @@
     
     <!-- Fonts and Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header" role="banner">
-        <nav class="nav" role="navigation" aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a href="#about" aria-label="About section">About</a></li>
-                <li><a href="#projects" aria-label="Projects section">Projects</a></li>
-                <li><a href="#blog" aria-label="Blog section">Blog</a></li>
-                <li><a href="#contact" aria-label="Contact section">Contact</a></li>
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span class="logo-highlight">K</span>eawin <span class="logo-highlight">K</span>oesnel
+            </a>
+        <nav class="nav">
+                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                <div class="nav-wrapper">
+                    <ul class="nav-list" role="menu">
+                        <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                        <li role="none"><a href="#timeline" class="nav-link" role="menuitem">Education</a></li>
+                        <li role="none"><a href="#projects" class="nav-link" role="menuitem">Projects</a></li>
+                        <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+                        <li role="none" class="nav-social-wrapper">
+                            <div class="nav-social">
+                                <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </li>
             </ul>
-            <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-                <i class="fas fa-moon" aria-hidden="true"></i>
+                </div>
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
             </button>
         </nav>
+        </div>
     </header>
 
     <main class="main">
-        <section class="hero" aria-labelledby="hero-title">
-            <img src="https://avatars.githubusercontent.com/u/72624370?v=4&size=64" alt="Keawin Koesnel's profile picture" class="profile-image" width="150" height="150">
-            <h1 id="hero-title">Keawin Koesnel</h1>
-            <p class="tagline">Tech Enthusiast | Cybersecurity Specialist | Full Stack Developer</p>
-            <p class="mission-statement">Building secure, scalable solutions that bridge technology and creativity to empower communities.</p>
-            <div class="social-links" aria-label="Social media links">
-                <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                    <i class="fab fa-linkedin" aria-hidden="true"></i>
-                </a>
-            </div>
-        </section>
-
-        <section id="about" class="section" aria-labelledby="about-title">
-            <h2 id="about-title" class="section-title">About Me</h2>
-            <article>
-                <p>Hi, I'm Keawin Koesnel, a tech enthusiast and creative writer from South Africa. I have a strong passion for cybersecurity, law, and software development, and I'm currently expanding my knowledge in full-stack development.</p>
-                <p>I'm pursuing a Bachelor of Applied Science in Police Science at UNISA and have certifications in Cybersecurity. Alongside my studies, I'm part of the Kubernetes African Developer Training Program (KCNA) and the PLP Academy, where I'm honing my skills in Python, software development, SQL, and web technologies.</p>
-                <p>Beyond tech, I have a deep love for writing poetry and short stories, blending creativity with logic to build meaningful projects that empower communities.</p>
-            </article>
-        </section>
-
-        <section id="projects" class="section" aria-labelledby="projects-title">
-            <div class="background-elements">
-                <div class="code-snippet" aria-hidden="true">
-                    <pre><code>function secureConnection() {
-    return {
-        encrypt: true,
-        validate: true,
-        protect: true
-    };
-}</code></pre>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="hero-eyebrow">Tech Enthusiast & Developer</span>
+                    <h1 class="hero-title">Keawin Koesnel</h1>
+                    <p class="hero-subtitle">Building secure, scalable solutions that bridge technology and creativity to empower communities.</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="grid-pattern" aria-hidden="true"></div>
-                <div class="circuit-lines" aria-hidden="true"></div>
-            </div>
-            <h2 id="projects-title" class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <article class="project-card">
-                    <div class="project-status in-development">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                        In Development
+                <div class="profile-wrapper">
+                    <img src="https://avatars.githubusercontent.com/u/72624370?v=4" alt="Keawin Koesnel" class="profile-image">
+                    <div class="tech-icons">
+                        <i class="fab fa-python" title="Python"></i>
+                        <i class="fab fa-js" title="JavaScript"></i>
+                        <i class="fas fa-database" title="SQL"></i>
+                        <i class="fas fa-shield-alt" title="Cybersecurity"></i>
                     </div>
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/4a90e2/ffffff?text=Poetry+Network" alt="Poetry Network Preview" width="400" height="250">
-                    </div>
-                    <div class="project-content">
-                        <h3>📜 Poetry Network</h3>
-                        <p>A social platform for poets and short story writers to share their work, connect with other writers, and manage their content.</p>
-                        <ul class="project-features">
-                            <li>Privacy controls for content visibility</li>
-                            <li>Clean UI for literary works</li>
-                            <li>User authentication system</li>
-                        </ul>
-                        <div class="tech-stack" aria-label="Technologies used">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>SQL</span>
-                            <span>Python</span>
-                        </div>
-                        <div class="project-cta">
-                            <a href="#" class="btn btn-secondary" aria-label="View Poetry Network on GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </article>
-                <article class="project-card">
-                    <div class="project-status in-development">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                        In Development
-                    </div>
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/2c3e50/ffffff?text=Ride-Hailing+App" alt="Ride-Hailing App Preview">
-                    </div>
-                    <div class="project-content">
-                        <h3>🚖 Ride-Hailing Startup</h3>
-                        <p>A web and mobile-based ride-hailing service aimed at integrating local cab companies into a digital ecosystem.</p>
-                        <ul class="project-features">
-                            <li>Driver security and hazard pay system</li>
-                            <li>Telephonic booking integration</li>
-                            <li>Discount system for special users</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Python</span>
-                            <span>SQL</span>
-                        </div>
-                        <div class="project-cta">
-                            <a href="#" class="btn btn-secondary" aria-label="View Ride-Hailing App on GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </article>
-                <article class="project-card">
-                    <div class="project-status in-development">
-                        <i class="fas fa-code-branch" aria-hidden="true"></i>
-                        In Development
-                    </div>
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x250/64b5f6/ffffff?text=Security+System" alt="Cybersecurity System Preview">
-                    </div>
-                    <div class="project-content">
-                        <h3>🔐 Cybersecurity Privacy System</h3>
-                        <p>A security framework implemented for the Poetry Network, ensuring data protection and user privacy.</p>
-                        <ul class="project-features">
-                            <li>API-level privacy enforcement</li>
-                            <li>Custom visibility settings</li>
-                            <li>Secure interaction controls</li>
-                        </ul>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>SQL</span>
-                            <span>API Security</span>
-                        </div>
-                        <div class="project-cta">
-                            <a href="#" class="btn btn-secondary" aria-label="View Cybersecurity System on GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </article>
+                </div>
             </div>
         </section>
 
-        <section id="blog" class="section" aria-labelledby="blog-title">
-            <h2 id="blog-title" class="section-title">Latest Blog Posts</h2>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <h3>Mastering API Security: A Beginner's Guide</h3>
-                        <p class="blog-date">March 28, 2024</p>
-                        <p class="blog-excerpt">Learn the fundamentals of API security, from authentication to rate limiting, and discover best practices for protecting your endpoints.</p>
-                        <div class="blog-tags">
-                            <span class="tag">Security</span>
-                            <span class="tag">API</span>
-                            <span class="tag">Web Development</span>
-                        </div>
-                        <a href="#" class="btn btn-primary" aria-label="Read Mastering API Security: A Beginner's Guide">
-                            Read More
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <h3>The Role of AI in Cybersecurity</h3>
-                        <p class="blog-date">March 25, 2024</p>
-                        <p class="blog-excerpt">Explore how artificial intelligence is revolutionizing cybersecurity, from threat detection to automated response systems.</p>
-                        <div class="blog-tags">
-                            <span class="tag">AI</span>
-                            <span class="tag">Cybersecurity</span>
-                            <span class="tag">Technology</span>
-                        </div>
-                        <a href="#" class="btn btn-primary" aria-label="Read The Role of AI in Cybersecurity">
-                            Read More
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <h3>From Poetry to Programming: My Journey into Tech</h3>
-                        <p class="blog-date">March 20, 2024</p>
-                        <p class="blog-excerpt">A personal story about how my passion for creative writing led me to discover the intersection of art and technology.</p>
-                        <div class="blog-tags">
-                            <span class="tag">Personal</span>
-                            <span class="tag">Career</span>
-                            <span class="tag">Writing</span>
-                        </div>
-                        <a href="#" class="btn btn-primary" aria-label="Read From Poetry to Programming: My Journey into Tech">
-                            Read More
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </article>
-                <article class="blog-card">
-                    <div class="blog-card-content">
-                        <h3>Scaling Web Apps: Performance & Security</h3>
-                        <p class="blog-date">March 18, 2024</p>
-                        <p class="blog-excerpt">Discover strategies for building scalable web applications while maintaining robust security measures.</p>
-                        <div class="blog-tags">
-                            <span class="tag">Performance</span>
-                            <span class="tag">Security</span>
-                            <span class="tag">Web Development</span>
-                        </div>
-                        <a href="#" class="btn btn-primary" aria-label="Read Scaling Web Apps: Performance & Security">
-                            Read More
-                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </article>
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+            <p>Hi, I'm Keawin Koesnel, a tech enthusiast and creative writer from South Africa. I have a strong passion for cybersecurity, law, and software development, and I'm currently expanding my knowledge in full-stack development.</p>
+            <p>I'm pursuing a Bachelor of Applied Science in Police Science at UNISA and have certifications in Cybersecurity. Alongside my studies, I'm part of the Kubernetes African Developer Training Program (KCNA) and the PLP Academy, where I'm honing my skills in Python, software development, SQL, and web technologies.</p>
+            <p>Beyond tech, I have a deep love for writing poetry and short stories, blending creativity with logic to build meaningful projects that empower communities.</p>
             </div>
-            <div class="blog-load-more">
-                <button class="btn btn-secondary" id="load-more-posts" aria-label="Load more blog posts">
-                    Load More Posts
-                    <i class="fas fa-plus" aria-hidden="true"></i>
-                </button>
+        </section>
+
+        <section id="timeline" class="section timeline-section">
+            <div class="container">
+                <h2 class="section-title">Education & Experience</h2>
+                <p class="section-subtitle">My journey in technology and education</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 - Present</div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-item-title">Higher Certificate in Software Development</h4>
+                            <div class="timeline-item-subtitle">Eduvos</div>
+                            <ul class="timeline-item-description">
+                                <li>Learning fundamentals of programming, software engineering, and database management</li>
+                                <li>Gaining hands-on experience with Python, JavaScript, SQL, and full-stack development</li>
+                                <li>Building real-world projects to strengthen problem-solving and coding skills</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2022 - Present</div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-item-title">Bachelor of Applied Science (BASc) in Police Science</h4>
+                            <div class="timeline-item-subtitle">University of South Africa (UNISA)</div>
+                            <ul class="timeline-item-description">
+                                <li>Studying public and private law, focusing on legal systems, investigations, and governance</li>
+                                <li>Developing strong analytical and research skills relevant to law enforcement and cybersecurity</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-item-title">Cybersecurity Certification</h4>
+                            <div class="timeline-item-subtitle">Coursera (Short Course)</div>
+                            <ul class="timeline-item-description">
+                                <li>Learned network security, ethical hacking, and data protection strategies</li>
+                                <li>Gained hands-on experience in risk assessment and cyber threat mitigation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 - Present</div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-item-title">Kubernetes African Developer Training (KCNA Program)</h4>
+                            <div class="timeline-item-subtitle">Cloud Native Computing Foundation</div>
+                            <ul class="timeline-item-description">
+                                <li>Learning Kubernetes fundamentals, cloud computing, and container orchestration</li>
+                                <li>Exploring DevOps and deployment strategies for scalable applications</li>
+                    </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 - Present</div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-item-title">PLP Academy – Full-Stack Development Program</h4>
+                            <div class="timeline-item-subtitle">Python & Web Development</div>
+                            <ul class="timeline-item-description">
+                                <li>Studying Python, Software Development Essentials, SQL, Web Development, and Startup Building</li>
+                                <li>Working on real-world projects, including a Poetry Network Web App and a Ride-Hailing Startup</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Projects I'm Working On</h2>
+                    <p class="section-subtitle">A collection of my ongoing and completed projects</p>
+                </div>
+
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web Apps</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                    <button class="filter-btn" data-filter="devops">DevOps</button>
+                    <button class="filter-btn" data-filter="blog">Blog</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Poetry Network Web App -->
+                    <article class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="assets/images/projects/poetry-network.jpg" alt="Poetry Network Web App" loading="lazy">
+                            <div class="project-badge">In Progress</div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3 class="project-title">Poetry Network Web App</h3>
+                            <p class="project-description">A platform for poets and writers to share their work, receive feedback, and connect with a community.</p>
+                            <ul class="project-features">
+                                <li>User authentication and profiles</li>
+                                <li>Poetry submission and feedback system</li>
+                                <li>Community engagement features</li>
+                                <li>Search and filtering capabilities</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://mooncakeSG.github.io/poetry-network" class="project-link" aria-label="View Poetry Network Web App">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/mooncakeSG/poetry-network" class="project-link" aria-label="View Poetry Network Web App Source Code">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Ride-Hailing Startup -->
+                    <article class="project-card" data-category="mobile">
+                        <div class="project-image">
+                            <img src="assets/images/projects/ride-hailing.jpg" alt="Ride-Hailing Startup" loading="lazy">
+                            <div class="project-badge">In Progress</div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h3 class="project-title">Ride-Hailing Startup</h3>
+                            <p class="project-description">A web and mobile app integrating local cab companies for a seamless ride-booking experience.</p>
+                            <ul class="project-features">
+                                <li>Real-time ride tracking</li>
+                                <li>Multiple payment options</li>
+                                <li>Driver-passenger matching</li>
+                                <li>Route optimization</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Dart</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">Google Maps API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://mooncakeSG.github.io/ride-hailing" class="project-link" aria-label="View Ride-Hailing App">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/mooncakeSG/ride-hailing" class="project-link" aria-label="View Ride-Hailing App Source Code">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Cybersecurity Awareness Blog -->
+                    <article class="project-card" data-category="blog">
+                        <div class="project-image">
+                            <img src="assets/images/projects/cybersecurity-blog.jpg" alt="Cybersecurity Awareness Blog" loading="lazy">
+                            <div class="project-badge">Active</div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="project-title">Cybersecurity Awareness Blog</h3>
+                            <p class="project-description">A blog dedicated to educating users about cybersecurity fundamentals and best practices.</p>
+                            <ul class="project-features">
+                                <li>Regular security tips and tutorials</li>
+                                <li>Case studies and analysis</li>
+                                <li>Interactive learning resources</li>
+                                <li>Community discussions</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Jekyll</span>
+                                <span class="tech-tag">Markdown</span>
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://mooncakeSG.github.io/cybersecurity-blog" class="project-link" aria-label="Visit Cybersecurity Blog">
+                                    <i class="fas fa-external-link-alt"></i> Visit Blog
+                                </a>
+                                <a href="https://github.com/mooncakeSG/cybersecurity-blog" class="project-link" aria-label="View Blog Source Code">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Kubernetes Deployment Scripts -->
+                    <article class="project-card" data-category="devops">
+                        <div class="project-image">
+                            <img src="assets/images/projects/kubernetes-scripts.jpg" alt="Kubernetes Deployment Scripts" loading="lazy">
+                            <div class="project-badge">Active</div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <h3 class="project-title">Kubernetes Deployment Scripts</h3>
+                            <p class="project-description">A collection of scripts for automating application deployment with Kubernetes.</p>
+                            <ul class="project-features">
+                                <li>Automated deployment workflows</li>
+                                <li>Environment configuration</li>
+                                <li>Monitoring and scaling</li>
+                                <li>Security best practices</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">YAML</span>
+                                <span class="tech-tag">Helm</span>
+                                <span class="tech-tag">Bash</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/mooncakeSG/kubernetes-scripts" class="project-link" aria-label="View Kubernetes Scripts">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Personal Portfolio Website -->
+                    <article class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="assets/images/projects/portfolio.jpg" alt="Personal Portfolio Website" loading="lazy">
+                            <div class="project-badge">Completed</div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-icon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <h3 class="project-title">Personal Portfolio Website</h3>
+                            <p class="project-description">A personal website showcasing my education, experience, and projects.</p>
+                            <ul class="project-features">
+                                <li>Responsive design</li>
+                                <li>Dark mode support</li>
+                                <li>Interactive animations</li>
+                                <li>Project showcase</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://mooncakeSG.github.io" class="project-link" aria-label="View Portfolio Website">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/mooncakeSG/mooncakeSG.github.io" class="project-link" aria-label="View Portfolio Source Code">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section blog-section" aria-labelledby="blog-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="blog-title" class="section-title">Latest Blog Posts</h2>
+                    <p class="section-subtitle">Thoughts, tutorials, and insights on technology and creativity</p>
+                </div>
+                
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <a href="#" class="blog-image-link">
+                            <div class="blog-image">
+                                <img src="https://via.placeholder.com/400x250/4a90e2/ffffff?text=API+Security" alt="API Security">
+                                <div class="blog-categories">
+                                    <span class="blog-category">Security</span>
+                                    <span class="blog-category">API</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time datetime="2024-03-28" class="blog-date">March 28, 2024</time>
+                                <span class="blog-read-time">5 min read</span>
+                            </div>
+                            <h3 class="blog-title">
+                                <a href="#">Mastering API Security: A Beginner's Guide</a>
+                            </h3>
+                            <p class="blog-excerpt">Learn the fundamentals of API security, from authentication to rate limiting, and discover best practices for protecting your endpoints.</p>
+                            <a href="#" class="blog-read-more">
+                                Read More
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <a href="#" class="blog-image-link">
+                            <div class="blog-image">
+                                <img src="https://via.placeholder.com/400x250/2c3e50/ffffff?text=AI+Cybersecurity" alt="AI in Cybersecurity">
+                                <div class="blog-categories">
+                                    <span class="blog-category">AI</span>
+                                    <span class="blog-category">Cybersecurity</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time datetime="2024-03-25" class="blog-date">March 25, 2024</time>
+                                <span class="blog-read-time">7 min read</span>
+                            </div>
+                            <h3 class="blog-title">
+                                <a href="#">The Role of AI in Cybersecurity</a>
+                            </h3>
+                            <p class="blog-excerpt">Explore how artificial intelligence is revolutionizing cybersecurity, from threat detection to automated response systems.</p>
+                            <a href="#" class="blog-read-more">
+                                Read More
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <a href="#" class="blog-image-link">
+                            <div class="blog-image">
+                                <img src="https://via.placeholder.com/400x250/64b5f6/ffffff?text=Poetry+Programming" alt="Poetry to Programming">
+                                <div class="blog-categories">
+                                    <span class="blog-category">Personal</span>
+                                    <span class="blog-category">Career</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <time datetime="2024-03-20" class="blog-date">March 20, 2024</time>
+                                <span class="blog-read-time">6 min read</span>
+                            </div>
+                            <h3 class="blog-title">
+                                <a href="#">From Poetry to Programming: My Journey into Tech</a>
+                            </h3>
+                            <p class="blog-excerpt">A personal story about how my passion for creative writing led me to discover the intersection of art and technology.</p>
+                            <a href="#" class="blog-read-more">
+                                Read More
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                    </div>
+                    </article>
+                    </div>
+                
+                <div class="blog-view-all">
+                    <a href="#" class="btn btn-outline">View All Posts</a>
+                </div>
             </div>
         </section>
 
