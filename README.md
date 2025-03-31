@@ -57,7 +57,7 @@ This portfolio is deployed using GitHub Pages. To deploy:
 3. Select the main branch as the source
 4. Save the changes
 
-Your site will be available at: `https://mooncakeSG.github.io`
+This site will be available at: `https://mooncakeSG.github.io`
 
 ## 🤝 Contributing
 
