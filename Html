@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="theme-switch" aria-label="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <!-- Header Section -->
+    <header id="home">
+        <nav id="navbar">
+            <div class="logo">
+                <a href="#home">Dev<span>Portfolio</span></a>
+            </div>
+            <div class="nav-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="animate-text">Hello, I'm <span class="highlight">Your Name</span></h1>
+                <h2 class="animate-text delay-1">Frontend Developer & UI Designer</h2>
+                <p class="animate-text delay-2">Crafting beautiful, functional, and accessible web experiences</p>
+                <div class="hero-buttons animate-text delay-3">
+                    <a href="#projects" class="btn primary">View My Work</a>
+                    <a href="#contact" class="btn secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image animate-text delay-2">
+                <div class="shape"></div>
+                <img src="/api/placeholder/400/400" alt="Developer illustration" loading="lazy">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/api/placeholder/400/400" alt="Your photo" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <h3>Who I Am</h3>
+                    <p>I'm a passionate developer who loves creating interactive and user-friendly web experiences. With a background in design and a love for clean code, I bridge the gap between aesthetics and functionality.</p>
+                    
+                    <h3>My Journey</h3>
+                    <div class="timeline">
+                        <div class="timeline-item" data-year="2023">
+                            <h4>Senior Frontend Developer</h4>
+                            <p>Leading development on key client projects</p>
+                        </div>
+                        <div class="timeline-item" data-year="2021">
+                            <h4>Frontend Developer</h4>
+                            <p>Working on e-commerce and SaaS applications</p>
+                        </div>
+                        <div class="timeline-item" data-year="2019">
+                            <h4>UI/UX Design Internship</h4>
+                            <p>Learning the principles of user-centered design</p>
+                        </div>
+                        <div class="timeline-item" data-year="2018">
+                            <h4>Computer Science Degree</h4>
+                            <p>Graduated with honors in web technologies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar" data-skill="HTML" data-percent="95">
+                            <div class="skill-label">HTML</div>
+                            <div class="skill-progress"><span style="width: 95%"></span></div>
+                            <div class="skill-percent">95%</div>
+                        </div>
+                        <div class="skill-bar" data-skill="CSS" data-percent="90">
+                            <div class="skill-label">CSS</div>
+                            <div class="skill-progress"><span style="width: 90%"></span></div>
+                            <div class="skill-percent">90%</div>
+                        </div>
+                        <div class="skill-bar" data-skill="JavaScript" data-percent="85">
+                            <div class="skill-label">JavaScript</div>
+                            <div class="skill-progress"><span style="width: 85%"></span></div>
+                            <div class="skill-percent">85%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Design Tools</h3>
+                    <div class="skill-icons">
+                        <div class="skill-icon" data-tooltip="Figma">
+                            <i class="fab fa-figma"></i>
+                        </div>
+                        <div class="skill-icon" data-tooltip="Adobe XD">
+                            <i class="fab fa-adobe"></i>
+                        </div>
+                        <div class="skill-icon" data-tooltip="Photoshop">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="skill-icon" data-tooltip="Illustrator">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="project-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="ui">UI Design</button>
+                <button class="filter-btn" data-filter="api">API Projects</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="E-commerce project" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-eye"></i> Live Demo
+                                </a>
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">E-commerce Platform</h3>
+                        <p class="project-description">A fully responsive e-commerce website with cart functionality and product filtering.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="ui">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="Dashboard design" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-eye"></i> Live Demo
+                                </a>
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Admin Dashboard</h3>
+                        <p class="project-description">A clean, modern admin dashboard with customizable widgets and dark mode.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="api">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="Weather app" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-eye"></i> Live Demo
+                                </a>
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Weather App</h3>
+                        <p class="project-description">Real-time weather forecasts with location detection and animated weather icons.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="Task manager app" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fas fa-eye"></i> Live Demo
+                                </a>
+                                <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Task Manager</h3>
+                        <p class="project-description">A drag-and-drop task manager with local storage and priority sorting.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Mini-Project -->
+    <section id="mini-project" class="section">
+        <div class="container">
+            <h2 class="section-title">Try My Calculator</h2>
+            <p class="section-description">A simple calculator built with vanilla JavaScript. Try it out!</p>
+            
+            <div class="calculator">
+                <div class="calculator-display">
+                    <div class="previous-operand"></div>
+                    <div class="current-operand">0</div>
+                </div>
+                <div class="calculator-keys">
+                    <button class="calc-btn operator" data-operation="clear">AC</button>
+                    <button class="calc-btn operator" data-operation="delete">DEL</button>
+                    <button class="calc-btn operator" data-operation="%">%</button>
+                    <button class="calc-btn operator" data-operation="÷">÷</button>
+                    <button class="calc-btn" data-number="7">7</button>
+                    <button class="calc-btn" data-number="8">8</button>
+                    <button class="calc-btn" data-number="9">9</button>
+                    <button class="calc-btn operator" data-operation="×">×</button>
+                    <button class="calc-btn" data-number="4">4</button>
+                    <button class="calc-btn" data-number="5">5</button>
+                    <button class="calc-btn" data-number="6">6</button>
+                    <button class="calc-btn operator" data-operation="-">-</button>
+                    <button class="calc-btn" data-number="1">1</button>
+                    <button class="calc-btn" data-number="2">2</button>
+                    <button class="calc-btn" data-number="3">3</button>
+                    <button class="calc-btn operator" data-operation="+">+</button>
+                    <button class="calc-btn zero" data-number="0">0</button>
+                    <button class="calc-btn" data-number=".">.</button>
+                    <button class="calc-btn operator equals" data-operation="=">=</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>your.email@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-code-branch"></i>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p><a href="#" target="_blank" rel="noopener noreferrer">github.com/yourusername</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p><a href="#" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourusername</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                        <button type="submit" class="btn primary submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#home">Dev<span>Portfolio</span></a>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter profile">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram profile">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> Your Name. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button id="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>
