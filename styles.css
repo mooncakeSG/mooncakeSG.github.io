@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 /* CSS Variables */
 :root {
     /* Colors */
+=======
+:root {
+>>>>>>> origin/main
     --primary-color: #4a90e2;
     --secondary-color: #2c3e50;
     --accent-color: #e74c3c;
@@ -9,6 +13,7 @@
     --bg-color: #fff;
     --header-bg: #fff;
     --card-bg: #fff;
+<<<<<<< HEAD
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -33,6 +38,13 @@
 }
 
 /* Dark Theme */
+=======
+    --transition-speed: 0.3s;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+>>>>>>> origin/main
 [data-theme="dark"] {
     --primary-color: #64b5f6;
     --secondary-color: #90caf9;
@@ -44,14 +56,21 @@
     --card-bg: #2d2d2d;
 }
 
+<<<<<<< HEAD
 /* Reset & Base Styles */
+=======
+>>>>>>> origin/main
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+<<<<<<< HEAD
     transition: background-color var(--transition-speed), 
                 color var(--transition-speed),
                 border-color var(--transition-speed);
+=======
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+>>>>>>> origin/main
 }
 
 body {
@@ -61,6 +80,7 @@ body {
     background-color: var(--bg-color);
 }
 
+<<<<<<< HEAD
 /* Layout */
 .main {
     margin-top: 80px;
@@ -74,15 +94,28 @@ body {
 .header {
     background-color: var(--header-bg);
     padding: var(--spacing-sm);
+=======
+.header {
+    background-color: var(--header-bg);
+    padding: 1rem;
+>>>>>>> origin/main
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+<<<<<<< HEAD
     box-shadow: var(--box-shadow);
 }
 
 .nav {
     max-width: var(--max-width);
+=======
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    max-width: 1200px;
+>>>>>>> origin/main
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -91,7 +124,11 @@ body {
 
 .nav-links {
     display: flex;
+<<<<<<< HEAD
     gap: var(--spacing-lg);
+=======
+    gap: 2rem;
+>>>>>>> origin/main
     list-style: none;
 }
 
@@ -99,13 +136,18 @@ body {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
+<<<<<<< HEAD
     transition: color var(--transition-speed);
+=======
+    transition: color 0.3s;
+>>>>>>> origin/main
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
 }
 
+<<<<<<< HEAD
 /* Hero Section */
 .hero {
     text-align: center;
@@ -113,13 +155,57 @@ body {
     background: linear-gradient(135deg, var(--bg-color) 0%, var(--header-bg) 100%);
 }
 
+=======
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.main {
+    margin-top: 80px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--header-bg) 100%);
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin: 1rem 0;
+}
+
+.mission-statement {
+    max-width: 600px;
+    margin: 2rem auto;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+>>>>>>> origin/main
 .profile-image {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+<<<<<<< HEAD
     margin-bottom: var(--spacing-sm);
     border: 3px solid var(--primary-color);
     transition: transform var(--transition-speed);
+=======
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+    transition: transform 0.3s;
+>>>>>>> origin/main
     background-color: var(--card-bg);
 }
 
@@ -127,6 +213,7 @@ body {
     transform: rotate(360deg);
 }
 
+<<<<<<< HEAD
 /* Typography */
 h1 {
     font-size: 2.5rem;
@@ -163,6 +250,27 @@ h3 {
 /* Sections */
 .section {
     margin: var(--spacing-xl) 0;
+=======
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+.section {
+    margin: 4rem 0;
+>>>>>>> origin/main
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s, transform 0.5s;
@@ -175,6 +283,7 @@ h3 {
 
 .section-title {
     text-align: center;
+<<<<<<< HEAD
     margin-bottom: var(--spacing-lg);
     color: var(--primary-color);
 }
@@ -276,19 +385,47 @@ h3 {
 
 .project-status i {
     font-size: 0.9em;
+=======
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 0;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+>>>>>>> origin/main
 }
 
 .project-image {
     width: 100%;
     height: 200px;
     overflow: hidden;
+<<<<<<< HEAD
     position: relative;
+=======
+>>>>>>> origin/main
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+<<<<<<< HEAD
     transition: transform var(--transition-speed);
 }
 
@@ -365,12 +502,16 @@ h3 {
         0 8px 20px rgba(0, 0, 0, 0.15),
         0 2px 6px rgba(0, 0, 0, 0.1);
     border-color: rgba(74, 144, 226, 0.3);
+=======
+    transition: transform 0.3s;
+>>>>>>> origin/main
 }
 
 .project-card:hover .project-image img {
     transform: scale(1.05);
 }
 
+<<<<<<< HEAD
 /* Project Card Animation */
 @keyframes projectCardFadeIn {
     from {
@@ -639,15 +780,45 @@ h3 {
 }
 
 /* Buttons */
+=======
+.project-card h3 {
+    color: var(--primary-color);
+    margin: 1.5rem 1.5rem 1rem;
+    font-size: 1.5rem;
+}
+
+.project-card p {
+    margin: 0 1.5rem 1.5rem;
+    color: var(--text-light);
+}
+
+.project-features {
+    margin: 0 1.5rem 1.5rem;
+    padding: 0;
+}
+
+.project-cta {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem;
+}
+
+>>>>>>> origin/main
 .btn {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
+<<<<<<< HEAD
     transition: all var(--transition-speed);
     text-decoration: none;
     font-weight: 500;
     display: inline-block;
+=======
+    transition: all 0.3s;
+    text-decoration: none;
+    font-weight: 500;
+>>>>>>> origin/main
 }
 
 .btn-primary {
@@ -663,7 +834,11 @@ h3 {
 
 .btn:hover {
     transform: translateY(-2px);
+<<<<<<< HEAD
     box-shadow: var(--box-shadow);
+=======
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+>>>>>>> origin/main
 }
 
 .btn-primary:hover {
@@ -675,6 +850,7 @@ h3 {
     color: white;
 }
 
+<<<<<<< HEAD
 /* Social Links */
 .social-links {
     display: flex;
@@ -716,6 +892,86 @@ h3 {
 
 .fade-in {
     animation: fadeIn 0.5s ease-out forwards;
+=======
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.error {
+    color: #ff4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .main {
+        padding: 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 1rem;
+    }
+
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .mission-statement {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .project-cta {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+>>>>>>> origin/main
 }
 
 /* Loading Animation */
@@ -725,6 +981,7 @@ h3 {
 }
 
 .loading::after {
+<<<<<<< HEAD
     content: '';
     position: absolute;
     width: 1rem;
@@ -736,10 +993,24 @@ h3 {
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
+=======
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+>>>>>>> origin/main
 }
 
 @keyframes spin {
     to {
+<<<<<<< HEAD
         transform: translateY(-50%) rotate(360deg);
     }
 }
@@ -931,5 +1202,8 @@ h3 {
 
     #projects::before {
         background-size: 20px 20px;
+=======
+        transform: rotate(360deg);
+>>>>>>> origin/main
     }
 } 
