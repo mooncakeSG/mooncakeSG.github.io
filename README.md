@@ -38,9 +38,18 @@ git clone https://github.com/yourusername/portfolio.git
 ```
 
 2. Navigate to the project directory:
+<<<<<<< HEAD
 ```bash
 cd portfolio
 ```
+=======
+   ```bash
+   cd mooncakeSG.github.io
+   ```
+
+3. Open `index.html` in your browser or use a local server.
+
+>>>>>>> origin/main
 
 3. Open `index.html` in your web browser or use a local server:
 ```bash
@@ -51,7 +60,10 @@ python -m http.server 8000
 npx serve
 ```
 
+<<<<<<< HEAD
 4. Visit `http://localhost:8000` in your browser
+=======
+>>>>>>> origin/main
 
 ## Project Structure
 
@@ -98,6 +110,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
+<<<<<<< HEAD
 Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
 
 Project Link: [https://github.com/yourusername/portfolio](https://github.com/yourusername/portfolio)
+=======
+- Font Awesome for icons
+- Google Fonts for typography
+- Formspree for contact form functionality
+
+
+Made with ❤️ by Keawin Koesnel
+>>>>>>> origin/main
