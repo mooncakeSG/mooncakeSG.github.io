@@ -1,32 +1,29 @@
-# Professional Portfolio Website
+# Personal Portfolio Website
 
-A modern, responsive portfolio website showcasing my skills, projects, and experience as a Full Stack Developer. Built with HTML5, CSS3, and JavaScript.
+A modern, responsive portfolio website built with HTML, CSS, and JavaScript. Features a clean design, dark mode support, and smooth animations.
 
-## 🌟 Features
+## Features
 
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Dark Mode**: Built-in dark mode support with smooth transitions
-- **Interactive UI**: Smooth animations and transitions for better user experience
-- **Accessibility**: WCAG compliant with proper ARIA attributes and keyboard navigation
-- **Performance Optimized**: Lazy loading for images and optimized assets
-- **SEO Friendly**: Proper meta tags and semantic HTML structure
-- **Contact Form**: Integrated contact form with validation
-- **Project Showcase**: Dynamic project filtering and case studies
-- **Blog Section**: Latest blog posts with categories
-- **Skills Timeline**: Interactive timeline showing education and experience
-- **Resume Download**: Easy access to downloadable resume
+- 🎨 Modern and clean design
+- 🌓 Dark/Light mode toggle
+- 📱 Fully responsive layout
+- ⚡ Fast loading and performance
+- 🎭 Smooth animations and transitions
+- 📝 Project showcase section
+- 📚 Education timeline
+- 🔗 Social media integration
+- 📧 Contact form
+- 🌐 SEO optimized
 
-## 🛠️ Technologies Used
+## Tech Stack
 
 - HTML5
-- CSS3 (with CSS Variables and Flexbox/Grid)
+- CSS3 (with Bulma CSS framework)
 - JavaScript (ES6+)
-- Font Awesome Icons
+- Font Awesome icons
 - Google Fonts
-- Intersection Observer API
-- Formspree for contact form
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -36,111 +33,71 @@ A modern, responsive portfolio website showcasing my skills, projects, and exper
 ### Installation
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/mooncakeSG/mooncakeSG.github.io.git
-   ```
+```bash
+git clone https://github.com/yourusername/portfolio.git
+```
 
 2. Navigate to the project directory:
-   ```bash
-   cd mooncakeSG.github.io
-   ```
-
-3. Open `index.html` in your browser or use a local server.
-
-## 📁 Project Structure
-
-```
-mooncakeSG.github.io/
-├── assets/
-│   ├── images/
-│   │   ├── projects/
-│   │   └── profile.jpg
-│   └── resume.pdf
-├── index.html
-├── styles.css
-├── script.js
-└── README.md
+```bash
+cd portfolio
 ```
 
-## 🔧 Configuration
+3. Open `index.html` in your web browser or use a local server:
+```bash
+# Using Python
+python -m http.server 8000
 
-### Contact Form
-To enable the contact form functionality:
-1. Sign up for a Formspree account
-2. Replace `your-formspree-id` in `script.js` with your actual Formspree form ID
+# Using Node.js
+npx serve
+```
 
-### reCAPTCHA
-To enable reCAPTCHA:
-1. Sign up for Google reCAPTCHA
-2. Replace `your-recaptcha-site-key` in `index.html` with your actual reCAPTCHA site key
+4. Visit `http://localhost:8000` in your browser
 
-## 🎨 Customization
+## Project Structure
+
+```
+portfolio/
+├── index.html          # Main HTML file
+├── styles.css          # Main CSS file
+├── script.js           # Main JavaScript file
+├── assets/            # Assets directory
+│   ├── images/        # Image files
+│   └── fonts/         # Font files
+├── README.md          # Project documentation
+└── TODO.md            # Project todo list
+```
+
+## Customization
 
 ### Colors
-The website uses CSS variables for colors. You can modify them in the `:root` section of `styles.css`:
+The website uses a custom color scheme defined in `styles.css`. You can modify the colors by updating the CSS variables in the `:root` selector.
 
-```css
-:root {
-    --primary: #3b82f6;
-    --secondary: #64748b;
-    --text-color: #1e293b;
-    --bg-color: #ffffff;
-    /* ... other variables ... */
-}
-```
+### Content
+Update the content in `index.html` to match your personal information, projects, and experience.
 
-### Projects
-Add or modify projects in the `projects` array in `script.js`:
+### Images
+Replace the images in the `assets/images` directory with your own images. Make sure to update the image paths in `index.html`.
 
-```javascript
-this.projects = [
-    {
-        id: 'project-id',
-        title: 'Project Title',
-        category: 'web',
-        // ... other project properties ...
-    }
-];
-```
+## Contributing
 
-## 📱 Mobile Responsiveness
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-The website is fully responsive with breakpoints at:
-- Mobile: < 768px
-- Tablet: 768px - 1024px
-- Desktop: > 1024px
-
-## 🔍 SEO Optimization
-
-The website includes:
-- Semantic HTML structure
-- Meta tags for SEO
-- Open Graph tags for social sharing
-- Twitter Card support
-- Proper heading hierarchy
-- Alt text for images
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
+## Acknowledgments
 
-Keawin Koesnel
-- GitHub: [@mooncakeSG](https://github.com/mooncakeSG)
-- LinkedIn: [Keawin Koesnel](https://linkedin.com/in/mooncakeSG)
+- [Bulma CSS](https://bulma.io/)
+- [Font Awesome](https://fontawesome.com/)
+- [Google Fonts](https://fonts.google.com/)
 
-## 🙏 Acknowledgments
+## Contact
 
-- Font Awesome for icons
-- Google Fonts for typography
-- Formspree for contact form functionality
-- All contributors and supporters
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
 
----
-
-Made with ❤️ by Keawin Koesnel
+Project Link: [https://github.com/yourusername/portfolio](https://github.com/yourusername/portfolio)

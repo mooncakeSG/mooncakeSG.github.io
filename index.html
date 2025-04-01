@@ -3,632 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional portfolio of a Full Stack Developer specializing in web applications, mobile development, and cloud solutions. View projects, skills, and experience.">
-    <meta name="keywords" content="Full Stack Developer, Web Development, Mobile Apps, Cloud Solutions, Portfolio">
-    <meta name="author" content="Your Name">
-    <meta property="og:title" content="Professional Portfolio | Full Stack Developer">
-    <meta property="og:description" content="Explore my portfolio showcasing web applications, mobile development, and cloud solutions. View projects, skills, and experience.">
-    <meta property="og:image" content="assets/profile.jpg">
-    <meta property="og:url" content="https://yourportfolio.com">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Professional Portfolio | Full Stack Developer">
-    <meta name="twitter:description" content="Explore my portfolio showcasing web applications, mobile development, and cloud solutions.">
-    <meta name="twitter:image" content="assets/profile.jpg">
-    <title>Professional Portfolio | Full Stack Developer</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Keawin Koesnel - A tech enthusiast and creative writer specializing in cybersecurity, law, and software development. Full stack developer with expertise in Python, JavaScript, and SQL.">
-    <meta name="keywords" content="Keawin Koesnel, Full Stack Developer, Cybersecurity, Software Development, Python, JavaScript, SQL, South Africa, UNISA, Police Science">
+    <title>Keawin Koesnel - Portfolio</title>
+    <meta name="description" content="Portfolio website of Keawin Koesnel, showcasing projects, skills, and experience.">
+    <meta name="keywords" content="portfolio, web development, software engineer, Keawin Koesnel">
     <meta name="author" content="Keawin Koesnel">
-    <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mooncakeSG.github.io/">
-    <meta property="og:title" content="Keawin Koesnel - Tech Enthusiast & Full Stack Developer">
-    <meta property="og:description" content="Portfolio of Keawin Koesnel - A tech enthusiast and creative writer specializing in cybersecurity, law, and software development.">
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/72624370?v=4&size=64">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mooncakeSG.github.io/">
-    <meta property="twitter:title" content="Keawin Koesnel - Tech Enthusiast & Full Stack Developer">
-    <meta property="twitter:description" content="Portfolio of Keawin Koesnel - A tech enthusiast and creative writer specializing in cybersecurity, law, and software development.">
-    <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/72624370?v=4&size=64">
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     
-    <!-- Fonts and Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a6e8eeca2e.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    <a href="#main-content" class="skip-to-main">Skip to main content</a>
-
-    <button class="scroll-to-top" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </button>
-
-    <header class="header">
-        <div class="container">
-            <a href="#" class="logo" aria-label="MooncakeSG Logo">
-                <img src="images/logo.png" alt="MooncakeSG Logo" width="40" height="40">
+<body class="has-background-light">
+    <!-- Navigation -->
+    <nav class="navbar is-fixed-top has-background-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <strong>KK</strong>
             </a>
-            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-wrapper">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-            <nav class="nav-wrapper" id="nav-wrapper">
-                <ul class="nav-list" role="menu">
-                    <li role="none"><a href="#home" class="nav-link" role="menuitem">Home</a></li>
-                    <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
-                    <li role="none"><a href="#projects" class="nav-link" role="menuitem">Projects</a></li>
-                    <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
-                </ul>
-                <div class="nav-social-wrapper">
-                    <ul class="nav-social" role="list">
-                        <li role="listitem">
-                            <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li role="listitem">
-                            <a href="https://linkedin.com/in/mooncakeSG" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-    </header>
 
-    <main id="main-content">
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <span class="hero-eyebrow">Tech Enthusiast & Developer</span>
-                    <h1 class="hero-title">Keawin Koesnel</h1>
-                    <p class="hero-subtitle">Building secure, scalable solutions that bridge technology and creativity to empower communities.</p>
-                    <div class="hero-cta">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                    </div>
-                    <div class="hero-social">
-                        <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="profile-wrapper">
-                    <img src="assets/profile.jpg" alt="Professional headshot of a Full Stack Developer" class="profile-image">
-                    <div class="tech-icons">
-                        <i class="fab fa-python" title="Python"></i>
-                        <i class="fab fa-js" title="JavaScript"></i>
-                        <i class="fas fa-database" title="SQL"></i>
-                        <i class="fas fa-shield-alt" title="Cybersecurity"></i>
-                    </div>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item" href="#about">About</a>
+                <a class="navbar-item" href="#education">Education</a>
+                <a class="navbar-item" href="#projects">Projects</a>
+                <a class="navbar-item" href="#contact">Contact</a>
+                <div class="navbar-item">
+                    <button id="theme-toggle" class="button is-ghost" aria-label="Toggle theme">
+                        <i id="sun" class="fas fa-sun"></i>
+                        <i id="moon" class="fas fa-moon hidden"></i>
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <section id="about" class="section">
+    <!-- Hero Section -->
+    <section class="hero is-fullheight">
+        <div class="hero-body">
             <div class="container">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p class="tagline">Full Stack Developer & Cloud Enthusiast</p>
-                        <p class="mission-statement">
-                            I'm a passionate Full Stack Developer with a strong foundation in web development, mobile applications, and cloud solutions. My journey in technology is driven by a desire to create innovative solutions that solve real-world problems.
+                <div class="columns is-vcentered">
+                    <div class="column is-6">
+                        <h1 class="title is-1" data-aos="fade-right">Hi, I'm Keawin Koesnel</h1>
+                        <h2 class="subtitle is-4" data-aos="fade-right" data-aos-delay="100">
+                            Software Engineer & Web Developer
+                        </h2>
+                        <p class="mb-4" data-aos="fade-right" data-aos-delay="200">
+                            Passionate about creating elegant solutions to complex problems.
                         </p>
-                        <div class="about-details">
-                            <h3>Professional Background</h3>
-                            <p>
-                                With experience in both frontend and backend development, I specialize in building scalable web applications and mobile solutions. My expertise includes:
-                            </p>
-                            <ul>
-                                <li>Modern web technologies (React, Next.js, Node.js)</li>
-                                <li>Mobile app development (Flutter, React Native)</li>
-                                <li>Cloud platforms (AWS, Azure, GCP)</li>
-                                <li>Database management (PostgreSQL, MongoDB)</li>
-                                <li>DevOps practices and CI/CD</li>
-                                <li>Cybersecurity and best practices</li>
-                            </ul>
-                        </div>
-                        <div class="about-passion">
-                            <h3>What Drives Me</h3>
-                            <p>
-                                I'm passionate about creating user-centric applications that provide exceptional experiences. My approach combines technical expertise with creative problem-solving to deliver solutions that make a difference.
-                            </p>
-                        </div>
-                        <div class="about-goals">
-                            <h3>Current Focus</h3>
-                            <p>
-                                Currently, I'm focused on expanding my expertise in cloud-native development and exploring the intersection of AI and web development. I'm always eager to learn new technologies and methodologies to stay at the forefront of web development.
-                            </p>
-                        </div>
-                        <div class="download-resume">
-                            <a href="assets/resume.pdf" class="btn btn-primary" download>
-                                <i class="fas fa-download" aria-hidden="true"></i>
-                                Download Resume
-                                <span class="file-size"></span>
-                            </a>
+                        <div class="buttons" data-aos="fade-right" data-aos-delay="300">
+                            <a class="button is-primary" href="#projects">View Projects</a>
+                            <a class="button is-ghost" href="#contact">Contact Me</a>
                         </div>
                     </div>
-                    <div class="about-image">
-                        <img src="assets/profile.jpg" alt="Professional headshot of a Full Stack Developer" class="profile-image">
+                    <div class="column is-6">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQHHA3h3JjfNXg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1728077733035?e=1749081600&v=beta&t=oXaeZPJ7CnRLehdQ9TdtZXlgnBeCNHOi9mn1gGoOyUU" 
+                             alt="Keawin Koesnel Profile" 
+                             class="rounded-2xl shadow-xl"
+                             data-aos="fade-left">
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="skills" class="section skills-section">
-            <div class="container">
-                <h2>Skills & Expertise</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <i class="fas fa-code skill-icon"></i>
-                        <h3 class="skill-name">Frontend Development</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                        <ul class="skill-details">
-                            <li>React.js / Next.js</li>
-                            <li>TypeScript</li>
-                            <li>CSS3 / Sass</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-server skill-icon"></i>
-                        <h3 class="skill-name">Backend Development</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                        <ul class="skill-details">
-                            <li>Node.js / Express</li>
-                            <li>Python / Django</li>
-                            <li>RESTful APIs</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <i class="fas fa-cloud skill-icon"></i>
-                        <h3 class="skill-name">Cloud & DevOps</h3>
-                        <div class="skill-level">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                        <ul class="skill-details">
-                            <li>AWS / Azure</li>
-                            <li>Docker / Kubernetes</li>
-                            <li>CI/CD Pipelines</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="timeline" class="section timeline-section">
-            <div class="container">
-                <h2 class="section-title">Education & Experience</h2>
-                <p class="section-subtitle">My journey in technology and education</p>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">2023 - Present</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-item-title">Higher Certificate in Software Development</h4>
-                            <div class="timeline-item-subtitle">Eduvos</div>
-                            <ul class="timeline-item-description">
-                                <li>Learning fundamentals of programming, software engineering, and database management</li>
-                                <li>Gaining hands-on experience with Python, JavaScript, SQL, and full-stack development</li>
-                                <li>Building real-world projects to strengthen problem-solving and coding skills</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">2022 - Present</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-item-title">Bachelor of Applied Science (BASc) in Police Science</h4>
-                            <div class="timeline-item-subtitle">University of South Africa (UNISA)</div>
-                            <ul class="timeline-item-description">
-                                <li>Studying public and private law, focusing on legal systems, investigations, and governance</li>
-                                <li>Developing strong analytical and research skills relevant to law enforcement and cybersecurity</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">2023</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-item-title">Cybersecurity Certification</h4>
-                            <div class="timeline-item-subtitle">Coursera (Short Course)</div>
-                            <ul class="timeline-item-description">
-                                <li>Learned network security, ethical hacking, and data protection strategies</li>
-                                <li>Gained hands-on experience in risk assessment and cyber threat mitigation</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">2023 - Present</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-item-title">Kubernetes African Developer Training (KCNA Program)</h4>
-                            <div class="timeline-item-subtitle">Cloud Native Computing Foundation</div>
-                            <ul class="timeline-item-description">
-                                <li>Learning Kubernetes fundamentals, cloud computing, and container orchestration</li>
-                                <li>Exploring DevOps and deployment strategies for scalable applications</li>
-                    </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">2023 - Present</div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-item-title">PLP Academy – Full-Stack Development Program</h4>
-                            <div class="timeline-item-subtitle">Python & Web Development</div>
-                            <ul class="timeline-item-description">
-                                <li>Studying Python, Software Development Essentials, SQL, Web Development, and Startup Building</li>
-                                <li>Working on real-world projects, including a Poetry Network Web App and a Ride-Hailing Startup</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Projects I'm Working On</h2>
-                    <p class="section-subtitle">A collection of my ongoing and completed projects</p>
-                </div>
-
-                <div class="project-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="web">Web Apps</button>
-                    <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-                    <button class="filter-btn" data-filter="devops">DevOps</button>
-                    <button class="filter-btn" data-filter="blog">Blog</button>
-                </div>
-
-                <div class="projects-grid">
-                    <!-- Poetry Network Web App -->
-                    <article class="project-card" data-category="web">
-                        <div class="project-image">
-                            <img src="assets/poetry-network.jpg" alt="Screenshot of the Poetry Network web application showing the poem creation interface" class="project-preview">
-                            <span class="project-badge">Web App</span>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Poetry Network</h3>
-                            <p class="project-description">A social platform for poets and writers to share their work, collaborate, and get feedback from the community.</p>
-                            <div class="project-timeline">
-                                <span>Progress:</span>
-                                <div class="timeline-bar">
-                                    <div class="timeline-progress" style="width: 75%"></div>
-                                </div>
-                                <span>75%</span>
-                            </div>
-                            <div class="project-case-study">
-                                <h4>Case Study</h4>
-                                <div class="case-study-details">
-                                    <p><strong>Challenge:</strong> Creating a performant social platform that handles rich text content and real-time interactions.</p>
-                                    <p><strong>Solution:</strong> Implemented a microservices architecture with Next.js for frontend and Node.js backend services.</p>
-                                    <p><strong>Outcome:</strong> Successfully launched beta version with 500+ active users and 2000+ published poems.</p>
-                                </div>
-                            </div>
-                            <ul class="project-features">
-                                <li>Rich text editor with poetry-specific formatting</li>
-                                <li>Real-time collaboration and feedback system</li>
-                                <li>Advanced search with tags and categories</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag" data-tooltip="Frontend Framework">React.js</span>
-                                <span class="tech-tag" data-tooltip="Backend Runtime">Node.js</span>
-                                <span class="tech-tag" data-tooltip="Database">PostgreSQL</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Live Demo
-                                </a>
-                                <a href="#" class="project-link">
-                                    <i class="fab fa-github"></i>
-                                    Source Code
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Ride-Hailing Startup -->
-                    <article class="project-card" data-category="mobile">
-                        <div class="project-image">
-                            <img src="assets/ride-hailing.jpg" alt="Screenshot of the Ride-Hailing mobile application showing the real-time tracking interface" class="project-preview">
-                            <span class="project-badge">Mobile App</span>
-                        </div>
-                        <div class="project-content">
-                            <i class="fas fa-car project-icon"></i>
-                            <h3 class="project-title">Ride-Hailing Startup</h3>
-                            <p class="project-description">A web and mobile app that integrates local cab companies, providing a seamless booking experience for users.</p>
-                            <ul class="project-features">
-                                <li>Real-time location tracking</li>
-                                <li>Multiple payment options</li>
-                                <li>Driver-passenger chat</li>
-                                <li>Rating system</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag" data-tooltip="Flutter">Flutter</span>
-                                <span class="tech-tag" data-tooltip="Dart">Dart</span>
-                                <span class="tech-tag" data-tooltip="Firebase">Firebase</span>
-                                <span class="tech-tag" data-tooltip="Google Maps API">Google Maps API</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://mooncakeSG.github.io/ride-hailing" class="project-link" aria-label="View Ride-Hailing App Live Demo">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="https://github.com/mooncakeSG/ride-hailing" class="project-link" aria-label="View Ride-Hailing App Source Code on GitHub">
-                                    <i class="fab fa-github"></i> Source Code
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Cybersecurity Awareness Blog -->
-                    <article class="project-card" data-category="blog">
-                        <div class="project-image">
-                            <img src="assets/images/projects/cybersecurity-blog.jpg" alt="Cybersecurity Awareness Blog" loading="lazy">
-                            <div class="project-badge">Active</div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3 class="project-title">Cybersecurity Awareness Blog</h3>
-                            <p class="project-description">A blog dedicated to educating users about cybersecurity fundamentals and best practices.</p>
-                            <ul class="project-features">
-                                <li>Regular security tips and tutorials</li>
-                                <li>Case studies and analysis</li>
-                                <li>Interactive learning resources</li>
-                                <li>Community discussions</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">Jekyll</span>
-                                <span class="tech-tag">Markdown</span>
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://mooncakeSG.github.io/cybersecurity-blog" class="project-link" aria-label="Visit Cybersecurity Blog">
-                                    <i class="fas fa-external-link-alt"></i> Visit Blog
-                                </a>
-                                <a href="https://github.com/mooncakeSG/cybersecurity-blog" class="project-link" aria-label="View Blog Source Code">
-                                    <i class="fab fa-github"></i> Source Code
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Kubernetes Deployment Scripts -->
-                    <article class="project-card" data-category="devops">
-                        <div class="project-image">
-                            <img src="assets/images/projects/kubernetes-scripts.jpg" alt="Kubernetes Deployment Scripts" loading="lazy">
-                            <div class="project-badge">Active</div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-icon">
-                                <i class="fab fa-docker"></i>
-                            </div>
-                            <h3 class="project-title">Kubernetes Deployment Scripts</h3>
-                            <p class="project-description">A collection of scripts for automating application deployment with Kubernetes.</p>
-                            <ul class="project-features">
-                                <li>Automated deployment workflows</li>
-                                <li>Environment configuration</li>
-                                <li>Monitoring and scaling</li>
-                                <li>Security best practices</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">YAML</span>
-                                <span class="tech-tag">Helm</span>
-                                <span class="tech-tag">Bash</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/mooncakeSG/kubernetes-scripts" class="project-link" aria-label="View Kubernetes Scripts">
-                                    <i class="fab fa-github"></i> Source Code
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Personal Portfolio Website -->
-                    <article class="project-card" data-category="web">
-                        <div class="project-image">
-                            <img src="assets/images/projects/portfolio.jpg" alt="Portfolio Website - A professional briefcase icon representing my personal portfolio" loading="lazy">
-                            <span class="project-badge">Web App</span>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-icon">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <h3 class="project-title">Personal Portfolio Website</h3>
-                            <p class="project-description">A personal website showcasing my education, experience, and projects.</p>
-                            <ul class="project-features">
-                                <li>Responsive design</li>
-                                <li>Dark mode support</li>
-                                <li>Interactive animations</li>
-                                <li>Project showcase</li>
-                            </ul>
-                            <div class="project-tech">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://mooncakeSG.github.io" class="project-link" aria-label="View Portfolio Website">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                                <a href="https://github.com/mooncakeSG/mooncakeSG.github.io" class="project-link" aria-label="View Portfolio Source Code">
-                                    <i class="fab fa-github"></i> Source Code
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="blog" class="section blog-section" aria-labelledby="blog-title">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="blog-title" class="section-title">Latest Blog Posts</h2>
-                    <p class="section-subtitle">Thoughts, tutorials, and insights on technology and creativity</p>
-                </div>
-                
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <a href="#" class="blog-image-link">
-                            <div class="blog-image">
-                                <img src="https://via.placeholder.com/400x250/4a90e2/ffffff?text=API+Security" alt="API Security">
-                                <div class="blog-categories">
-                                    <span class="blog-category">Security</span>
-                                    <span class="blog-category">API</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <time datetime="2024-03-28" class="blog-date">March 28, 2024</time>
-                                <span class="blog-read-time">5 min read</span>
-                            </div>
-                            <h3 class="blog-title">
-                                <a href="#">Mastering API Security: A Beginner's Guide</a>
-                            </h3>
-                            <p class="blog-excerpt">Learn the fundamentals of API security, from authentication to rate limiting, and discover best practices for protecting your endpoints.</p>
-                            <a href="#" class="blog-read-more">
-                                Read More
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="blog-card">
-                        <a href="#" class="blog-image-link">
-                            <div class="blog-image">
-                                <img src="https://via.placeholder.com/400x250/2c3e50/ffffff?text=AI+Cybersecurity" alt="AI in Cybersecurity">
-                                <div class="blog-categories">
-                                    <span class="blog-category">AI</span>
-                                    <span class="blog-category">Cybersecurity</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <time datetime="2024-03-25" class="blog-date">March 25, 2024</time>
-                                <span class="blog-read-time">7 min read</span>
-                            </div>
-                            <h3 class="blog-title">
-                                <a href="#">The Role of AI in Cybersecurity</a>
-                            </h3>
-                            <p class="blog-excerpt">Explore how artificial intelligence is revolutionizing cybersecurity, from threat detection to automated response systems.</p>
-                            <a href="#" class="blog-read-more">
-                                Read More
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="blog-card">
-                        <a href="#" class="blog-image-link">
-                            <div class="blog-image">
-                                <img src="https://via.placeholder.com/400x250/64b5f6/ffffff?text=Poetry+Programming" alt="Poetry to Programming">
-                                <div class="blog-categories">
-                                    <span class="blog-category">Personal</span>
-                                    <span class="blog-category">Career</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <time datetime="2024-03-20" class="blog-date">March 20, 2024</time>
-                                <span class="blog-read-time">6 min read</span>
-                            </div>
-                            <h3 class="blog-title">
-                                <a href="#">From Poetry to Programming: My Journey into Tech</a>
-                            </h3>
-                            <p class="blog-excerpt">A personal story about how my passion for creative writing led me to discover the intersection of art and technology.</p>
-                            <a href="#" class="blog-read-more">
-                                Read More
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                    </div>
-                    </article>
-                    </div>
-                
-                <div class="blog-view-all">
-                    <a href="#" class="btn btn-outline">View All Posts</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section" aria-labelledby="contact-title">
-            <h2 id="contact-title" class="section-title">Contact Me</h2>
-            <form id="contact-form" class="contact-form" novalidate>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                    <div class="validation-message"></div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                    <div class="validation-message"></div>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
-                    <div class="validation-message"></div>
-                </div>
-                <div class="g-recaptcha" data-sitekey="your-recaptcha-site-key"></div>
-                <button type="submit" class="btn btn-primary">
-                    Send Message
-                    <div class="loading-spinner"></div>
-                </button>
-                <div class="form-feedback"></div>
-            </form>
-        </section>
-
-        <div class="download-resume">
-            <a href="assets/resume.pdf" class="btn btn-secondary" download aria-label="Download Resume PDF">
-                <i class="fas fa-download" aria-hidden="true"></i>
-                Download Resume (PDF)
-                <span class="file-size"></span>
-            </a>
         </div>
-    </main>
+    </section>
 
-    <footer class="footer" role="contentinfo">
-        <p>&copy; 2024 Keawin Koesnel. All rights reserved.</p>
+    <!-- About Section -->
+    <section id="about" class="section has-background-light">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">About Me</h2>
+            <div class="columns">
+                <div class="column is-4">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQHHA3h3JjfNXg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1728077733035?e=1749081600&v=beta&t=oXaeZPJ7CnRLehdQ9TdtZXlgnBeCNHOi9mn1gGoOyUU" 
+                         alt="Keawin Koesnel Profile" 
+                         class="rounded-2xl shadow-xl"
+                         data-aos="fade-right">
+                </div>
+                <div class="column is-8">
+                    <h2 class="title is-2">About Me</h2>
+                    <p class="subtitle is-4">Hello! I'm Keawin Koesnel, a passionate developer and cybersecurity enthusiast.</p>
+                    <div class="content">
+                        <p>I'm currently diving deep into the world of software development while studying for my BASc in Police Science and sharpening my skills in cybersecurity.</p>
+                        
+                        <p>I'm always eager to learn, innovate, and tackle new challenges in the tech field. My journey in development began with an interest in problem-solving and has expanded to a focus on building scalable, secure web applications. I am proficient in languages like Python, JavaScript, and SQL, and I'm constantly exploring full-stack development to broaden my skill set.</p>
+                        
+                        <p>In addition to coding, I have a strong interest in law and cybersecurity. I hold a certification in Cybersecurity and am working towards becoming a well-rounded developer who understands the intersection of technology and security.</p>
+                        
+                        <h3 class="title is-4">What I'm Working On</h3>
+                        <ul>
+                            <li>Currently building a Poetry Network Web App for writers and poets to connect and share their work.</li>
+                            <li>Working on a ride-hailing startup, focusing on integrating local cab companies into a digital platform.</li>
+                            <li>Learning Kubernetes and exploring cloud technologies to streamline application deployments.</li>
+                        </ul>
+                        
+                        <h3 class="title is-4">My Goals</h3>
+                        <ul>
+                            <li>To build secure and scalable web applications.</li>
+                            <li>To continuously improve my software development skills and stay up-to-date with the latest trends in cybersecurity.</li>
+                            <li>To merge my love for technology with my interest in law to create impactful solutions.</li>
+                        </ul>
+                        
+                        <p>I believe in making technology accessible and secure, and I'm always open to collaborating on exciting new projects!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Experience Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Education & Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Higher Certificate in Software Development</h3>
+                        <p class="subtitle is-5">Eduvos | Ongoing</p>
+                        <div class="content">
+                            <ul>
+                                <li>Learning programming fundamentals, software engineering, and database management</li>
+                                <li>Hands-on experience with Python, JavaScript, SQL, and full-stack development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Bachelor of Applied Science (BASc) in Police Science</h3>
+                        <p class="subtitle is-5">University of South Africa (UNISA) | Ongoing</p>
+                        <div class="content">
+                            <ul>
+                                <li>Studying public and private law</li>
+                                <li>Focusing on legal systems, investigations, and governance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Cybersecurity Certification</h3>
+                        <p class="subtitle is-5">Coursera (Short Course) | Completed</p>
+                        <div class="content">
+                            <ul>
+                                <li>Network security and ethical hacking</li>
+                                <li>Data protection strategies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Kubernetes African Developer Training (KCNA Program)</h3>
+                        <p class="subtitle is-5">Ongoing</p>
+                        <div class="content">
+                            <ul>
+                                <li>Learning Kubernetes fundamentals</li>
+                                <li>Cloud computing and container orchestration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">PLP Academy – Full-Stack Development Program</h3>
+                        <p class="subtitle is-5">Ongoing</p>
+                        <div class="content">
+                            <ul>
+                                <li>Python and Software Development Essentials</li>
+                                <li>SQL, Web Development, and Startup Building</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section has-background-light">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Current Projects</h2>
+            <div class="columns is-multiline">
+                <!-- Poetry Network Project -->
+                <div class="column is-4" data-aos="fade-up">
+                    <div class="card project-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://i.ibb.co/ZRfBnHzh/project1-jpg.png" alt="Poetry Network Project">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-4">Poetry Network Web App</h3>
+                            <p class="subtitle is-6">Web Development</p>
+                            <div class="content">
+                                <p>A platform for poets and writers to share their work, receive feedback, and connect with a community.</p>
+                                <div class="tags mt-3">
+                                    <span class="tag is-info">Python</span>
+                                    <span class="tag is-info">Django</span>
+                                    <span class="tag is-info">React</span>
+                                    <span class="tag is-info">PostgreSQL</span>
+                                </div>
+                                <a href="https://github.com/mooncakeSG/poetry-network" class="button is-primary mt-3" target="_blank">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>View Repository</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ride-Hailing Project -->
+                <div class="column is-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card project-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://i.ibb.co/jZ19yXvZ/project2-jpg.png" alt="Ride-Hailing Project">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-4">Ride-Hailing Startup</h3>
+                            <p class="subtitle is-6">Mobile & Web Development</p>
+                            <div class="content">
+                                <p>A web and mobile app integrating local cab companies for a seamless ride-booking experience.</p>
+                                <div class="tags mt-3">
+                                    <span class="tag is-info">Flutter</span>
+                                    <span class="tag is-info">Dart</span>
+                                    <span class="tag is-info">Firebase</span>
+                                    <span class="tag is-info">Google Maps API</span>
+                                </div>
+                                <a href="https://github.com/mooncakeSG/ride-hailing" class="button is-primary mt-3" target="_blank">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>View Repository</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity Blog Project -->
+                <div class="column is-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card project-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://i.ibb.co/WvSqPkgR/project3-jpg.png" alt="Cybersecurity Blog Project">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-4">Cybersecurity Awareness Blog</h3>
+                            <p class="subtitle is-6">Technical Writing</p>
+                            <div class="content">
+                                <p>A blog dedicated to educating users about cybersecurity fundamentals and best practices.</p>
+                                <div class="tags mt-3">
+                                    <span class="tag is-info">Jekyll</span>
+                                    <span class="tag is-info">Markdown</span>
+                                    <span class="tag is-info">HTML</span>
+                                    <span class="tag is-info">CSS</span>
+                                </div>
+                                <a href="https://github.com/mooncakeSG/cybersecurity-blog" class="button is-primary mt-3" target="_blank">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>View Repository</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kubernetes Scripts Project -->
+                <div class="column is-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card project-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://i.ibb.co/HTZrL2Xy/project4.jpg" alt="Kubernetes Scripts Project">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-4">Kubernetes Deployment Scripts</h3>
+                            <p class="subtitle is-6">DevOps</p>
+                            <div class="content">
+                                <p>A collection of scripts for automating application deployment with Kubernetes.</p>
+                                <div class="tags mt-3">
+                                    <span class="tag is-info">YAML</span>
+                                    <span class="tag is-info">Helm</span>
+                                    <span class="tag is-info">Bash</span>
+                                </div>
+                                <a href="https://github.com/mooncakeSG/kubernetes-scripts" class="button is-primary mt-3" target="_blank">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>View Repository</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Get in Touch</h2>
+            <div class="columns">
+                <div class="column is-6 is-offset-3">
+                    <div class="box" data-aos="fade-up">
+                        <div class="content has-text-centered">
+                            <p class="mb-4">
+                                <strong>Email:</strong> Keawinkoesnel804@gmail.com
+                            </p>
+                            <div class="buttons is-centered">
+                                <a class="button is-primary" href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank">
+                                    <span class="icon">
+                                        <i class="fab fa-linkedin"></i>
+                                    </span>
+                                    <span>LinkedIn Profile</span>
+                                </a>
+                                <a class="button is-primary" href="https://github.com/mooncakeSG" target="_blank">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>GitHub Profile</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>© 2024 Keawin Koesnel. All rights reserved.</p>
+            <div class="mt-4">
+                <a class="button is-ghost" href="https://github.com/mooncakeSG" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a class="button is-ghost" href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
