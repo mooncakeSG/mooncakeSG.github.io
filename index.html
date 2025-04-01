@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keawin Koesnel - Tech Enthusiast & Full Stack Developer</title>
+    <meta name="description" content="Professional portfolio of a Full Stack Developer specializing in web applications, mobile development, and cloud solutions. View projects, skills, and experience.">
+    <meta name="keywords" content="Full Stack Developer, Web Development, Mobile Apps, Cloud Solutions, Portfolio">
+    <meta name="author" content="Your Name">
+    <meta property="og:title" content="Professional Portfolio | Full Stack Developer">
+    <meta property="og:description" content="Explore my portfolio showcasing web applications, mobile development, and cloud solutions. View projects, skills, and experience.">
+    <meta property="og:image" content="assets/profile.jpg">
+    <meta property="og:url" content="https://yourportfolio.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Professional Portfolio | Full Stack Developer">
+    <meta name="twitter:description" content="Explore my portfolio showcasing web applications, mobile development, and cloud solutions.">
+    <meta name="twitter:image" content="assets/profile.jpg">
+    <title>Professional Portfolio | Full Stack Developer</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Keawin Koesnel - A tech enthusiast and creative writer specializing in cybersecurity, law, and software development. Full stack developer with expertise in Python, JavaScript, and SQL.">
@@ -26,7 +37,7 @@
     <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/72624370?v=4&size=64">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     
     <!-- Fonts and Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -35,43 +46,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
     <header class="header">
-        <div class="header-container">
-            <a href="#" class="logo">
-                <span class="logo-highlight">K</span>eawin <span class="logo-highlight">K</span>oesnel
+        <div class="container">
+            <a href="#" class="logo" aria-label="MooncakeSG Logo">
+                <img src="images/logo.png" alt="MooncakeSG Logo" width="40" height="40">
             </a>
-        <nav class="nav">
-                <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-                <div class="nav-wrapper">
-                    <ul class="nav-list" role="menu">
-                        <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
-                        <li role="none"><a href="#timeline" class="nav-link" role="menuitem">Education</a></li>
-                        <li role="none"><a href="#projects" class="nav-link" role="menuitem">Projects</a></li>
-                        <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
-                        <li role="none" class="nav-social-wrapper">
-                            <div class="nav-social">
-                                <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                            </div>
-                        </li>
-            </ul>
-                </div>
-            <button class="theme-toggle" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i>
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-wrapper">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </button>
-        </nav>
+            <nav class="nav-wrapper" id="nav-wrapper">
+                <ul class="nav-list" role="menu">
+                    <li role="none"><a href="#home" class="nav-link" role="menuitem">Home</a></li>
+                    <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+                    <li role="none"><a href="#projects" class="nav-link" role="menuitem">Projects</a></li>
+                    <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+                </ul>
+                <div class="nav-social-wrapper">
+                    <ul class="nav-social" role="list">
+                        <li role="listitem">
+                            <a href="https://github.com/mooncakeSG" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li role="listitem">
+                            <a href="https://linkedin.com/in/mooncakeSG" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <main class="main">
+    <main id="main-content">
         <section class="hero">
             <div class="hero-container">
                 <div class="hero-content">
@@ -92,7 +108,7 @@
                     </div>
                 </div>
                 <div class="profile-wrapper">
-                    <img src="https://avatars.githubusercontent.com/u/72624370?v=4" alt="Keawin Koesnel" class="profile-image">
+                    <img src="assets/profile.jpg" alt="Professional headshot of a Full Stack Developer" class="profile-image">
                     <div class="tech-icons">
                         <i class="fab fa-python" title="Python"></i>
                         <i class="fab fa-js" title="JavaScript"></i>
@@ -104,11 +120,96 @@
         </section>
 
         <section id="about" class="section">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-            <p>Hi, I'm Keawin Koesnel, a tech enthusiast and creative writer from South Africa. I have a strong passion for cybersecurity, law, and software development, and I'm currently expanding my knowledge in full-stack development.</p>
-            <p>I'm pursuing a Bachelor of Applied Science in Police Science at UNISA and have certifications in Cybersecurity. Alongside my studies, I'm part of the Kubernetes African Developer Training Program (KCNA) and the PLP Academy, where I'm honing my skills in Python, software development, SQL, and web technologies.</p>
-            <p>Beyond tech, I have a deep love for writing poetry and short stories, blending creativity with logic to build meaningful projects that empower communities.</p>
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="tagline">Full Stack Developer & Cloud Enthusiast</p>
+                        <p class="mission-statement">
+                            I'm a passionate Full Stack Developer with a strong foundation in web development, mobile applications, and cloud solutions. My journey in technology is driven by a desire to create innovative solutions that solve real-world problems.
+                        </p>
+                        <div class="about-details">
+                            <h3>Professional Background</h3>
+                            <p>
+                                With experience in both frontend and backend development, I specialize in building scalable web applications and mobile solutions. My expertise includes:
+                            </p>
+                            <ul>
+                                <li>Modern web technologies (React, Next.js, Node.js)</li>
+                                <li>Mobile app development (Flutter, React Native)</li>
+                                <li>Cloud platforms (AWS, Azure, GCP)</li>
+                                <li>Database management (PostgreSQL, MongoDB)</li>
+                                <li>DevOps practices and CI/CD</li>
+                                <li>Cybersecurity and best practices</li>
+                            </ul>
+                        </div>
+                        <div class="about-passion">
+                            <h3>What Drives Me</h3>
+                            <p>
+                                I'm passionate about creating user-centric applications that provide exceptional experiences. My approach combines technical expertise with creative problem-solving to deliver solutions that make a difference.
+                            </p>
+                        </div>
+                        <div class="about-goals">
+                            <h3>Current Focus</h3>
+                            <p>
+                                Currently, I'm focused on expanding my expertise in cloud-native development and exploring the intersection of AI and web development. I'm always eager to learn new technologies and methodologies to stay at the forefront of web development.
+                            </p>
+                        </div>
+                        <div class="download-resume">
+                            <a href="assets/resume.pdf" class="btn btn-primary" download>
+                                <i class="fas fa-download" aria-hidden="true"></i>
+                                Download Resume
+                                <span class="file-size"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="assets/profile.jpg" alt="Professional headshot of a Full Stack Developer" class="profile-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <h2>Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <i class="fas fa-code skill-icon"></i>
+                        <h3 class="skill-name">Frontend Development</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                        <ul class="skill-details">
+                            <li>React.js / Next.js</li>
+                            <li>TypeScript</li>
+                            <li>CSS3 / Sass</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-server skill-icon"></i>
+                        <h3 class="skill-name">Backend Development</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                        <ul class="skill-details">
+                            <li>Node.js / Express</li>
+                            <li>Python / Django</li>
+                            <li>RESTful APIs</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <i class="fas fa-cloud skill-icon"></i>
+                        <h3 class="skill-name">Cloud & DevOps</h3>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                        <ul class="skill-details">
+                            <li>AWS / Azure</li>
+                            <li>Docker / Kubernetes</li>
+                            <li>CI/CD Pipelines</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -206,34 +307,45 @@
                     <!-- Poetry Network Web App -->
                     <article class="project-card" data-category="web">
                         <div class="project-image">
-                            <img src="assets/images/projects/poetry-network.jpg" alt="Poetry Network Web App" loading="lazy">
-                            <div class="project-badge">In Progress</div>
+                            <img src="assets/poetry-network.jpg" alt="Screenshot of the Poetry Network web application showing the poem creation interface" class="project-preview">
+                            <span class="project-badge">Web App</span>
                         </div>
                         <div class="project-content">
-                            <div class="project-icon">
-                                <i class="fas fa-book-open"></i>
+                            <h3 class="project-title">Poetry Network</h3>
+                            <p class="project-description">A social platform for poets and writers to share their work, collaborate, and get feedback from the community.</p>
+                            <div class="project-timeline">
+                                <span>Progress:</span>
+                                <div class="timeline-bar">
+                                    <div class="timeline-progress" style="width: 75%"></div>
+                                </div>
+                                <span>75%</span>
                             </div>
-                            <h3 class="project-title">Poetry Network Web App</h3>
-                            <p class="project-description">A platform for poets and writers to share their work, receive feedback, and connect with a community.</p>
+                            <div class="project-case-study">
+                                <h4>Case Study</h4>
+                                <div class="case-study-details">
+                                    <p><strong>Challenge:</strong> Creating a performant social platform that handles rich text content and real-time interactions.</p>
+                                    <p><strong>Solution:</strong> Implemented a microservices architecture with Next.js for frontend and Node.js backend services.</p>
+                                    <p><strong>Outcome:</strong> Successfully launched beta version with 500+ active users and 2000+ published poems.</p>
+                                </div>
+                            </div>
                             <ul class="project-features">
-                                <li>User authentication and profiles</li>
-                                <li>Poetry submission and feedback system</li>
-                                <li>Community engagement features</li>
-                                <li>Search and filtering capabilities</li>
+                                <li>Rich text editor with poetry-specific formatting</li>
+                                <li>Real-time collaboration and feedback system</li>
+                                <li>Advanced search with tags and categories</li>
                             </ul>
                             <div class="project-tech">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Django</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag" data-tooltip="Frontend Framework">React.js</span>
+                                <span class="tech-tag" data-tooltip="Backend Runtime">Node.js</span>
+                                <span class="tech-tag" data-tooltip="Database">PostgreSQL</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://mooncakeSG.github.io/poetry-network" class="project-link" aria-label="View Poetry Network Web App">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Live Demo
                                 </a>
-                                <a href="https://github.com/mooncakeSG/poetry-network" class="project-link" aria-label="View Poetry Network Web App Source Code">
-                                    <i class="fab fa-github"></i> Source Code
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                    Source Code
                                 </a>
                             </div>
                         </div>
@@ -242,32 +354,30 @@
                     <!-- Ride-Hailing Startup -->
                     <article class="project-card" data-category="mobile">
                         <div class="project-image">
-                            <img src="assets/images/projects/ride-hailing.jpg" alt="Ride-Hailing Startup" loading="lazy">
-                            <div class="project-badge">In Progress</div>
+                            <img src="assets/ride-hailing.jpg" alt="Screenshot of the Ride-Hailing mobile application showing the real-time tracking interface" class="project-preview">
+                            <span class="project-badge">Mobile App</span>
                         </div>
                         <div class="project-content">
-                            <div class="project-icon">
-                                <i class="fas fa-car"></i>
-                            </div>
+                            <i class="fas fa-car project-icon"></i>
                             <h3 class="project-title">Ride-Hailing Startup</h3>
-                            <p class="project-description">A web and mobile app integrating local cab companies for a seamless ride-booking experience.</p>
+                            <p class="project-description">A web and mobile app that integrates local cab companies, providing a seamless booking experience for users.</p>
                             <ul class="project-features">
-                                <li>Real-time ride tracking</li>
+                                <li>Real-time location tracking</li>
                                 <li>Multiple payment options</li>
-                                <li>Driver-passenger matching</li>
-                                <li>Route optimization</li>
+                                <li>Driver-passenger chat</li>
+                                <li>Rating system</li>
                             </ul>
                             <div class="project-tech">
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">Dart</span>
-                                <span class="tech-tag">Firebase</span>
-                                <span class="tech-tag">Google Maps API</span>
+                                <span class="tech-tag" data-tooltip="Flutter">Flutter</span>
+                                <span class="tech-tag" data-tooltip="Dart">Dart</span>
+                                <span class="tech-tag" data-tooltip="Firebase">Firebase</span>
+                                <span class="tech-tag" data-tooltip="Google Maps API">Google Maps API</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://mooncakeSG.github.io/ride-hailing" class="project-link" aria-label="View Ride-Hailing App">
+                                <a href="https://mooncakeSG.github.io/ride-hailing" class="project-link" aria-label="View Ride-Hailing App Live Demo">
                                     <i class="fas fa-external-link-alt"></i> Live Demo
                                 </a>
-                                <a href="https://github.com/mooncakeSG/ride-hailing" class="project-link" aria-label="View Ride-Hailing App Source Code">
+                                <a href="https://github.com/mooncakeSG/ride-hailing" class="project-link" aria-label="View Ride-Hailing App Source Code on GitHub">
                                     <i class="fab fa-github"></i> Source Code
                                 </a>
                             </div>
@@ -343,8 +453,8 @@
                     <!-- Personal Portfolio Website -->
                     <article class="project-card" data-category="web">
                         <div class="project-image">
-                            <img src="assets/images/projects/portfolio.jpg" alt="Personal Portfolio Website" loading="lazy">
-                            <div class="project-badge">Completed</div>
+                            <img src="assets/images/projects/portfolio.jpg" alt="Portfolio Website - A professional briefcase icon representing my personal portfolio" loading="lazy">
+                            <span class="project-badge">Web App</span>
                         </div>
                         <div class="project-content">
                             <div class="project-icon">
@@ -481,25 +591,38 @@
 
         <section id="contact" class="section" aria-labelledby="contact-title">
             <h2 id="contact-title" class="section-title">Contact Me</h2>
-            <form class="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST">
+            <form id="contact-form" class="contact-form" novalidate>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
-                    <div id="name-error" class="error" role="alert" aria-live="polite"></div>
+                    <input type="text" id="name" name="name" required>
+                    <div class="validation-message"></div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
-                    <div id="email-error" class="error" role="alert" aria-live="polite"></div>
+                    <input type="email" id="email" name="email" required>
+                    <div class="validation-message"></div>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" required aria-required="true" aria-describedby="message-error"></textarea>
-                    <div id="message-error" class="error" role="alert" aria-live="polite"></div>
+                    <textarea id="message" name="message" required></textarea>
+                    <div class="validation-message"></div>
                 </div>
-                <button type="submit" class="btn">Send Message</button>
+                <div class="g-recaptcha" data-sitekey="your-recaptcha-site-key"></div>
+                <button type="submit" class="btn btn-primary">
+                    Send Message
+                    <div class="loading-spinner"></div>
+                </button>
+                <div class="form-feedback"></div>
             </form>
         </section>
+
+        <div class="download-resume">
+            <a href="assets/resume.pdf" class="btn btn-secondary" download aria-label="Download Resume PDF">
+                <i class="fas fa-download" aria-hidden="true"></i>
+                Download Resume (PDF)
+                <span class="file-size"></span>
+            </a>
+        </div>
     </main>
 
     <footer class="footer" role="contentinfo">

@@ -39,55 +39,129 @@ const ThemeManager = {
 };
 
 // Scroll Management Module
-const ScrollManager = {
+class ScrollManager {
+    constructor() {
+        this.scrollToTopBtn = document.createElement('button');
+        this.scrollToTopBtn.className = 'scroll-to-top';
+        this.scrollToTopBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>';
+        this.scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
+        document.body.appendChild(this.scrollToTopBtn);
+
+        this.header = document.querySelector('header');
+        this.mobileMenu = document.querySelector('.mobile-menu');
+        this.sections = document.querySelectorAll('section[id]');
+        this.navLinks = document.querySelectorAll('a[href^="#"]');
+        this.lastScrollTop = 0;
+        this.scrollThreshold = 300;
+        this.init();
+    }
+
     init() {
+        this.setupScrollHandling();
         this.setupSmoothScroll();
-        this.setupScrollAnimations();
-    },
+        this.setupIntersectionObserver();
+    }
+
+    setupScrollHandling() {
+        window.addEventListener('scroll', this.handleScroll.bind(this));
+        if (this.scrollToTopBtn) {
+            this.scrollToTopBtn.addEventListener('click', this.scrollToTop.bind(this));
+        }
+    }
 
     setupSmoothScroll() {
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => this.handleSmoothScroll(e));
+        this.navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetSection = document.querySelector(targetId);
+                if (!targetSection) return;
+
+                // Close mobile menu if open
+                if (this.mobileMenu && this.mobileMenu.classList.contains('open')) {
+                    document.querySelector('.hamburger')?.click();
+                }
+
+                const headerOffset = this.header ? this.header.offsetHeight : 0;
+                const targetPosition = targetSection.offsetTop - headerOffset;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Update URL without triggering scroll
+                history.pushState(null, '', targetId);
+            });
         });
-    },
+    }
 
-    handleSmoothScroll(e) {
-        e.preventDefault();
-        const target = document.querySelector(e.currentTarget.getAttribute('href'));
-        if (!target) return;
-
-        const headerOffset = 80;
-        const elementPosition = target.offsetTop;
-        const offsetPosition = elementPosition - headerOffset;
-
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    },
-
-    setupScrollAnimations() {
-const observerOptions = {
-    root: null,
-    threshold: 0.1,
-    rootMargin: '0px'
-};
+    setupIntersectionObserver() {
+        const options = {
+            rootMargin: '-20% 0px -80% 0px'
+        };
 
         const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    this.updateActiveNavLink(id);
+                }
+            });
+        }, options);
 
-        document.querySelectorAll('.section').forEach(section => {
-    section.classList.add('fade-in');
-    observer.observe(section);
-});
+        this.sections.forEach(section => observer.observe(section));
     }
-};
+
+    updateActiveNavLink(sectionId) {
+        this.navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    handleScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Handle scroll button visibility
+        if (this.scrollToTopBtn) {
+            if (scrollTop > this.scrollThreshold) {
+                this.scrollToTopBtn.classList.add('show');
+            } else {
+                this.scrollToTopBtn.classList.remove('show');
+            }
+        }
+
+        // Handle sticky header
+        if (this.header) {
+            if (scrollTop > 0) {
+                this.header.classList.add('sticky');
+            } else {
+                this.header.classList.remove('sticky');
+            }
+
+            // Hide/show header based on scroll direction
+            if (scrollTop > this.lastScrollTop && scrollTop > this.header.offsetHeight) {
+                this.header.classList.add('header-hidden');
+            } else {
+                this.header.classList.remove('header-hidden');
+            }
+        }
+
+        this.lastScrollTop = scrollTop;
+    }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+}
 
 // Form Management Module
 const FormManager = {
@@ -104,7 +178,7 @@ const FormManager = {
     },
 
     async handleSubmit(e) {
-    e.preventDefault();
+        e.preventDefault();
         
         if (!this.validateForm()) return;
 
@@ -116,16 +190,16 @@ const FormManager = {
     },
 
     validateForm() {
-    let isValid = true;
+        let isValid = true;
         this.clearErrors();
 
         this.formGroups.forEach(group => {
-        const input = group.querySelector('input, textarea');
-        if (!input.value.trim()) {
-            isValid = false;
+            const input = group.querySelector('input, textarea');
+            if (!input.value.trim()) {
+                isValid = false;
                 this.showError(input, 'This field is required');
             } else if (input.type === 'email' && !this.isValidEmail(input.value)) {
-            isValid = false;
+                isValid = false;
                 this.showError(input, 'Please enter a valid email address');
             }
         });
@@ -142,11 +216,11 @@ const FormManager = {
             message: document.getElementById('message').value
         };
 
-            const response = await fetch('https://formspree.io/f/your-formspree-id', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+        const response = await fetch('https://formspree.io/f/your-formspree-id', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(formData)
         });
 
@@ -208,19 +282,41 @@ const FormManager = {
 };
 
 // Image Loading Module
-const ImageLoader = {
-    init() {
-        this.setupImageLoading();
-    },
+class ImageLoader {
+    constructor() {
+        this.observer = null;
+        this.setupIntersectionObserver();
+    }
 
-    setupImageLoading() {
-        document.querySelectorAll('.project-image img').forEach(img => {
-            img.addEventListener('load', () => {
-                img.classList.add('loaded');
+    setupIntersectionObserver() {
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.loadImage(entry.target);
+                    this.observer.unobserve(entry.target);
+                }
             });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.1
         });
     }
-};
+
+    loadImage(img) {
+        const src = img.getAttribute('data-src');
+        if (src) {
+            img.src = src;
+            img.classList.remove('lazy');
+            img.classList.add('loaded');
+        }
+    }
+
+    observeImage(img) {
+        if (this.observer) {
+            this.observer.observe(img);
+        }
+    }
+}
 
 // Blog Management Module
 const BlogManager = {
@@ -326,9 +422,9 @@ const BlogManager = {
     },
 
     showError(message) {
-    const error = document.createElement('div');
+        const error = document.createElement('div');
         error.className = 'error-message';
-    error.textContent = message;
+        error.textContent = message;
         error.setAttribute('role', 'alert');
         this.blogGrid.insertBefore(error, this.loadMoreButton);
         
@@ -386,89 +482,220 @@ const BlogManager = {
 // Project Management Module
 class ProjectManager {
     constructor() {
-        this.projectsGrid = document.querySelector('.projects-grid');
-        this.filterButtons = document.querySelectorAll('.filter-btn');
-        this.projectCards = document.querySelectorAll('.project-card');
-        this.currentFilter = 'all';
+        this.projects = [
+            {
+                id: 'poetry-network',
+                title: 'Poetry Network',
+                category: 'web',
+                icon: 'fas fa-pen-fancy',
+                description: 'A modern web application for poets to share and collaborate on their work.',
+                features: [
+                    'Real-time collaboration',
+                    'AI-powered suggestions',
+                    'Mood tracking',
+                    'Community features'
+                ],
+                tech: [
+                    { name: 'React', tooltip: 'Frontend Framework' },
+                    { name: 'Node.js', tooltip: 'Backend Runtime' },
+                    { name: 'MongoDB', tooltip: 'Database' },
+                    { name: 'Socket.io', tooltip: 'Real-time Communication' }
+                ],
+                links: [
+                    { text: 'View Demo', url: 'https://poetry-network-demo.com', icon: 'fas fa-external-link-alt' },
+                    { text: 'Source Code', url: 'https://github.com/yourusername/poetry-network', icon: 'fab fa-github' }
+                ],
+                image: 'assets/images/poetry-network.jpg',
+                caseStudy: {
+                    challenge: 'Creating an engaging platform that combines traditional poetry with modern technology while maintaining a user-friendly experience.',
+                    approach: 'Implemented AI-powered suggestions, designed a clean interface, built real-time collaboration features, and integrated mood tracking.',
+                    outcome: 'Successfully launched a platform that helps poets connect and create, leveraging AI to enhance the creative process.',
+                    metrics: {
+                        engagement: '60% increase in user engagement',
+                        satisfaction: '95% user satisfaction rate',
+                        collaboration: '40% reduction in writer\'s block'
+                    }
+                }
+            },
+            {
+                id: 'ride-hailing',
+                title: 'Ride-Hailing App',
+                category: 'mobile',
+                icon: 'fas fa-car',
+                description: 'A comprehensive mobile application for ride-hailing services with real-time tracking.',
+                features: [
+                    'Real-time location tracking',
+                    'In-app payments',
+                    'Route optimization',
+                    'Safety features'
+                ],
+                tech: [
+                    { name: 'Flutter', tooltip: 'Cross-platform Framework' },
+                    { name: 'Firebase', tooltip: 'Backend Services' },
+                    { name: 'Google Maps', tooltip: 'Location Services' },
+                    { name: 'Stripe', tooltip: 'Payment Processing' }
+                ],
+                links: [
+                    { text: 'View Demo', url: 'https://ride-hailing-demo.com', icon: 'fas fa-external-link-alt' },
+                    { text: 'Source Code', url: 'https://github.com/yourusername/ride-hailing', icon: 'fab fa-github' }
+                ],
+                image: 'assets/images/ride-hailing.jpg',
+                caseStudy: {
+                    challenge: 'Developing a reliable ride-hailing system with real-time accuracy and user safety.',
+                    approach: 'Implemented real-time tracking, created a unified payment system, built a route optimization algorithm, and integrated safety features.',
+                    outcome: 'Delivered a scalable solution that improved user experience and operational efficiency.',
+                    metrics: {
+                        waitTime: '25% reduction in average wait time',
+                        uptime: '99.9% tracking system uptime',
+                        earnings: '30% increase in driver earnings'
+                    }
+                }
+            }
+        ];
+        this.observer = null;
+        this.init();
     }
 
     init() {
-        if (!this.projectsGrid || !this.filterButtons || !this.projectCards.length) {
-            console.warn('Project elements not found');
-            return;
-        }
-
-        this.setupFilterButtons();
-        this.setupProjectAnimations();
-        this.ensureProjectsVisible();
+        this.setupIntersectionObserver();
+        this.renderProjects();
+        this.setupEventListeners();
     }
 
-    setupFilterButtons() {
-        this.filterButtons.forEach(button => {
+    setupIntersectionObserver() {
+        this.observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        this.loadProjectImage(entry.target);
+                        this.observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '50px'
+            }
+        );
+    }
+
+    loadProjectImage(projectCard) {
+        const imageContainer = projectCard.querySelector('.project-image');
+        const img = projectCard.querySelector('img');
+        
+        if (!img) return;
+
+        // Add loading state
+        imageContainer.classList.add('loading');
+        
+        // Load image
+        img.onload = () => {
+            imageContainer.classList.remove('loading');
+            img.classList.add('loaded');
+        };
+
+        img.src = img.dataset.src;
+    }
+
+    renderProjects() {
+        const container = document.querySelector('.projects-grid');
+        if (!container) return;
+
+        container.innerHTML = '';
+        
+        this.projects.forEach(project => {
+            const card = this.createProjectCard(project);
+            container.appendChild(card);
+            this.observer.observe(card);
+        });
+    }
+
+    createProjectCard(project) {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.setAttribute('data-category', project.category);
+        card.setAttribute('role', 'article');
+        card.setAttribute('aria-labelledby', `project-title-${project.id}`);
+
+        card.innerHTML = `
+            <div class="project-image">
+                <img data-src="${project.image}" alt="${project.title} project screenshot" loading="lazy">
+                <div class="project-badge">${project.category}</div>
+            </div>
+            <div class="project-content">
+                <div class="project-icon">
+                    <i class="${project.icon}" aria-hidden="true"></i>
+                </div>
+                <h3 id="project-title-${project.id}" class="project-title">${project.title}</h3>
+                <p class="project-description">${project.description}</p>
+                <ul class="project-features">
+                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+                <div class="project-tech">
+                    ${project.tech.map(tech => `
+                        <span class="tech-tag" data-tooltip="${tech.tooltip}">${tech.name}</span>
+                    `).join('')}
+                </div>
+                <div class="project-links">
+                    ${project.links.map(link => `
+                        <a href="${link.url}" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="${link.icon}" aria-hidden="true"></i>
+                            ${link.text}
+                        </a>
+                    `).join('')}
+                </div>
+                <div class="project-case-study">
+                    <h4>Case Study</h4>
+                    <div class="case-study-content">
+                        <p><strong>Challenge:</strong> ${project.caseStudy.challenge}</p>
+                        <p><strong>Approach:</strong> ${project.caseStudy.approach}</p>
+                        <p><strong>Outcome:</strong> ${project.caseStudy.outcome}</p>
+                        <div class="case-study-metrics">
+                            <h5>Key Metrics</h5>
+                            <ul>
+                                ${Object.entries(project.caseStudy.metrics).map(([key, value]) => 
+                                    `<li>${value}</li>`
+                                ).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        return card;
+    }
+
+    setupEventListeners() {
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
             button.addEventListener('click', () => {
-                const filter = button.dataset.filter;
-                this.filterProjects(filter);
+                const category = button.dataset.category;
+                this.filterProjects(category);
+                this.updateFilterButtons(button);
             });
         });
     }
 
-    filterProjects(filter) {
-        if (this.currentFilter === filter) return;
-        
-        this.currentFilter = filter;
-        this.updateFilterButtons();
-        
-        this.projectCards.forEach(card => {
-            const shouldShow = filter === 'all' || card.dataset.category === filter;
-            
-            if (shouldShow) {
+    filterProjects(category) {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
                 card.style.display = 'block';
-                card.style.opacity = '1';
-                card.style.visibility = 'visible';
-                card.style.transform = 'translateY(0)';
             } else {
-                card.style.opacity = '0';
-                card.style.visibility = 'hidden';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 300);
+                card.style.display = 'none';
             }
         });
     }
 
-    updateFilterButtons() {
-        this.filterButtons.forEach(button => {
-            button.classList.toggle('active', button.dataset.filter === this.currentFilter);
-        });
-    }
-
-    setupProjectAnimations() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '50px'
-        });
-
-        this.projectCards.forEach(card => {
-            observer.observe(card);
-        });
-    }
-
-    ensureProjectsVisible() {
-        this.projectCards.forEach(card => {
-            card.style.display = 'block';
-            card.style.opacity = '1';
-            card.style.visibility = 'visible';
-            card.style.transform = 'translateY(0)';
-            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease';
+    updateFilterButtons(activeButton) {
+        const buttons = document.querySelectorAll('.filter-button');
+        buttons.forEach(button => {
+            button.classList.remove('active');
+            if (button === activeButton) {
+                button.classList.add('active');
+            }
         });
     }
 }
@@ -478,8 +705,8 @@ class MobileMenuManager {
     constructor() {
         this.hamburger = document.querySelector('.hamburger');
         this.navWrapper = document.querySelector('.nav-wrapper');
-        this.body = document.body;
         this.isOpen = false;
+        
         this.init();
     }
 
@@ -487,60 +714,78 @@ class MobileMenuManager {
         if (!this.hamburger || !this.navWrapper) return;
 
         // Set initial ARIA attributes
-        this.hamburger.setAttribute('aria-label', 'Toggle navigation menu');
         this.hamburger.setAttribute('aria-expanded', 'false');
         this.hamburger.setAttribute('aria-controls', 'nav-wrapper');
-        this.navWrapper.setAttribute('role', 'navigation');
+        this.navWrapper.setAttribute('aria-hidden', 'true');
 
         // Add event listeners
         this.hamburger.addEventListener('click', () => this.toggleMenu());
-        document.addEventListener('click', (e) => this.handleOutsideClick(e));
-        document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+        this.hamburger.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            this.toggleMenu();
+        });
 
-        // Handle window resize
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (this.isOpen && 
+                !this.navWrapper.contains(e.target) && 
+                !this.hamburger.contains(e.target)) {
+                this.closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.closeMenu();
+            }
+        });
+
+        // Close menu on window resize if screen becomes large
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768 && this.isOpen) {
                 this.closeMenu();
             }
         });
 
-        // Handle navigation links
-        const navLinks = this.navWrapper.querySelectorAll('a');
+        // Handle navigation link clicks
+        const navLinks = this.navWrapper.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (this.isOpen) {
-                    this.closeMenu();
-                }
-            });
+            link.addEventListener('click', () => this.closeMenu());
         });
     }
 
     toggleMenu() {
-        this.isOpen = !this.isOpen;
-        this.hamburger.setAttribute('aria-expanded', this.isOpen.toString());
-        this.navWrapper.classList.toggle('open');
-        this.body.classList.toggle('menu-open');
+        if (!this.isOpen) {
+            this.openMenu();
+        } else {
+            this.closeMenu();
+        }
+    }
+
+    openMenu() {
+        this.isOpen = true;
+        this.hamburger.setAttribute('aria-expanded', 'true');
+        this.navWrapper.setAttribute('aria-hidden', 'false');
+        this.navWrapper.classList.add('open');
+        document.body.classList.add('menu-open');
+        
+        // Focus first nav link
+        const firstNavLink = this.navWrapper.querySelector('.nav-link');
+        if (firstNavLink) {
+            firstNavLink.focus();
+        }
     }
 
     closeMenu() {
         this.isOpen = false;
         this.hamburger.setAttribute('aria-expanded', 'false');
+        this.navWrapper.setAttribute('aria-hidden', 'true');
         this.navWrapper.classList.remove('open');
-        this.body.classList.remove('menu-open');
-    }
-
-    handleOutsideClick(event) {
-        if (this.isOpen && 
-            !this.navWrapper.contains(event.target) && 
-            !this.hamburger.contains(event.target)) {
-            this.closeMenu();
-        }
-    }
-
-    handleKeyPress(event) {
-        if (event.key === 'Escape' && this.isOpen) {
-            this.closeMenu();
-        }
+        document.body.classList.remove('menu-open');
+        
+        // Return focus to hamburger button
+        this.hamburger.focus();
     }
 }
 
@@ -632,17 +877,278 @@ const SectionManager = {
     }
 };
 
-// Initialize all modules when DOM is loaded
+// Contact Form Handler
+class ContactFormHandler {
+    constructor() {
+        this.form = document.getElementById('contact-form');
+        this.submitButton = this.form?.querySelector('button[type="submit"]');
+        this.spinner = this.form?.querySelector('.loading-spinner');
+        this.feedback = this.form?.querySelector('.form-feedback');
+        
+        if (this.form) {
+            this.init();
+        }
+    }
+
+    init() {
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
+    }
+
+    async handleSubmit(event) {
+        event.preventDefault();
+        
+        // Show loading state
+        this.submitButton.disabled = true;
+        this.spinner.style.display = 'inline-block';
+        this.feedback.style.display = 'none';
+
+        try {
+            // Get form data
+            const formData = new FormData(this.form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Simulate API call (replace with actual API endpoint)
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Show success message
+            this.showFeedback('Message sent successfully!', 'success');
+            this.form.reset();
+        } catch (error) {
+            // Show error message
+            this.showFeedback('Failed to send message. Please try again.', 'error');
+        } finally {
+            // Reset button state
+            this.submitButton.disabled = false;
+            this.spinner.style.display = 'none';
+        }
+    }
+
+    showFeedback(message, type) {
+        this.feedback.textContent = message;
+        this.feedback.className = `form-feedback ${type}`;
+        this.feedback.style.display = 'block';
+
+        // Hide feedback after 5 seconds
+        setTimeout(() => {
+            this.feedback.style.display = 'none';
+        }, 5000);
+    }
+}
+
+// Enhanced Form Validation
+class FormValidator {
+    constructor(formId) {
+        this.form = document.getElementById(formId);
+        this.submitButton = this.form?.querySelector('button[type="submit"]');
+        this.spinner = this.form?.querySelector('.loading-spinner');
+        this.feedback = this.form?.querySelector('.form-feedback');
+        this.init();
+    }
+
+    init() {
+        if (!this.form) return;
+
+        this.form.setAttribute('novalidate', true);
+        this.form.addEventListener('submit', this.handleSubmit.bind(this));
+        this.form.addEventListener('input', this.handleInput.bind(this));
+        this.form.addEventListener('blur', this.handleBlur.bind(this));
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        
+        if (this.validateForm()) {
+            this.submitForm();
+        }
+    }
+
+    handleInput(event) {
+        const field = event.target;
+        if (field.tagName === 'INPUT' || field.tagName === 'TEXTAREA') {
+            this.validateField(field);
+        }
+    }
+
+    handleBlur(event) {
+        const field = event.target;
+        if (field.tagName === 'INPUT' || field.tagName === 'TEXTAREA') {
+            this.validateField(field);
+        }
+    }
+
+    validateField(field) {
+        const parent = field.parentElement;
+        const validationMessage = parent.querySelector('.validation-message');
+
+        // Reset previous validation
+        parent.classList.remove('error', 'success');
+        if (validationMessage) {
+            validationMessage.textContent = '';
+            validationMessage.className = 'validation-message';
+        }
+
+        // Required field validation
+        if (field.hasAttribute('required') && !field.value.trim()) {
+            this.showError(field, 'This field is required');
+            return false;
+        }
+
+        // Email validation
+        if (field.type === 'email' && field.value.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+                this.showError(field, 'Please enter a valid email address');
+                return false;
+            }
+        }
+
+        // Message length validation
+        if (field.id === 'message' && field.value.trim().length < 10) {
+            this.showError(field, 'Message must be at least 10 characters long');
+            return false;
+        }
+
+        // Success state
+        parent.classList.add('success');
+        return true;
+    }
+
+    showError(field, message) {
+        const parent = field.parentElement;
+        const validationMessage = parent.querySelector('.validation-message');
+        
+        parent.classList.add('error');
+        if (validationMessage) {
+            validationMessage.textContent = message;
+            validationMessage.classList.add('error');
+        }
+    }
+
+    validateForm() {
+        let isValid = true;
+        const fields = this.form.querySelectorAll('input, textarea');
+        
+        fields.forEach(field => {
+            if (!this.validateField(field)) {
+                isValid = false;
+            }
+        });
+
+        // reCAPTCHA validation
+        if (typeof grecaptcha !== 'undefined') {
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                this.showFormError('Please complete the reCAPTCHA');
+                isValid = false;
+            }
+        }
+
+        return isValid;
+    }
+
+    async submitForm() {
+        try {
+            // Show loading state
+            this.submitButton.disabled = true;
+            this.spinner.style.display = 'inline-block';
+            this.feedback.style.display = 'none';
+            
+            const formData = new FormData(this.form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Add reCAPTCHA response if present
+            if (typeof grecaptcha !== 'undefined') {
+                data.recaptchaResponse = grecaptcha.getResponse();
+            }
+
+            // Simulate API call (replace with actual endpoint)
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Show success message
+            this.showFormSuccess('Message sent successfully!');
+            this.form.reset();
+
+            // Reset reCAPTCHA if present
+            if (typeof grecaptcha !== 'undefined') {
+                grecaptcha.reset();
+            }
+        } catch (error) {
+            this.showFormError('Failed to send message. Please try again.');
+        } finally {
+            this.submitButton.disabled = false;
+            this.spinner.style.display = 'none';
+        }
+    }
+
+    showFormSuccess(message) {
+        this.feedback.textContent = message;
+        this.feedback.className = 'form-feedback success';
+        this.feedback.style.display = 'block';
+    }
+
+    showFormError(message) {
+        this.feedback.textContent = message;
+        this.feedback.className = 'form-feedback error';
+        this.feedback.style.display = 'block';
+    }
+}
+
+class ResumeManager {
+    constructor() {
+        this.downloadBtn = document.querySelector('.download-resume .btn');
+        this.fileSizeSpan = document.querySelector('.download-resume .file-size');
+        this.resumePath = 'assets/resume.pdf';
+        this.init();
+    }
+
+    async init() {
+        if (this.downloadBtn && this.fileSizeSpan) {
+            try {
+                const response = await fetch(this.resumePath, { method: 'HEAD' });
+                if (response.ok) {
+                    const size = response.headers.get('content-length');
+                    this.displayFileSize(size);
+                }
+            } catch (error) {
+                console.warn('Could not fetch resume file size:', error);
+            }
+
+            this.downloadBtn.addEventListener('click', this.handleDownload.bind(this));
+        }
+    }
+
+    displayFileSize(bytes) {
+        const sizes = ['Bytes', 'KB', 'MB'];
+        if (bytes === 0) return '0 Byte';
+        const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        const size = Math.round(bytes / Math.pow(1024, i), 2);
+        this.fileSizeSpan.textContent = `(${size} ${sizes[i]})`;
+    }
+
+    handleDownload(e) {
+        // Add any analytics tracking here if needed
+        console.log('Resume download initiated');
+    }
+}
+
+// Initialize all components when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    ThemeManager.init();
-    ScrollManager.init();
-    FormManager.init();
-    ImageLoader.init();
-    BlogManager.init();
-    const projectManager = new ProjectManager();
-    projectManager.init();
+    // Initialize existing components
     new MobileMenuManager();
+    new ProjectManager();
+    new ThemeManager();
+    new ContactFormHandler();
+    new ScrollManager();
+    const imageLoader = new ImageLoader();
+    BlogManager.init();
     SkillsManager.init();
     TimelineManager.init();
     SectionManager.init();
+    new FormValidator('contact-form');
+    new ResumeManager();
+    
+    // Observe all lazy-loaded images
+    document.querySelectorAll('img.lazy').forEach(img => {
+        imageLoader.observeImage(img);
+    });
 }); 
