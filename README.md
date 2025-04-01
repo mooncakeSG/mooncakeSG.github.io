@@ -47,20 +47,6 @@ A modern, responsive portfolio website showcasing my skills, projects, and exper
 
 3. Open `index.html` in your browser or use a local server.
 
-## 📁 Project Structure
-
-```
-mooncakeSG.github.io/
-├── assets/
-│   ├── images/
-│   │   ├── projects/
-│   │   └── profile.jpg
-│   └── resume.pdf
-├── index.html
-├── styles.css
-├── script.js
-└── README.md
-```
 
 ## 🔧 Configuration
 
@@ -69,10 +55,6 @@ To enable the contact form functionality:
 1. Sign up for a Formspree account
 2. Replace `your-formspree-id` in `script.js` with your actual Formspree form ID
 
-### reCAPTCHA
-To enable reCAPTCHA:
-1. Sign up for Google reCAPTCHA
-2. Replace `your-recaptcha-site-key` in `index.html` with your actual reCAPTCHA site key
 
 ## 🎨 Customization
 
@@ -139,8 +121,6 @@ Keawin Koesnel
 - Font Awesome for icons
 - Google Fonts for typography
 - Formspree for contact form functionality
-- All contributors and supporters
 
----
 
 Made with ❤️ by Keawin Koesnel
