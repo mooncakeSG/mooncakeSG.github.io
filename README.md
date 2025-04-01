@@ -60,7 +60,6 @@ python -m http.server 8000
 npx serve
 ```
 
-<<<<<<< HEAD
 4. Visit `http://localhost:8000` in your browser
 =======
 >>>>>>> origin/main
@@ -108,12 +107,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Font Awesome](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
 
-## Contact
+  
+## Contact me 
+Email: keawinkoesnel804@gmail.com
 
-<<<<<<< HEAD
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
-
-Project Link: [https://github.com/yourusername/portfolio](https://github.com/yourusername/portfolio)
+Project Link: [https://github.com/mooncakesg/mooncakeSG.github.io](https://github.com/mooncakesg/mooncakeSG.github.io)
 =======
 - Font Awesome for icons
 - Google Fonts for typography
@@ -121,4 +119,4 @@ Project Link: [https://github.com/yourusername/portfolio](https://github.com/you
 
 
 Made with ❤️ by Keawin Koesnel
->>>>>>> origin/main
+
