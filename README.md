@@ -42,6 +42,8 @@ python -m http.server 8000
 npx http-server
 ```
 
+4. Visit `http://localhost:8000` in your browser
+
 ## 🚀 Deployment
 
 This portfolio is deployed using GitHub Pages:
@@ -61,7 +63,7 @@ This portfolio is deployed using GitHub Pages:
 mooncakeSG.github.io/
 ├── index.html          # Main HTML file
 ├── styles.css          # Custom CSS styles
-├── script.js           # JavaScript functionality
+├── script.js          # JavaScript functionality
 ├── assets/            # Images and other assets
 │   └── images/        # Project images
 └── README.md          # Project documentation
@@ -124,7 +126,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Keawin Koesnel**
   - LinkedIn: [Keawin Koesnel](https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/)
   - GitHub: [mooncakeSG](https://github.com/mooncakeSG)
-  - Email: Keawinkoesnel804@gmail.com
+  - Email: keawinkoesnel804@gmail.com
 
 ## 🙏 Acknowledgments
 
@@ -132,3 +134,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [AOS Library](https://michalsnik.github.io/aos/) for scroll animations
 - [Font Awesome](https://fontawesome.com/) for icons
 - [Google Fonts](https://fonts.google.com/) for typography
+- [Formspree](https://formspree.io/) for contact form functionality
+
+Made with ❤️ by Keawin Koesnel
