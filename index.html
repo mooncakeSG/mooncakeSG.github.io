@@ -36,11 +36,11 @@
             <a class="navbar-item" href="#">
                 <strong>KK</strong>
             </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
+            <button class="hamburger" aria-label="menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
 
         <div class="navbar-menu">
@@ -48,15 +48,17 @@
                 <a class="navbar-item" href="#about">About</a>
                 <a class="navbar-item" href="#education">Education</a>
                 <a class="navbar-item" href="#projects">Projects</a>
+                <a class="navbar-item" href="#deployment">Deployment</a>
+                <a class="navbar-item" href="#concept-review">Concepts</a>
+                <a class="navbar-item" href="#problem-solving">Debugging</a>
+                <a class="navbar-item" href="#learning-plan">Learning</a>
                 <a class="navbar-item" href="#contact">Contact</a>
-                <div class="navbar-item">
-                    <button id="theme-toggle" class="button is-ghost" aria-label="Toggle theme">
-                        <i id="sun" class="fas fa-sun"></i>
-                        <i id="moon" class="fas fa-moon hidden"></i>
-                    </button>
-                </div>
             </div>
         </div>
+        <button id="theme-toggle" class="button" aria-label="Toggle theme">
+            <i id="sun" class="fas fa-sun"></i>
+            <i id="moon" class="fas fa-moon hidden"></i>
+        </button>
     </nav>
 
     <!-- Hero Section -->
@@ -100,7 +102,6 @@
                          data-aos="fade-right">
                 </div>
                 <div class="column is-8">
-                    <h2 class="title is-2">About Me</h2>
                     <p class="subtitle is-4">Hello! I'm Keawin Koesnel, a passionate developer and cybersecurity enthusiast.</p>
                     <div class="content">
                         <p>I'm currently diving deep into the world of software development while studying for my BASc in Police Science and sharpening my skills in cybersecurity.</p>
@@ -208,6 +209,104 @@
         </div>
     </section>
 
+    <!-- Learning Journey Section -->
+    <section id="learning" class="section has-background-light">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Learning Journey</h2>
+            <div class="timeline">
+                <!-- Lecture Concepts -->
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Lecture Concepts & Applications</h3>
+                        <p class="subtitle is-5">Key Learnings</p>
+                        <div class="content">
+                            <ul>
+                                <li>Software Development Fundamentals</li>
+                                <li>Web Development Best Practices</li>
+                                <li>Cybersecurity Principles</li>
+                                <li>Database Management</li>
+                            </ul>
+                            <div class="mt-4">
+                                <h4 class="title is-5">Practical Applications</h4>
+                                <ul>
+                                    <li>Building secure web applications</li>
+                                    <li>Implementing responsive design</li>
+                                    <li>Database optimization</li>
+                                    <li>API development</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Examples -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Code Examples</h3>
+                        <p class="subtitle is-5">Implementation Showcase</p>
+                        <div class="content">
+                            <div class="code-example">
+                                <pre><code class="language-python">
+# Example: Secure User Authentication
+def authenticate_user(username, password):
+    try:
+        # Hash password
+        hashed_password = hash_password(password)
+        # Verify credentials
+        user = verify_credentials(username, hashed_password)
+        return user
+    except Exception as e:
+        log_error(e)
+        return None
+                                </code></pre>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="title is-5">Best Practices Demonstrated</h4>
+                                <ul>
+                                    <li>Error handling</li>
+                                    <li>Security considerations</li>
+                                    <li>Code documentation</li>
+                                    <li>Clean code principles</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Debugging Process -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Debugging Process</h3>
+                        <p class="subtitle is-5">Problem-Solving Journey</p>
+                        <div class="content">
+                            <div class="debugging-steps">
+                                <h4 class="title is-5">Common Issues & Solutions</h4>
+                                <ul>
+                                    <li>Performance optimization in web applications</li>
+                                    <li>Cross-browser compatibility issues</li>
+                                    <li>Database connection problems</li>
+                                    <li>API integration challenges</li>
+                                </ul>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="title is-5">Tools & Techniques</h4>
+                                <ul>
+                                    <li>Browser DevTools</li>
+                                    <li>Debug logging</li>
+                                    <li>Performance profiling</li>
+                                    <li>Code review practices</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="section has-background-light">
         <div class="container">
@@ -232,7 +331,7 @@
                                     <span class="tag is-info">React</span>
                                     <span class="tag is-info">PostgreSQL</span>
                                 </div>
-                                <a href="https://github.com/mooncakeSG/poetry-network" class="button is-primary mt-3" target="_blank">
+                                <a href="https://github.com/mooncakeSG/The-Poetry-Network" class="button is-primary mt-3" target="_blank">
                                     <span class="icon">
                                         <i class="fab fa-github"></i>
                                     </span>
@@ -262,7 +361,7 @@
                                     <span class="tag is-info">Firebase</span>
                                     <span class="tag is-info">Google Maps API</span>
                                 </div>
-                                <a href="https://github.com/mooncakeSG/ride-hailing" class="button is-primary mt-3" target="_blank">
+                                <a href="https://github.com/mooncakeSG/RideHailingApp" class="button is-primary mt-3" target="_blank">
                                     <span class="icon">
                                         <i class="fab fa-github"></i>
                                     </span>
@@ -292,7 +391,7 @@
                                     <span class="tag is-info">HTML</span>
                                     <span class="tag is-info">CSS</span>
                                 </div>
-                                <a href="https://github.com/mooncakeSG/cybersecurity-blog" class="button is-primary mt-3" target="_blank">
+                                <a href="https://github.com/drPod/Personal-Blog" class="button is-primary mt-3" target="_blank">
                                     <span class="icon">
                                         <i class="fab fa-github"></i>
                                     </span>
@@ -327,6 +426,357 @@
                                     </span>
                                     <span>View Repository</span>
                                 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Section -->
+    <section id="deployment" class="section has-background-light">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Deployment & Hosting</h2>
+            <div class="columns">
+                <div class="column is-6" data-aos="fade-right">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="title is-4">Deployment Platform</h3>
+                            <div class="content">
+                                <p>This portfolio website is deployed using GitHub Pages, providing:</p>
+                                <ul>
+                                    <li>Automatic deployment from the main branch</li>
+                                    <li>SSL certificate for secure HTTPS access</li>
+                                    <li>Global CDN for fast content delivery</li>
+                                    <li>Custom domain support</li>
+                                </ul>
+                                <div class="mt-4">
+                                    <h4 class="title is-5">Live Demo</h4>
+                                    <a href="https://mooncakesg.github.io/" class="button is-primary" target="_blank">
+                                        <span class="icon">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </span>
+                                        <span>View Live Site</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6" data-aos="fade-left">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="title is-4">Build & Deployment Process</h3>
+                            <div class="content">
+                                <div class="code-example">
+                                    <pre><code class="language-bash">
+# Clone the repository
+git clone https://github.com/mooncakeSG/mooncakeSG.github.io.git
+
+# Navigate to project directory
+cd mooncakeSG.github.io
+
+# Start local development server
+python -m http.server 8000
+                                    </code></pre>
+                                </div>
+                                <div class="mt-4">
+                                    <h4 class="title is-5">Deployment Steps</h4>
+                                    <ol>
+                                        <li>Push changes to the main branch</li>
+                                        <li>GitHub Actions automatically builds the site</li>
+                                        <li>Changes are deployed to GitHub Pages</li>
+                                        <li>Site is updated within minutes</li>
+                                    </ol>
+                                </div>
+                                <div class="mt-4">
+                                    <h4 class="title is-5">Repository</h4>
+                                    <a href="https://github.com/mooncakeSG/mooncakeSG.github.io" class="button is-primary" target="_blank">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>View Repository</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Review & Application Section -->
+    <section id="concept-review" class="section">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Concept Review & Application</h2>
+            <div class="columns">
+                <div class="column is-6" data-aos="fade-right">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="title is-4">Key Programming Concepts</h3>
+                            <div class="content">
+                                <h4 class="title is-5">Object-Oriented Programming</h4>
+                                <ul>
+                                    <li><strong>Encapsulation & Data Hiding:</strong> Critical for managing state and ensuring components interact through well-defined interfaces.</li>
+                                    <li><strong>Inheritance & Polymorphism:</strong> Used for creating reusable components that can be extended without changing core functionality.</li>
+                                    <li><strong>Abstract Classes & Interfaces:</strong> Help define contracts for components, ensuring consistent behavior across the application.</li>
+                                    <li><strong>Design Patterns & SOLID Principles:</strong> Applied to maintain code modularity and scalability, using patterns like MVC.</li>
+                                </ul>
+                                
+                                <h4 class="title is-5">Web Development Fundamentals</h4>
+                                <ul>
+                                    <li><strong>HTML5 Semantic Structure:</strong> Ensures well-organized and accessible content.</li>
+                                    <li><strong>CSS3 Flexbox & Grid Layout:</strong> Creates responsive layouts adapting to different screen sizes.</li>
+                                    <li><strong>JavaScript ES6+ Features:</strong> Leveraged for cleaner syntax and asynchronous programming.</li>
+                                    <li><strong>Responsive Design Principles:</strong> Integral for seamless user experience across devices.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6" data-aos="fade-left">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="title is-4">Practical Implementation</h3>
+                            <div class="content">
+                                <div class="code-example">
+                                    <pre><code class="language-javascript">
+// Example: Implementing a Responsive Image Gallery
+class ImageGallery {
+    constructor(container) {
+        this.container = container;
+        this.images = [];
+    }
+
+    addImage(imageUrl) {
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.classList.add('gallery-item');
+        this.images.push(img);
+        this.container.appendChild(img);
+    }
+
+    updateLayout() {
+        const width = window.innerWidth;
+        const columns = width < 768 ? 1 : width < 1024 ? 2 : 3;
+        this.container.style.gridTemplateColumns = 
+            `repeat(${columns}, 1fr)`;
+    }
+}
+
+// Usage example:
+const galleryContainer = document.getElementById('gallery');
+const gallery = new ImageGallery(galleryContainer);
+gallery.addImage('https://example.com/image1.jpg');
+gallery.addImage('https://example.com/image2.jpg');
+gallery.updateLayout();
+
+// Add event listener for window resize
+window.addEventListener('resize', () => gallery.updateLayout());
+                                    </code></pre>
+                                </div>
+                                <div class="mt-4">
+                                    <h4 class="title is-5">Project Implementation</h4>
+                                    <div class="columns">
+                                        <div class="column is-6">
+                                            <h5 class="title is-6">Poetry Network</h5>
+                                            <ul>
+                                                <li>Dynamic content management</li>
+                                                <li>Interactive comment sections</li>
+                                                <li>User-driven content filters</li>
+                                                <li>Responsive multimedia display</li>
+                                            </ul>
+                                        </div>
+                                        <div class="column is-6">
+                                            <h5 class="title is-6">Ride-Hailing App</h5>
+                                            <ul>
+                                                <li>User session management</li>
+                                                <li>Real-time location tracking</li>
+                                                <li>Asynchronous API integration</li>
+                                                <li>Cross-platform responsiveness</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <h4 class="title is-5">Implementation Notes</h4>
+                                    <ul>
+                                        <li>Uses ES6+ Class Syntax for cleaner, maintainable code</li>
+                                        <li>Implements Responsive Design for consistent user experience</li>
+                                        <li>Follows OOP Principles for code reuse and scalability</li>
+                                        <li>Includes Error Handling for robust API interactions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Solving & Debugging Section -->
+    <section id="problem-solving" class="section has-background-light">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Debugging & Problem Solving</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Ride-Hailing Application Case Study</h3>
+                        <p class="subtitle is-5">Live Location Updates Issue</p>
+                        <div class="content">
+                            <div class="mb-4">
+                                <h4 class="title is-5">Problem Description</h4>
+                                <p>During the development of my Ride-Hailing application, I encountered an issue where the live location updates on the map were not accurately reflecting the positions of available cabs. This inconsistency was affecting the user experience by causing delays in ride confirmation.</p>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="title is-5">Initial Troubleshooting</h4>
+                                <ul>
+                                    <li><strong>Observation:</strong> Reviewed error logs from Firebase Crashlytics, which pointed towards intermittent failures in the asynchronous location data fetch.</li>
+                                    <li><strong>Hypothesis:</strong> Suspected a race condition between asynchronous API calls in the Flutter app, which were not handling rapid location updates efficiently.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Investigation Process</h3>
+                        <div class="content">
+                            <div class="columns">
+                                <div class="column is-6">
+                                    <h4 class="title is-5">Debugging Tools</h4>
+                                    <ul>
+                                        <li>Flutter's built-in debugging tools</li>
+                                        <li>Breakpoint analysis</li>
+                                        <li>Google Maps API tracing</li>
+                                        <li>Firebase Crashlytics</li>
+                                    </ul>
+                                </div>
+                                <div class="column is-6">
+                                    <h4 class="title is-5">Testing Approach</h4>
+                                    <ul>
+                                        <li>Network condition simulation</li>
+                                        <li>Rapid location update testing</li>
+                                        <li>Performance benchmarking</li>
+                                        <li>User experience validation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Resolution Strategy</h3>
+                        <div class="content">
+                            <div class="columns">
+                                <div class="column is-6">
+                                    <h4 class="title is-5">Code Improvements</h4>
+                                    <ul>
+                                        <li>Refactored asynchronous data handling</li>
+                                        <li>Implemented request completion checks</li>
+                                        <li>Added retry mechanisms</li>
+                                        <li>Enhanced error handling</li>
+                                    </ul>
+                                </div>
+                                <div class="column is-6">
+                                    <h4 class="title is-5">Validation</h4>
+                                    <ul>
+                                        <li>Added comprehensive unit tests</li>
+                                        <li>Simulated network fluctuations</li>
+                                        <li>Tested rapid location updates</li>
+                                        <li>Performance monitoring</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Outcome & Lessons Learned</h3>
+                        <div class="content">
+                            <div class="mb-4">
+                                <h4 class="title is-5">Results</h4>
+                                <ul>
+                                    <li>More accurate and timely location updates</li>
+                                    <li>Improved user experience during ride requests</li>
+                                    <li>Reduced error rates in location tracking</li>
+                                    <li>Better handling of network fluctuations</li>
+                                </ul>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="title is-5">Key Takeaways</h4>
+                                <ul>
+                                    <li>Importance of managing asynchronous calls effectively</li>
+                                    <li>Need for comprehensive testing under real-world conditions</li>
+                                    <li>Value of proper error handling and data management</li>
+                                    <li>Significance of user experience in debugging priorities</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personalized Learning Plan Section -->
+    <section id="learning-plan" class="section">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Personalized Learning Plan</h2>
+            <div class="columns">
+                <div class="column is-4" data-aos="fade-right">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="title is-4">Daily Goals</h3>
+                            <div class="content">
+                                <ul>
+                                    <li>Code Review Practice (1 hour)</li>
+                                    <li>Algorithm Problem Solving (30 mins)</li>
+                                    <li>Documentation Reading (30 mins)</li>
+                                    <li>Project Development (2 hours)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4" data-aos="fade-up">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="title is-4">Weekly Milestones</h3>
+                            <div class="content">
+                                <ul>
+                                    <li>Complete One Online Course Module</li>
+                                    <li>Contribute to Open Source Project</li>
+                                    <li>Write Technical Blog Post</li>
+                                    <li>Participate in Code Review</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4" data-aos="fade-left">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="title is-4">Monthly Objectives</h3>
+                            <div class="content">
+                                <ul>
+                                    <li>Master New Framework</li>
+                                    <li>Build Portfolio Project</li>
+                                    <li>Attend Tech Workshop</li>
+                                    <li>Complete Certification</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -386,5 +836,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>

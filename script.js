@@ -1191,27 +1191,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize Mobile Menu if elements exist
-    const navbarBurger = document.querySelector('.navbar-burger');
+    const navbarBurger = document.querySelector('.hamburger');
     const navbarMenu = document.querySelector('.navbar-menu');
+    const body = document.body;
+
     if (navbarBurger && navbarMenu) {
         navbarBurger.addEventListener('click', () => {
             navbarBurger.classList.toggle('is-active');
             navbarMenu.classList.toggle('is-active');
+            body.classList.toggle('menu-open');
         });
 
-        // Close mobile menu when clicking outside
+        // Close menu when clicking on a nav link
+        const navLinks = document.querySelectorAll('.navbar-item');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbarBurger.classList.remove('is-active');
+                navbarMenu.classList.remove('is-active');
+                body.classList.remove('menu-open');
+            });
+        });
+
+        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navbarMenu.contains(e.target) && !navbarBurger.contains(e.target)) {
                 navbarBurger.classList.remove('is-active');
                 navbarMenu.classList.remove('is-active');
+                body.classList.remove('menu-open');
             }
         });
     }
 
     // Initialize Smooth Scroll if navigation links exist
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    if (navLinks.length > 0) {
-        navLinks.forEach(anchor => {
+    const navLinksSmoothScroll = document.querySelectorAll('a[href^="#"]');
+    if (navLinksSmoothScroll.length > 0) {
+        navLinksSmoothScroll.forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
