@@ -1,90 +1,78 @@
-# Personal Portfolio Website
+# Keawin Koesnel - Personal Portfolio
 
-A modern, responsive portfolio website showcasing my projects, skills, and professional journey. Built with HTML5, CSS3, and JavaScript, featuring a clean design and smooth animations.
+A sleek, responsive portfolio website that showcases my projects, skills, and journey in tech. Built with HTML, CSS, and JavaScript, it combines clean design with smooth animations to create an engaging experience.
 
-## 🌟 Features
+## 🚀 Features
 
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Dark/Light Mode**: Toggle between dark and light themes
-- **Interactive UI**: Smooth animations and transitions
-- **Project Showcase**: Detailed sections for projects, skills, and experience
-- **Learning Journey**: Timeline-based display of educational and professional growth
-- **Contact Integration**: Easy ways to connect through social media and email
+- **Fully Responsive** – Looks great on all devices, from desktops to mobiles.
+- **Dark/Light Mode** – Switch between themes with ease.
+- **Smooth Animations** – Subtle transitions for a polished UI.
+- **Project Showcase** – Highlighting my work with clear descriptions.
+- **Learning Journey** – A timeline that tracks my growth in tech and cybersecurity.
+- **Easy Contact** – Social links and email integration for quick connections.
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
-- HTML5
-- CSS3 (with CSS Variables and Flexbox/Grid)
-- JavaScript (ES6+)
-- Bulma CSS Framework
-- AOS (Animate On Scroll) Library
-- Font Awesome Icons
-- Google Fonts
+- **Frontend**: HTML5, CSS3 (Flexbox/Grid), JavaScript (ES6+), Bulma CSS
+- **Animations**: AOS (Animate On Scroll)
+- **Icons & Fonts**: Font Awesome, Google Fonts
 
-## 📦 Installation
+## 📦 Getting Started
 
-1. Clone the repository:
+Clone the repo and run it locally:
+
 ```bash
 git clone https://github.com/mooncakeSG/mooncakeSG.github.io.git
-```
-
-2. Navigate to the project directory:
-```bash
 cd mooncakeSG.github.io
 ```
 
-3. Open `index.html` in your browser or use a local server:
+To preview:
+
 ```bash
 # Using Python's built-in server
 python -m http.server 8000
 
-# Using Node.js http-server
+# Or with Node.js
 npx http-server
 ```
 
-4. Visit `http://localhost:8000` in your browser
+Then open `http://localhost:8000` in your browser.
+
+## 🌍 Live Demo
+
+Check out my portfolio here: [Live Site](https://mooncakesg.github.io/)
 
 ## 🚀 Deployment
 
-This portfolio is deployed using GitHub Pages:
+This site is auto-deployed using GitHub Pages. Any changes pushed to the main branch trigger a new deployment.
 
-- **Live Demo**: [https://mooncakesg.github.io/](https://mooncakesg.github.io/)
-- **Repository**: [https://github.com/mooncakeSG/mooncakeSG.github.io](https://github.com/mooncakeSG/mooncakeSG.github.io)
-
-### Deployment Process
-
-1. The website is automatically deployed through GitHub Pages
-2. Any push to the main branch triggers a new deployment
-3. GitHub Pages serves the static files from the root directory
-
-## 📝 Project Structure
+## 📁 Project Structure
 
 ```
 mooncakeSG.github.io/
-├── index.html          # Main HTML file
-├── styles.css          # Custom CSS styles
-├── script.js          # JavaScript functionality
-├── assets/            # Images and other assets
-│   └── images/        # Project images
-└── README.md          # Project documentation
+├── index.html       # Main HTML file
+├── styles.css       # Custom styles
+├── script.js        # JavaScript functionality
+├── assets/         # Images and assets
+│   └── images/     # Project visuals
+└── README.md        # This file
 ```
 
-## 🔧 Customization
+## 🎨 Customization
 
-### Theme Colors
-The website uses CSS variables for easy theme customization. Edit the following in `styles.css`:
+### Change Theme Colors
+Modify `styles.css`:
 
 ```css
 :root {
-    --primary: #2C3E50;    /* Deep navy for base */
-    --secondary: #1ABC9C;  /* Turquoise for accents */
-    --accent: #E74C3C;     /* Coral for highlights */
-    /* ... other variables ... */
+    --primary: #2C3E50;
+    --secondary: #1ABC9C;
+    --accent: #E74C3C;
 }
 ```
 
-### Adding New Projects
-To add a new project, copy the project card template in `index.html`:
+### Add New Projects
+Copy this template into `index.html`:
 
 ```html
 <div class="card project-card">
@@ -96,44 +84,36 @@ To add a new project, copy the project card template in `index.html`:
     <div class="card-content">
         <h3 class="title is-4">Project Name</h3>
         <p class="subtitle is-6">Category</p>
-        <div class="content">
-            <p>Project description...</p>
-            <div class="tags mt-3">
-                <span class="tag is-info">Technology1</span>
-                <span class="tag is-info">Technology2</span>
-            </div>
-        </div>
+        <p>Project description...</p>
     </div>
 </div>
 ```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Want to improve something? Contributions are welcome!
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the repo
+2. Create a branch (`git checkout -b feature-name`)
+3. Commit your changes (`git commit -m 'Added feature'`)
+4. Push and open a PR
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under MIT. See [LICENSE](LICENSE) for details.
 
-## 👤 Author
+## 👤 About Me
 
 - **Keawin Koesnel**
-  - LinkedIn: [Keawin Koesnel](https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/)
-  - GitHub: [mooncakeSG](https://github.com/mooncakeSG)
-  - Email: keawinkoesnel804@gmail.com
+  - [LinkedIn](https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/)
+  - [GitHub](https://github.com/mooncakeSG)
+  - [Email](mailto:keawinkoesnel804@gmail.com)
 
-## 🙏 Acknowledgments
+## 🙌 Acknowledgments
 
-- [Bulma CSS](https://bulma.io/) for the CSS framework
-- [AOS Library](https://michalsnik.github.io/aos/) for scroll animations
-- [Font Awesome](https://fontawesome.com/) for icons
-- [Google Fonts](https://fonts.google.com/) for typography
-- [Formspree](https://formspree.io/) for contact form functionality
+- Bulma CSS for styling
+- AOS Library for animations
+- Font Awesome for icons
+- Google Fonts for typography
 
-Made with ❤️ by Keawin Koesnel
+Built with passion and purpose. ✨
