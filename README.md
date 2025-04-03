@@ -117,3 +117,4 @@ This project is licensed under MIT. See [LICENSE](LICENSE) for details.
 - Google Fonts for typography
 
 Built with passion and purpose. ✨
+Made with ❤ 
