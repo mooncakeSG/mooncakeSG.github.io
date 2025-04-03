@@ -729,8 +729,8 @@ class ProjectManager {
 // Mobile Menu Management
 class MobileMenuManager {
     constructor() {
-        this.hamburger = document.querySelector('.hamburger');
-        this.navWrapper = document.querySelector('.nav-wrapper');
+        this.hamburger = document.querySelector('.navbar-burger');
+        this.navWrapper = document.querySelector('.navbar-menu');
         this.isOpen = false;
         
         if (!this.hamburger || !this.navWrapper) {
@@ -753,7 +753,7 @@ class MobileMenuManager {
         window.addEventListener('resize', this.handleResize.bind(this));
 
         // Handle navigation link clicks
-        const navLinks = this.navWrapper.querySelectorAll('.nav-link');
+        const navLinks = this.navWrapper.querySelectorAll('.navbar-item');
         navLinks.forEach(link => {
             link.addEventListener('click', () => this.closeMenu());
         });
@@ -1191,12 +1191,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize Mobile Menu if elements exist
-    const navbarBurger = document.querySelector('.hamburger');
+    const navbarBurger = document.querySelector('.navbar-burger');
     const navbarMenu = document.querySelector('.navbar-menu');
     const body = document.body;
 
     if (navbarBurger && navbarMenu) {
         navbarBurger.addEventListener('click', () => {
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
             navbarBurger.classList.toggle('is-active');
             navbarMenu.classList.toggle('is-active');
             body.classList.toggle('menu-open');
