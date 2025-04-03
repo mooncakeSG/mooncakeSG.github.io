@@ -1197,6 +1197,7 @@ h3 {
     bottom: 0;
     left: 40px;
     margin-left: -1px;
+    z-index: 0;
 }
 
 .timeline-item {
@@ -1217,7 +1218,7 @@ h3 {
     border: 2px solid var(--bg-color);
     top: 4px;
     transform: translateX(-50%);
-    z-index: 1;
+    z-index: 2;
 }
 
 .timeline-content {
