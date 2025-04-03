@@ -1234,6 +1234,36 @@ h3 {
     margin-left: 2rem;
     padding: 0 1rem;
     box-sizing: border-box;
+    background: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: calc(100% - 2rem);
+}
+
+.timeline-content h3,
+.timeline-content p,
+.timeline-content ul,
+.timeline-content li {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.timeline-content .title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-content .content {
+    font-size: 0.95rem;
 }
 
 /* Code Example Styles */
@@ -1354,7 +1384,25 @@ h3 {
     }
 
     .timeline-content {
+        margin-left: 1.5rem;
         padding: 1rem;
+        width: calc(100% - 1.5rem);
+    }
+
+    .timeline-content .title {
+        font-size: 1.1rem;
+    }
+
+    .timeline-content .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .timeline-content .content {
+        font-size: 0.9rem;
+    }
+
+    .timeline-content ul {
+        padding-left: 1rem;
     }
 }
 
