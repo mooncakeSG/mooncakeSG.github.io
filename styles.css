@@ -1183,87 +1183,133 @@ h3 {
 .timeline {
     position: relative;
     width: 100%;
-    max-width: 100%;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 1rem;
-    box-sizing: border-box;
-    overflow: hidden;
+    padding: 2rem 1rem;
 }
 
-.timeline::after {
+.timeline::before {
     content: '';
     position: absolute;
-    width: 4px;
+    width: 2px;
     background-color: var(--primary-color);
     top: 0;
     bottom: 0;
-    left: 50%;
-    margin-left: -2px;
+    left: 40px;
+    margin-left: -1px;
 }
 
 .timeline-item {
     position: relative;
+    margin-bottom: 2rem;
+    padding-left: 3rem;
     width: 100%;
-    padding: 1rem 0;
     box-sizing: border-box;
-}
-
-.timeline-item:nth-child(odd) {
-    left: 0;
-}
-
-.timeline-item:nth-child(even) {
-    left: 50%;
 }
 
 .timeline-marker {
     position: absolute;
-    left: 0;
-    width: 15px;
-    height: 15px;
+    left: 37px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: var(--primary-color);
-    margin-top: 0.75rem;
-}
-
-.timeline-item:nth-child(even) .timeline-marker {
-    left: -16px;
+    border: 2px solid var(--bg-color);
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 .timeline-content {
-    margin-left: 2rem;
-    padding: 0 1rem;
-    box-sizing: border-box;
+    position: relative;
+    margin-left: 1rem;
     background: var(--bg-color);
     border-radius: 8px;
+    padding: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    width: calc(100% - 2rem);
-}
-
-.timeline-content h3,
-.timeline-content p,
-.timeline-content ul,
-.timeline-content li {
-    max-width: 100%;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
+    width: calc(100% - 1rem);
 }
 
 .timeline-content .title {
+    color: var(--text-color);
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .timeline-content .subtitle {
+    color: var(--text-color);
     font-size: 1rem;
     margin-bottom: 1rem;
+    opacity: 0.8;
 }
 
 .timeline-content .content {
+    color: var(--text-color);
     font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.timeline-content ul {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.timeline-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .timeline::before {
+    background-color: var(--primary-color);
+}
+
+[data-theme="dark"] .timeline-marker {
+    background: var(--primary-color);
+    border-color: var(--bg-color);
+}
+
+[data-theme="dark"] .timeline-content {
+    background: var(--card-bg);
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .timeline {
+        padding: 1rem;
+    }
+
+    .timeline::before {
+        left: 31px;
+    }
+
+    .timeline-item {
+        padding-left: 2.5rem;
+    }
+
+    .timeline-marker {
+        left: 30px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .timeline-content {
+        padding: 1rem;
+        margin-left: 0.5rem;
+    }
+
+    .timeline-content .title {
+        font-size: 1.1rem;
+    }
+
+    .timeline-content .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .timeline-content ul {
+        padding-left: 1rem;
+    }
 }
 
 /* Code Example Styles */
@@ -1314,46 +1360,6 @@ h3 {
 
 .learning-plan-card li:last-child {
     border-bottom: none;
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .timeline::after {
-        left: 31px;
-    }
-
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-        margin-bottom: 30px;
-        left: 0 !important;
-    }
-
-    .timeline-marker {
-        left: 15px !important;
-    }
-
-    .timeline-content {
-        width: 100%;
-    }
-}
-
-/* Dark Mode Adjustments */
-[data-theme="dark"] .timeline-content {
-    background-color: var(--dark-card-background);
-}
-
-[data-theme="dark"] .code-example {
-    background-color: var(--dark-code-background);
-}
-
-[data-theme="dark"] .code-example code {
-    color: var(--dark-code-text);
-}
-
-[data-theme="dark"] .learning-plan-card li {
-    border-bottom-color: var(--dark-border-color);
 }
 
 /* Utility Classes */
@@ -1580,59 +1586,6 @@ h3 {
 /* Section Background Alternation */
 .section.has-background-light {
     background-color: var(--section-bg);
-}
-
-/* Timeline Styles for Problem Solving Section */
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    background: var(--primary-color);
-    transform: translateX(-50%);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 3rem;
-    width: 100%;
-}
-
-.timeline-marker {
-    position: absolute;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-.timeline-content {
-    position: relative;
-    width: calc(50% - 30px);
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-left: auto;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-right: auto;
 }
 
 /* Tag Styles for Technology Stack */
