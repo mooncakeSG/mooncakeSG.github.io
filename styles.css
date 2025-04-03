@@ -1806,3 +1806,58 @@ h3 {
         padding: 2rem 0;
     }
 }
+
+/* Add these rules at the beginning of the file */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Update container styles */
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+/* Update section styles */
+.section {
+    width: 100%;
+    padding: 3rem 1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .columns {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .column {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    .hero-body {
+        padding: 2rem 1rem;
+    }
+    
+    .card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
