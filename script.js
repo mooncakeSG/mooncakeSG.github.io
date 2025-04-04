@@ -1427,7 +1427,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (response.ok) {
                     // Show success message
-                    showNotification('Message sent successfully! I will get back to you soon.', 'success');
+                    showNotification('Message sent successfully!', 'success');
                     contactForm.reset();
                     
                     // Redirect if specified in the form
