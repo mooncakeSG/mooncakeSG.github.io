@@ -1421,18 +1421,19 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 // Get form data
                 const formData = new FormData(contactForm);
-                const data = {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
+                const templateParams = {
+                    from_name: formData.get('name'),
+                    from_email: formData.get('email'),
                     subject: formData.get('subject'),
-                    message: formData.get('message')
+                    message: formData.get('message'),
+                    to_name: 'Keawin'
                 };
                 
                 // Send email using EmailJS
                 const response = await emailjs.send(
                     "service_hx8p5ot", // Service ID
                     "template_8w57siu", // Template ID
-                    data
+                    templateParams
                 );
                 
                 if (response.status === 200) {
