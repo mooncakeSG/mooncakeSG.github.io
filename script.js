@@ -1398,6 +1398,17 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.navbar-menu').classList.remove('is-active');
         });
     });
+
+    // Initialize EmailJS with your public key
+    (function() {
+        emailjs.init({
+            publicKey: "UvZs-HrpLytjWtPve",
+            blockHeadless: false,
+            limitRate: {
+                timeout: 1500
+            }
+        });
+    })();
 });
 
 // Contact Form Handling
@@ -1408,7 +1419,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize EmailJS with your public key
         (function() {
             emailjs.init({
-                publicKey: "XnvAnzQDwqFpWq6hQ", // Public Key
+                publicKey: "YOUR_PUBLIC_KEY", // Replace with your actual public key from https://dashboard.emailjs.com/admin/account
                 blockHeadless: false,
                 limitRate: {
                     timeout: 1500
