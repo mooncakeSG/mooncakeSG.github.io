@@ -797,41 +797,44 @@ window.addEventListener('resize', () => gallery.updateLayout());
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Let's Connect</h2>
-            <div class="columns">
-                <div class="column is-6 is-offset-3">
-                    <div class="box" data-aos="fade-up">
-                        <div class="content has-text-centered">
-                            <p class="mb-4">
-                                <strong>I'm always open to new opportunities and collaborations!</strong>
-                            </p>
-                            <p class="mb-4">
-                                Whether you're looking for a developer for your next project, interested in collaborating on innovative solutions, or want to discuss cybersecurity consulting, I'd love to hear from you.
-                            </p>
-                            <p class="mb-4">
-                                <strong>Email:</strong> Keawinkoesnel804@gmail.com
-                            </p>
-                            <div class="buttons is-centered">
-                                <a class="button is-primary" href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank">
-                                    <span class="icon">
-                                        <i class="fab fa-linkedin"></i>
-                                    </span>
-                                    <span>LinkedIn Profile</span>
-                                </a>
-                                <a class="button is-primary" href="https://github.com/mooncakeSG" target="_blank">
-                                    <span class="icon">
-                                        <i class="fab fa-github"></i>
-                                    </span>
-                                    <span>GitHub Profile</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <h2 class="section-title" data-aos="fade-up">Get in Touch</h2>
+            <p class="section-description" data-aos="fade-up" data-aos-delay="100">
+                Have a question or want to work together? Feel free to reach out!
+            </p>
+            
+            <form id="contactForm" class="contact-form" data-aos="fade-up" data-aos-delay="200">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required 
+                           placeholder="Your name">
                 </div>
-            </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="your.email@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required 
+                           placeholder="What's this about?">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required 
+                              placeholder="Your message here..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
         </div>
     </section>
 
@@ -915,6 +918,7 @@ window.addEventListener('resize', () => gallery.updateLayout());
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
     <script src="script.js"></script>
     <script>
         AOS.init({
