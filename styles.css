@@ -1918,16 +1918,16 @@ img {
 
 /* Contact Form Styles */
 .contact-section {
-    padding: 6rem 0;
-    background: var(--bg-color);
+    padding: 4rem 0;
+    background-color: var(--background-color);
 }
 
 .contact-form {
     max-width: 600px;
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 2rem;
-    background: var(--card-bg);
-    border-radius: 1rem;
+    background: var(--card-background);
+    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -1938,19 +1938,18 @@ img {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--text-color);
     font-weight: 500;
+    color: var(--text-color);
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
-    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--input-background);
     color: var(--text-color);
-    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
@@ -1963,48 +1962,108 @@ img {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
 }
 
 .submit-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
     padding: 0.75rem 1.5rem;
-    background: var(--primary-color);
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 500;
+    border-radius: 6px;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .submit-btn:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
+    background-color: var(--primary-color-dark);
+    transform: translateY(-1px);
 }
 
 .submit-btn i {
-    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.submit-btn:disabled {
+    background-color: var(--disabled-color);
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
 /* Form validation styles */
 .form-group input:invalid,
 .form-group textarea:invalid {
-    border-color: #dc3545;
+    border-color: var(--error-color);
 }
 
 .form-group input:valid,
 .form-group textarea:valid {
-    border-color: #28a745;
+    border-color: var(--success-color);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .contact-form {
-        margin: 1rem;
-        padding: 1.5rem;
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 6px;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification.success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.notification.error {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
     }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #4a90e2;
+    --primary-color-dark: #357abd;
+    --primary-color-rgb: 74, 144, 226;
+    --error-color: #dc3545;
+    --success-color: #28a745;
+    --disabled-color: #6c757d;
+    --border-color: #dee2e6;
+    --text-color: #333;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --input-background: #ffffff;
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+    --text-color: #e1e1e1;
+    --background-color: #1a1a1a;
+    --card-background: #2d2d2d;
+    --input-background: #3d3d3d;
+    --border-color: #404040;
 }

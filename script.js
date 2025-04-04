@@ -1398,17 +1398,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.navbar-menu').classList.remove('is-active');
         });
     });
-
-    // Initialize EmailJS with your public key
-    (function() {
-        emailjs.init({
-            publicKey: "UvZs-HrpLytjWtPve",
-            blockHeadless: false,
-            limitRate: {
-                timeout: 1500
-            }
-        });
-    })();
 });
 
 // Contact Form Handling
@@ -1416,17 +1405,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
-        // Initialize EmailJS with your public key
-        (function() {
-            emailjs.init({
-                publicKey: "YOUR_PUBLIC_KEY", // Replace with your actual public key from https://dashboard.emailjs.com/admin/account
-                blockHeadless: false,
-                limitRate: {
-                    timeout: 1500
-                }
-            });
-        })();
-        
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -1438,39 +1416,28 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             
             try {
-                console.log('Form data being sent:', {
-                    serviceId: "service_hx8p5ot",
-                    templateId: "template_8w57siu",
-                    formData: Object.fromEntries(new FormData(contactForm))
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
 
-                // Send email using EmailJS
-                const response = await emailjs.sendForm(
-                    "service_hx8p5ot", // Service ID
-                    "template_8w57siu", // Template ID
-                    contactForm
-                );
-                
-                console.log('EmailJS Response:', response);
-                
-                if (response.status === 200) {
+                const responseData = await response.json();
+
+                if (response.ok) {
                     // Show success message
-                    showNotification('Message sent successfully!', 'success');
+                    showNotification('Message sent successfully! I will get back to you soon.', 'success');
                     contactForm.reset();
                 } else {
-                    throw new Error('Failed to send message');
+                    throw new Error(responseData.error || 'Failed to send message');
                 }
                 
             } catch (error) {
-                console.error('EmailJS error:', error); // Log the error itself
-                console.error('EmailJS error details:', JSON.stringify(error, null, 2)); // Log the error details in a readable way
-                console.error('EmailJS error type:', typeof error); // Log the type of error
-                console.error('EmailJS error stack:', error.stack); // Log the error stack trace
-                console.error('EmailJS error message:', error.message); // Log the error message
-                console.error('EmailJS error name:', error.name); // Log the error name
-                
-                // Show detailed error message to user
-                showNotification(`Failed to send message: ${error.message || 'Unknown error'}. Please try again.`, 'error');
+                console.error('Form submission error:', error);
+                showNotification('Failed to send message. Please try again.', 'error');
             } finally {
                 // Reset button state
                 submitBtn.innerHTML = originalBtnText;
@@ -1482,6 +1449,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Notification function
 function showNotification(message, type = 'success') {
+    // Remove any existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+
+    // Create new notification
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.innerHTML = `
@@ -1493,30 +1465,45 @@ function showNotification(message, type = 'success') {
     
     document.body.appendChild(notification);
     
-    // Add styles for the notification
-    notification.style.position = 'fixed';
-    notification.style.top = '20px';
-    notification.style.right = '20px';
-    notification.style.padding = '1rem';
-    notification.style.borderRadius = '0.5rem';
-    notification.style.backgroundColor = type === 'success' ? '#28a745' : '#dc3545';
-    notification.style.color = 'white';
-    notification.style.zIndex = '1000';
-    notification.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
-    notification.style.opacity = '0';
-    notification.style.transform = 'translateY(-20px)';
-    notification.style.transition = 'all 0.3s ease';
-    
     // Trigger animation
     setTimeout(() => {
         notification.style.opacity = '1';
-        notification.style.transform = 'translateY(0)';
+        notification.style.transform = 'translateX(0)';
     }, 10);
     
-    // Remove notification after 3 seconds
+    // Remove notification after 5 seconds
     setTimeout(() => {
         notification.style.opacity = '0';
-        notification.style.transform = 'translateY(-20px)';
+        notification.style.transform = 'translateX(100%)';
         setTimeout(() => notification.remove(), 300);
-    }, 3000);
+    }, 5000);
+}
+
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const sunIcon = document.getElementById('sun');
+const moonIcon = document.getElementById('moon');
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        document.documentElement.setAttribute(
+            'data-theme',
+            document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+        );
+        
+        // Toggle icons
+        sunIcon.classList.toggle('hidden');
+        moonIcon.classList.toggle('hidden');
+        
+        // Save preference
+        localStorage.setItem('theme', document.documentElement.getAttribute('data-theme'));
+    });
+    
+    // Set initial theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    if (savedTheme === 'dark') {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+    }
 } 
