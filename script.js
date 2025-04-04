@@ -1405,8 +1405,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
-        // Initialize EmailJS with your user ID
-        emailjs.init("Keawin"); // User ID
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init({
+                publicKey: "XnvAnzQDwqFpWq6hQ", // Public Key
+                blockHeadless: false,
+                limitRate: {
+                    timeout: 1500
+                }
+            });
+        })();
         
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -1419,21 +1427,11 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = true;
             
             try {
-                // Get form data
-                const formData = new FormData(contactForm);
-                const templateParams = {
-                    from_name: formData.get('name'),
-                    from_email: formData.get('email'),
-                    subject: formData.get('subject'),
-                    message: formData.get('message'),
-                    to_name: 'Keawin'
-                };
-                
                 // Send email using EmailJS
-                const response = await emailjs.send(
+                const response = await emailjs.sendForm(
                     "service_hx8p5ot", // Service ID
                     "template_8w57siu", // Template ID
-                    templateParams
+                    contactForm
                 );
                 
                 if (response.status === 200) {
