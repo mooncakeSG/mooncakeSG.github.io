@@ -1425,19 +1425,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
 
-                const responseData = await response.json();
-
                 if (response.ok) {
                     // Show success message
                     showNotification('Message sent successfully! I will get back to you soon.', 'success');
                     contactForm.reset();
+                    
+                    // Redirect if specified in the form
+                    const nextUrl = contactForm.querySelector('input[name="_next"]')?.value;
+                    if (nextUrl) {
+                        window.location.href = nextUrl;
+                    }
                 } else {
-                    throw new Error(responseData.error || 'Failed to send message');
+                    const data = await response.json();
+                    throw new Error(data.error || 'Failed to send message');
                 }
                 
             } catch (error) {
                 console.error('Form submission error:', error);
-                showNotification('Failed to send message. Please try again.', 'error');
+                showNotification(error.message || 'Failed to send message. Please try again.', 'error');
             } finally {
                 // Reset button state
                 submitBtn.innerHTML = originalBtnText;
