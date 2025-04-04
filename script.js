@@ -1398,4 +1398,100 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.navbar-menu').classList.remove('is-active');
         });
     });
-}); 
+});
+
+// Contact Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        // Initialize EmailJS with your user ID
+        emailjs.init("Keawin"); // User ID
+        
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
+                
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    "service_hx8p5ot", // Service ID
+                    "template_8w57siu", // Template ID
+                    data
+                );
+                
+                if (response.status === 200) {
+                    // Show success message
+                    showNotification('Message sent successfully!', 'success');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+                
+            } catch (error) {
+                console.error('EmailJS error:', error);
+                showNotification('Failed to send message. Please try again.', 'error');
+            } finally {
+                // Reset button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+});
+
+// Notification function
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Add styles for the notification
+    notification.style.position = 'fixed';
+    notification.style.top = '20px';
+    notification.style.right = '20px';
+    notification.style.padding = '1rem';
+    notification.style.borderRadius = '0.5rem';
+    notification.style.backgroundColor = type === 'success' ? '#28a745' : '#dc3545';
+    notification.style.color = 'white';
+    notification.style.zIndex = '1000';
+    notification.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+    notification.style.opacity = '0';
+    notification.style.transform = 'translateY(-20px)';
+    notification.style.transition = 'all 0.3s ease';
+    
+    // Trigger animation
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateY(0)';
+    }, 10);
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateY(-20px)';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+} 
