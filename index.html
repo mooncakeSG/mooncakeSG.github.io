@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -28,6 +28,9 @@
     
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a6e8eeca2e.js" crossorigin="anonymous"></script>
+    <link rel="preload" href="images/profile.jpg" as="image">
+    <link rel="preload" href="images/hero-bg.jpg" as="image">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body class="has-background-light">
     <!-- Navigation -->
@@ -75,9 +78,7 @@
                         </div>
                     </div>
                     <div class="column is-6">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQHHA3h3JjfNXg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1728077733035?e=1749081600&v=beta&t=oXaeZPJ7CnRLehdQ9TdtZXlgnBeCNHOi9mn1gGoOyUU" 
-                             alt="Keawin Koesnel Profile" 
-                             class="rounded-2xl shadow-xl"
+                        <img src="images/profile.jpg" alt="Keawin Koesnel" class="profile-image" loading="lazy"
                              data-aos="fade-left">
                     </div>
                 </div>
@@ -870,6 +871,42 @@ window.addEventListener('resize', () => gallery.updateLayout());
         AOS.init({
             duration: 1000,
             once: true
+        });
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', () => {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            if ('loading' in HTMLImageElement.prototype) {
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src;
+                });
+            } else {
+                // Fallback for browsers that don't support lazy loading
+                const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => lazyLoadObserver.observe(img));
+            }
         });
     </script>
 </body>
