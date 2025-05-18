@@ -1,0 +1,24 @@
+{
+  "name": "mooncakesg.github.io",
+  "version": "1.0.0",
+  "description": "A sleek, responsive portfolio website that showcases my projects, skills, and journey in tech. Built with HTML, CSS, and JavaScript, it combines clean design with smooth animations to create an engaging experience.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 8080 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mooncakeSG/mooncakeSG.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mooncakeSG/mooncakeSG.github.io/issues"
+  },
+  "homepage": "https://github.com/mooncakeSG/mooncakeSG.github.io#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

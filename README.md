@@ -10,12 +10,14 @@ A sleek, responsive portfolio website that showcases my projects, skills, and jo
 - **Project Showcase** – Highlighting my work with clear descriptions.
 - **Learning Journey** – A timeline that tracks my growth in tech and cybersecurity.
 - **Easy Contact** – Social links and email integration for quick connections.
+- **Interactive Chatbot** – AI-powered chatbot for instant assistance and information about my work and skills.
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: HTML5, CSS3 (Flexbox/Grid), JavaScript (ES6+), Bulma CSS
 - **Animations**: AOS (Animate On Scroll)
 - **Icons & Fonts**: Font Awesome, Google Fonts
+- **AI Integration**: Custom chatbot implementation for enhanced user interaction
 
 ## 📦 Getting Started
 

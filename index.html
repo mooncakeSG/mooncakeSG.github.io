@@ -29,6 +29,22 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a6e8eeca2e.js" crossorigin="anonymous"></script>
     <meta name="theme-color" content="#ffffff">
+    
+    <!-- IBM Watson Assistant Chat -->
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "a38fee76-06ba-4e01-8c0b-39988f2c8e0e", // The ID of this integration.
+        region: "au-syd", // The region your integration is hosted in.
+        serviceInstanceID: "37d2c7c4-188b-4ace-8c2e-9b85f5de598b", // The ID of your service instance.
+        onLoad: async (instance) => { await instance.render(); },
+        welcomeMessage: "👋 Hi! I'm your AI Fundamentals Assistant. I can help you learn about artificial intelligence concepts, machine learning basics, and answer questions about AI technology. How can I assist you today?"
+      };
+      setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+      });
+    </script>
 </head>
 <body class="has-background-light">
     <!-- Navigation -->
@@ -336,8 +352,46 @@ def authenticate_user(username, password):
                     </div>
                 </div>
 
-                <!-- Ride-Hailing Project -->
+                <!-- IBM Watson Assistant Project -->
                 <div class="column is-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card project-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://i.ibb.co/C3WjqXqC/Watsonx-Assistant.png" alt="IBM Watson Assistant Project">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-4">AI Fundamentals Assistant</h3>
+                            <p class="subtitle is-6">AI & Chatbot Development</p>
+                            <div class="content">
+                                <p>An interactive AI chatbot built with IBM Watson Assistant that helps users learn about artificial intelligence concepts and fundamentals.</p>
+                                <div class="tags mt-3">
+                                    <span class="tag is-info">IBM Watson</span>
+                                    <span class="tag is-info">AI</span>
+                                    <span class="tag is-info">JavaScript</span>
+                                    <span class="tag is-info">Web Integration</span>
+                                </div>
+                                <div class="buttons mt-3">
+                                    <a href="#" class="button is-primary" onclick="document.querySelector('.watson-chat-button').click(); return false;">
+                                        <span class="icon">
+                                            <i class="fas fa-robot"></i>
+                                        </span>
+                                        <span>Try Chatbot</span>
+                                    </a>
+                                    <a href="https://www.ibm.com/watson/assistant" class="button is-info" target="_blank">
+                                        <span class="icon">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </span>
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ride-Hailing Project -->
+                <div class="column is-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card project-card">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -367,7 +421,7 @@ def authenticate_user(username, password):
                 </div>
 
                 <!-- Cybersecurity Blog Project -->
-                <div class="column is-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="column is-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card project-card">
                         <div class="card-image">
                             <figure class="image is-4by3">
@@ -397,7 +451,7 @@ def authenticate_user(username, password):
                 </div>
 
                 <!-- Kubernetes Scripts Project -->
-                <div class="column is-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="column is-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="card project-card">
                         <div class="card-image">
                             <figure class="image is-4by3">
