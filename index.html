@@ -36,7 +36,11 @@
         integrationID: "a38fee76-06ba-4e01-8c0b-39988f2c8e0e", // The ID of this integration.
         region: "au-syd", // The region your integration is hosted in.
         serviceInstanceID: "37d2c7c4-188b-4ace-8c2e-9b85f5de598b", // The ID of your service instance.
-        onLoad: async (instance) => { await instance.render(); },
+        onLoad: async (instance) => { 
+          await instance.render();
+          // Store the instance globally
+          window.watsonAssistantInstance = instance;
+        },
         welcomeMessage: "👋 Hi! I'm your AI Fundamentals Assistant. I can help you learn about artificial intelligence concepts, machine learning basics, and answer questions about AI technology. How can I assist you today?"
       };
       setTimeout(function(){
@@ -377,7 +381,7 @@ def authenticate_user(username, password):
                                     <span class="tag is-info">Web Integration</span>
                                 </div>
                                 <div class="buttons mt-3">
-                                    <a href="#" class="button is-primary" onclick="document.querySelector('.watson-chat-button').click(); return false;">
+                                    <a href="#" class="button is-primary" id="chatbot-toggle">
                                         <span class="icon">
                                             <i class="fas fa-robot"></i>
                                         </span>
@@ -972,6 +976,19 @@ window.addEventListener('resize', () => gallery.updateLayout());
         AOS.init({
             duration: 1000,
             once: true
+        });
+
+        // Chatbot Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            if (chatbotToggle) {
+                chatbotToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (window.watsonAssistantInstance) {
+                        window.watsonAssistantInstance.openWindow();
+                    }
+                });
+            }
         });
 
         // Register Service Worker
