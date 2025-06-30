@@ -23,6 +23,9 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     
@@ -52,32 +55,74 @@
 </head>
 <body class="has-background-light">
     <!-- Navigation -->
-    <nav class="navbar is-fixed-top has-background-light" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-                <strong>KK</strong>
-            </a>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <!-- Brand/Logo -->
+          <div class="flex-shrink-0 flex items-center">
+            <a href="#" class="text-xl font-bold text-blue-700 tracking-tight">Keawin Koesnel</a>
+          </div>
+          <!-- Hamburger (Mobile) -->
+          <div class="flex md:hidden">
+            <button id="nav-toggle" class="text-gray-700 hover:text-blue-600 focus:outline-none focus:text-blue-600" aria-label="Open main menu">
+              <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+          <!-- Nav Links -->
+          <div class="hidden md:flex md:space-x-6 lg:space-x-8 items-center font-medium text-base">
+            <a href="#about" class="relative group nav-link">About<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#skills" class="relative group nav-link">Skills<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#education" class="relative group nav-link">Education<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#projects" class="relative group nav-link">Projects<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#deployment" class="relative group nav-link">Deployment<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#concept-review" class="relative group nav-link">Concepts<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#problem-solving" class="relative group nav-link">Debugging<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#learning-plan" class="relative group nav-link">Learning<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#blog" class="relative group nav-link">Blog<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#resume" class="relative group nav-link">Résumé<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+          </div>
         </div>
-
-        <div class="navbar-menu">
-            <div class="navbar-end">
-                <button id="theme-toggle" class="button navbar-item" aria-label="Toggle theme">
-                    <i id="sun" class="fas fa-sun"></i>
-                    <i id="moon" class="fas fa-moon hidden"></i>
-                </button>
-                <a class="navbar-item" href="#about">About</a>
-                <a class="navbar-item" href="#skills">Skills</a>
-                <a class="navbar-item" href="#education">Education</a>
-                <a class="navbar-item" href="#projects">Projects</a>
-                <a class="navbar-item" href="#deployment">Deployment</a>
-                <a class="navbar-item" href="#concept-review">Concepts</a>
-                <a class="navbar-item" href="#problem-solving">Debugging</a>
-                <a class="navbar-item" href="#learning-plan">Learning</a>
-                <a class="navbar-item" href="#blog">Blog</a>
-                <a class="navbar-item" href="#resume">Resume</a>
-            </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+          <div class="flex flex-col py-2 space-y-1 font-medium text-base">
+            <a href="#about" class="relative group nav-link block px-4 py-2">About<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#skills" class="relative group nav-link block px-4 py-2">Skills<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#education" class="relative group nav-link block px-4 py-2">Education<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#projects" class="relative group nav-link block px-4 py-2">Projects<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#deployment" class="relative group nav-link block px-4 py-2">Deployment<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#concept-review" class="relative group nav-link block px-4 py-2">Concepts<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#problem-solving" class="relative group nav-link block px-4 py-2">Debugging<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#learning-plan" class="relative group nav-link block px-4 py-2">Learning<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#blog" class="relative group nav-link block px-4 py-2">Blog<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#resume" class="relative group nav-link block px-4 py-2">Résumé<span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span></a>
+          </div>
         </div>
+      </div>
     </nav>
+
+    <script>
+      // Mobile nav toggle
+      document.addEventListener('DOMContentLoaded', function() {
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (navToggle && mobileMenu) {
+          navToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+
+    <style>
+      .nav-link {
+        @apply text-gray-700 hover:text-blue-600 transition-colors duration-200 px-2 py-1 rounded;
+      }
+      .nav-link:hover {
+        @apply bg-blue-50;
+      }
+    </style>
 
     <!-- Hero Section -->
     <section class="hero is-fullheight">
@@ -98,7 +143,7 @@
                         </div>
                     </div>
                     <div class="column is-6">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQHHA3h3JjfNXg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1728077733035?e=1749081600&v=beta&t=oXaeZPJ7CnRLehdQ9TdtZXlgnBeCNHOi9mn1gGoOyUU" 
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQHHA3h3JjfNXg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1728077733023?e=1756944000&v=beta&t=aGhEaW9b_akxNnmjD6Y7IGzTWVuhaFQzFlsQ_hzGoME" 
                              alt="Keawin Koesnel" 
                              class="profile-image" 
                              data-aos="fade-left"
@@ -172,6 +217,59 @@
                                     <li>Bash (basic)</li>
                                     <li>HTML5, CSS3</li>
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Progress Bars Example -->
+                <div class="column is-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3 class="title is-4">🚀 Skill Proficiency</h3>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-blue-700">Python</span>
+                                    <span class="text-sm font-medium text-blue-700">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-600 h-3 rounded-full aos-init aos-animate" data-aos="zoom-in-right" data-aos-delay="100" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-blue-700">JavaScript</span>
+                                    <span class="text-sm font-medium text-blue-700">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-500 h-3 rounded-full aos-init aos-animate" data-aos="zoom-in-right" data-aos-delay="200" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-blue-700">React</span>
+                                    <span class="text-sm font-medium text-blue-700">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-400 h-3 rounded-full aos-init aos-animate" data-aos="zoom-in-right" data-aos-delay="300" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-blue-700">SQL</span>
+                                    <span class="text-sm font-medium text-blue-700">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-300 h-3 rounded-full aos-init aos-animate" data-aos="zoom-in-right" data-aos-delay="400" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium text-blue-700">Docker</span>
+                                    <span class="text-sm font-medium text-blue-700">60%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-blue-200 h-3 rounded-full aos-init aos-animate" data-aos="zoom-in-right" data-aos-delay="500" style="width: 60%;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -411,45 +509,57 @@
     <!-- Learning Journey Section -->
     <section id="learning" class="section has-background-light">
         <div class="container">
-            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">Learning Journey</h2>
+            <h2 class="title is-2 has-text-centered mb-6" data-aos="fade-up">My Learning Journey</h2>
+            <p class="subtitle is-5 has-text-centered mb-6">A reflection of core concepts, hands-on implementation, and the debugging processes that shaped my skills in software development and IT support.</p>
             <div class="timeline">
-                <!-- Lecture Concepts -->
+                <!-- Lecture Concepts & Key Learnings -->
                 <div class="timeline-item" data-aos="fade-up">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3 class="title is-4">Lecture Concepts & Applications</h3>
-                        <p class="subtitle is-5">Key Learnings</p>
+                        <h3 class="title is-4">Lecture Concepts & Key Learnings</h3>
                         <div class="content">
                             <ul>
-                                <li>Software Development Fundamentals</li>
-                                <li>Web Development Best Practices</li>
-                                <li>Cybersecurity Principles</li>
-                                <li>Database Management</li>
+                                <li><strong>Software Development Fundamentals:</strong> Modularity, clean code, error handling, writing maintainable and scalable Python/JavaScript code</li>
+                                <li><strong>Web Development Best Practices:</strong> Responsive design with CSS/Tailwind, semantic HTML5, accessibility, version control using Git & GitHub</li>
+                                <li><strong>Cybersecurity Principles:</strong> Secure authentication and password hashing, input validation and sanitation, awareness of OWASP Top 10 vulnerabilities</li>
+                                <li><strong>Database Management:</strong> SQL queries, joins, normalization, efficient schema design, CRUD operations and optimization</li>
                             </ul>
-                            <div class="mt-4">
-                                <h4 class="title is-5">Practical Applications</h4>
-                                <ul>
-                                    <li>Building secure web applications</li>
-                                    <li>Implementing responsive design</li>
-                                    <li>Database optimization</li>
-                                    <li>API development</li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Code Examples -->
+                <!-- Practical Applications Table -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="50">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3 class="title is-4">Practical Applications</h3>
+                        <div class="content">
+                            <table class="table is-fullwidth is-bordered is-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Skill</th>
+                                        <th>Application</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Secure Web Apps</td><td>Implemented JWT-based auth in FastAPI</td></tr>
+                                    <tr><td>Responsive UI</td><td>Used Tailwind CSS for mobile-friendly design</td></tr>
+                                    <tr><td>Optimized DB Queries</td><td>Indexed key fields in SQLite/PostgreSQL</td></tr>
+                                    <tr><td>API Development</td><td>Built RESTful endpoints with FastAPI & Flask</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Example -->
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3 class="title is-4">Code Examples</h3>
-                        <p class="subtitle is-5">Implementation Showcase</p>
+                        <h3 class="title is-4">Code Example: Secure User Authentication</h3>
                         <div class="content">
                             <div class="code-example">
-                                <pre><code class="language-python">
-# Example: Secure User Authentication
-def authenticate_user(username, password):
+                                <pre><code class="language-python">def authenticate_user(username, password):
     try:
         # Hash password
         hashed_password = hash_password(password)
@@ -459,44 +569,42 @@ def authenticate_user(username, password):
     except Exception as e:
         log_error(e)
         return None
-                                </code></pre>
+</code></pre>
                             </div>
                             <div class="mt-4">
-                                <h4 class="title is-5">Best Practices Demonstrated</h4>
+                                <h4 class="title is-5">Best Practices Demonstrated:</h4>
                                 <ul>
-                                    <li>Error handling</li>
-                                    <li>Security considerations</li>
-                                    <li>Code documentation</li>
-                                    <li>Clean code principles</li>
+                                    <li>Secure password handling</li>
+                                    <li>Graceful error handling</li>
+                                    <li>Clean, readable structure</li>
+                                    <li>Reusable logic and comments</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Debugging Process -->
+                <!-- Debugging & Problem-Solving Journey -->
                 <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <h3 class="title is-4">Debugging Process</h3>
-                        <p class="subtitle is-5">Problem-Solving Journey</p>
+                        <h3 class="title is-4">Debugging & Problem-Solving Journey</h3>
                         <div class="content">
-                            <div class="debugging-steps">
-                                <h4 class="title is-5">Common Issues & Solutions</h4>
-                                <ul>
-                                    <li>Performance optimization in web applications</li>
-                                    <li>Cross-browser compatibility issues</li>
-                                    <li>Database connection problems</li>
-                                    <li>API integration challenges</li>
-                                </ul>
-                            </div>
+                            <h4 class="title is-5">Common Challenges & Fixes:</h4>
+                            <ul>
+                                <li><strong>Web App Performance:</strong> Optimized React render cycles and minimized API calls</li>
+                                <li><strong>Cross-Browser Issues:</strong> Used polyfills and tested in multiple environments</li>
+                                <li><strong>DB Connection Errors:</strong> Refactored connection pooling logic, fixed ORM configs</li>
+                                <li><strong>API Failures:</strong> Handled CORS issues, set proper base URLs, improved error responses</li>
+                            </ul>
                             <div class="mt-4">
-                                <h4 class="title is-5">Tools & Techniques</h4>
+                                <h4 class="title is-5">Tools & Techniques Used</h4>
                                 <ul>
-                                    <li>Browser DevTools</li>
-                                    <li>Debug logging</li>
-                                    <li>Performance profiling</li>
-                                    <li>Code review practices</li>
+                                    <li>Chrome DevTools for UI and performance debugging</li>
+                                    <li>Debug logging in Flask/FastAPI to trace API errors</li>
+                                    <li>BrowserStack for cross-browser testing</li>
+                                    <li>GitHub for code reviews and pull request feedback</li>
+                                    <li>Profilers and SQL EXPLAIN to identify performance bottlenecks</li>
                                 </ul>
                             </div>
                         </div>
@@ -544,8 +652,6 @@ def authenticate_user(username, password):
                             </div>
                         </div>
                     </div>
-
-
 
                     <!-- Ride-Hailing Project -->
                     <div class="column is-4" data-aos="fade-up" data-aos-delay="200">
@@ -1312,6 +1418,90 @@ window.addEventListener('resize', () => gallery.updateLayout());
         </div>
     </section>
 
+    <!-- Job Application Strategy Section -->
+    <section id="job-strategy" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="text-3xl font-bold text-center text-blue-700 mb-10">🎯 Job Application Strategy</h2>
+            <div class="space-y-10 text-gray-800 text-sm leading-relaxed">
+                <!-- Career Objective -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">1. Career Objective</h3>
+                    <p>To secure an entry-level role in <strong>IT Support</strong> where I can apply my technical training and hands-on projects. My goal is to grow into advanced roles like <strong>Network Administrator</strong> or <strong>Cybersecurity Specialist</strong>, combining my passion for secure infrastructure, cloud computing, and DevOps practices.</p>
+                </div>
+                <!-- Target Roles -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">2. Target Roles</h3>
+                    <ul class="list-disc ml-5">
+                        <li>IT Support Associate / Technical Support Analyst</li>
+                        <li>Junior Systems Administrator</li>
+                        <li>Help Desk Technician</li>
+                        <li>Network Administrator</li>
+                        <li>Junior DevOps Engineer</li>
+                        <li>Cybersecurity Analyst (Entry Level)</li>
+                    </ul>
+                </div>
+                <!-- Target Companies -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">3. Target Companies</h3>
+                    <p>I'm focused on companies that value upskilling and digital transformation:</p>
+                    <ul class="list-disc ml-5">
+                        <li><strong>Volkswagen </strong></li>
+                        <li>Entelect, OfferZen, Takealot, Yoco, SweepSouth</li>
+                        <li>IBM, Amazon, Microsoft, Capitec Tech</li>
+                        <li>Local MSPs and civic tech organizations</li>
+                    </ul>
+                </div>
+                <!-- Job Platforms -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">4. Job Platforms</h3>
+                    <p>LinkedIn, OfferZen, Indeed, Stack Overflow Jobs, GitHub Jobs, AngelList, RemoteOK, We Work Remotely.</p>
+                </div>
+                <!-- Application Materials -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">5. Application Materials Checklist</h3>
+                    <ul class="list-disc ml-5">
+                        <li>✅ ATS-optimized resume</li>
+                        <li>✅ Updated LinkedIn profile with projects</li>
+                        <li>✅ Portfolio with live demos</li>
+                        <li>✅ GitHub with documented projects</li>
+                        <li>⬜ Custom cover letter for each job</li>
+                        <li>⬜ Reference list (mentors, instructors)</li>
+                    </ul>
+                </div>
+                <!-- Networking Plan -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">6. Networking Plan</h3>
+                    <ul class="list-disc ml-5">
+                        <li>Connect with bootcamp alumni and instructors</li>
+                        <li>Join cybersecurity and DevOps groups (Slack, Discord)</li>
+                        <li>Attend virtual meetups and webinars</li>
+                        <li>Engage on LinkedIn weekly with updates and comments</li>
+                    </ul>
+                </div>
+                <!-- Interview Prep -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">7. Interview Prep</h3>
+                    <ul class="list-disc ml-5">
+                        <li>Review SmartHarvest, Resume Builder, Bias Dashboard</li>
+                        <li>Practice STAR stories and coding challenges</li>
+                        <li>Review system/network basics, Linux commands, security protocols</li>
+                        <li>Prepare a quiet, distraction-free virtual interview space</li>
+                    </ul>
+                </div>
+                <!-- Goals -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-2">8. Weekly Goals</h3>
+                    <ul class="list-disc ml-5">
+                        <li>Apply to 5–10 roles per week</li>
+                        <li>Make 5–10 new connections per week</li>
+                        <li>Publish 1 post or article monthly</li>
+                        <li>Attend 1–2 networking events or webinars monthly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Form Section -->
     <section id="contact" class="contact-section">
         <div class="container">
@@ -1396,15 +1586,15 @@ window.addEventListener('resize', () => gallery.updateLayout());
                 <div class="column is-4">
                     <h3 class="title is-5">Connect</h3>
                     <div class="buttons">
-                        <a class="button is-ghost" href="https://github.com/mooncakeSG" target="_blank">
+                        <a class="button is-ghost group" href="https://github.com/mooncakeSG" target="_blank">
                             <span class="icon">
-                                <i class="fab fa-github"></i>
+                                <i class="fab fa-github text-2xl text-gray-700 transition-transform duration-200 group-hover:text-blue-600 group-hover:animate-bounce"></i>
                             </span>
                             <span>GitHub</span>
                         </a>
-                        <a class="button is-ghost" href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank">
+                        <a class="button is-ghost group" href="https://www.linkedin.com/in/keawin-calvin-koesnel-612715235/" target="_blank">
                             <span class="icon">
-                                <i class="fab fa-linkedin"></i>
+                                <i class="fab fa-linkedin text-2xl text-gray-700 transition-transform duration-200 group-hover:text-blue-600 group-hover:animate-pulse"></i>
                             </span>
                             <span>LinkedIn</span>
                         </a>
