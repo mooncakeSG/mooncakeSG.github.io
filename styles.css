@@ -43,7 +43,7 @@
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
-    --font-size-xl:rem;
+    --font-size-xl: 1.25rem;
     --font-size-2xl: 1.5rem;
     --font-size-3xl: 1.875rem;
     --font-size-4xl: 2.25rem;
@@ -114,6 +114,18 @@ h3 {
     right: 0;
     z-index: 1000;
     background-color: var(--bg-color);
+}
+
+.nav-link {
+    color: #374151;
+    transition: color 0.2s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.nav-link:hover {
+    color: #2563eb;
+    background-color: #eff6ff;
 }
 
 .navbar-brand {
@@ -688,7 +700,6 @@ a:hover {
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.25rem;
-    --font-size-xl: 1.5rem;
     
     /* Transitions */
     --transition-speed: 0.3s;
