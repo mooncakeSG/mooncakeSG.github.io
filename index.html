@@ -1481,12 +1481,28 @@ fetchAISuggestions('experience', userInput).then((suggestions) => {
                                 </div>
                                 <div class="mt-4">
                                     <h4 class="title is-5">Solution</h4>
-                                    <ul>
-                                        <li>Migrated frontend to Vercel for fast static builds and easy CI/CD</li>
-                                        <li>Refactored backend for Fly.io compatibility, and manually set up proper PORT, HOST, and environment files</li>
-                                        <li>Implemented proper CORS middleware and API base path detection</li>
-                                        <li>Added retry logic and API health check for client-side error resilience</li>
-                                    </ul>
+                                    <p class="mb-3">The project follows a full-stack deployment model, with both the frontend and backend hosted on Fly.io for unified infrastructure control, custom networking, and scalability.</p>
+                                    
+                                    <div class="mb-4">
+                                        <h5 class="font-bold text-blue-600 mb-2">🌐 Frontend – Fly.io</h5>
+                                        <ul class="ml-4">
+                                            <li>Deployed the React-based frontend to Fly.io using Docker for full control over the build environment.</li>
+                                            <li>Optimized for fast static delivery, responsive UI, and routing using Expo/React Native Web or React Router (depending on platform).</li>
+                                            <li>Configured custom Dockerfile and .fly.toml for build and volume setup.</li>
+                                            <li>Handled static asset caching and compression via Fly's edge servers.</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <h5 class="font-bold text-blue-600 mb-2">🧠 Backend – Fly.io</h5>
+                                        <ul class="ml-4">
+                                            <li>Refactored Flask API backend for Fly.io compatibility with custom port and host configuration.</li>
+                                            <li>Manually set up environment variables (PORT, HOST, SECRET_KEY, API keys) using fly secrets.</li>
+                                            <li>Integrated CORS middleware to enable secure frontend-backend communication.</li>
+                                            <li>Implemented retry logic and health checks to handle network interruptions gracefully.</li>
+                                            <li>Exposed /api/v1 base route and ensured all endpoints were secured and versioned.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="mt-4">
                                     <h4 class="title is-5">Outcome</h4>
