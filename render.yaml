@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: portfolio-chatbot
+    env: python
+    plan: free
+    buildCommand: cd backend && chmod +x build.sh && ./build.sh
+    startCommand: cd backend && gunicorn main_prod:app -c gunicorn.conf.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GROQ_API_KEY
+        sync: false
+    healthCheckPath: /health
+    autoDeploy: true
+    region: oregon
+    disk:
+      name: portfolio-chatbot-disk
+      mountPath: /opt/render/project/src
+      sizeGB: 1

@@ -6,21 +6,36 @@ import os
 import json
 import asyncio
 
+# Try to load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # python-dotenv is optional
+
 app = FastAPI()
 
-# Allow your GitHub Pages frontend
+# Allow your GitHub Pages frontend and local development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://mooncakeSG.github.io"],
-    allow_methods=["POST"],
+    allow_origins=["https://mooncakeSG.github.io", "http://localhost:8000", "http://127.0.0.1:8000", "http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_methods=["POST", "GET"],
     allow_headers=["*"],
 )
 
-client = Groq()  # Reads GROQ_API_KEY from env
+# Validate GROQ_API_KEY before instantiating client
+groq_api_key = os.environ.get("GROQ_API_KEY")
+if not groq_api_key:
+    raise ValueError("GROQ_API_KEY environment variable is required but not set. Please set it before running the application.")
+
+try:
+    client = Groq(api_key=groq_api_key)
+except Exception as e:
+    raise RuntimeError(f"Failed to initialize Groq client: {e}. Please check your GROQ_API_KEY configuration.")
 
 # Load configuration
 def load_config():
-    with open("backend/config.json", "r") as f:
+    with open("config.json", "r") as f:
         return json.load(f)
 
 config = load_config()
@@ -51,7 +66,12 @@ async def chat(request: Request):
             )
             
             for chunk in completion:
-                if chunk.choices[0].delta.content:
+                # Defensive checks to avoid IndexError/AttributeError
+                if (isinstance(chunk.choices, list) and 
+                    len(chunk.choices) > 0 and 
+                    hasattr(chunk.choices[0], 'delta') and 
+                    hasattr(chunk.choices[0].delta, 'content') and 
+                    chunk.choices[0].delta.content):
                     yield f"data: {json.dumps({'content': chunk.choices[0].delta.content})}\n\n"
             
             # Send end signal
@@ -62,7 +82,7 @@ async def chat(request: Request):
     
     return StreamingResponse(
         generate_response(),
-        media_type="text/plain",
+        media_type="text/event-stream",
         headers={
             "Cache-Control": "no-cache",
             "Connection": "keep-alive",

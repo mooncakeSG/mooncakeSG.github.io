@@ -29,29 +29,73 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     
+    <!-- Chat Window Custom Styles -->
+    <style>
+        #chat-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        #chat-window {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .msg.user {
+            background-color: #007bff !important;
+            color: white !important;
+            margin-left: auto !important;
+            text-align: right !important;
+        }
+        
+        .msg.bot {
+            background-color: #e9ecef !important;
+            color: #333 !important;
+            margin-right: auto !important;
+        }
+        
+        #chat::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #chat::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        #chat::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        
+        #chat::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        #input:focus {
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+        
+        #send:hover {
+            background-color: #0056b3 !important;
+        }
+    </style>
+    
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a6e8eeca2e.js" crossorigin="anonymous"></script>
     <meta name="theme-color" content="#ffffff">
     
-    <!-- IBM Watson Assistant Chat -->
-    <script>
-      window.watsonAssistantChatOptions = {
-        integrationID: "a38fee76-06ba-4e01-8c0b-39988f2c8e0e", // The ID of this integration.
-        region: "au-syd", // The region your integration is hosted in.
-        serviceInstanceID: "37d2c7c4-188b-4ace-8c2e-9b85f5de598b", // The ID of your service instance.
-        onLoad: async (instance) => { 
-          await instance.render();
-          // Store the instance globally
-          window.watsonAssistantInstance = instance;
-        },
-        welcomeMessage: "👋 Hi! I'm your AI Fundamentals Assistant. I can help you learn about artificial intelligence concepts, machine learning basics, and answer questions about AI technology. How can I assist you today?"
-      };
-      setTimeout(function(){
-        const t=document.createElement('script');
-        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
-        document.head.appendChild(t);
-      });
-    </script>
+
 </head>
 <body class="has-background-light">
     <!-- Navigation -->
@@ -957,24 +1001,25 @@
                             </div>
                         </div>
 
-                        <!-- AI Fundamentals Assistant -->
+                        <!-- Portfolio Chatbot -->
+                    
                         <div class="column is-4" data-aos="slide-up" data-aos-duration="1000" data-aos-delay="300">
                     <div class="card project-card">
                         <div class="card-image">
                             <figure class="image is-4by3">
-                                <img src="https://i.ibb.co/C3WjqXqC/Watsonx-Assistant.png" alt="IBM Watson Assistant Project">
+                                <img src="https://i.ibb.co/2Nf8k8T/portfolio-chatbot.png" alt="Portfolio Chatbot">
                             </figure>
                         </div>
                         <div class="card-content">
-                                    <h4 class="title is-4">AI Fundamentals Assistant</h4>
+                                    <h4 class="title is-4">Portfolio Chatbot</h4>
                             <p class="subtitle is-6">AI & Chatbot Development</p>
                             <div class="content">
-                                <p>An interactive AI chatbot built with IBM Watson Assistant that helps users learn about artificial intelligence concepts and fundamentals.</p>
+                                <p>An interactive AI chatbot built with Groq OSS 20B that answers questions about my portfolio, projects, and skills in real time.</p>
                                 <div class="tags mt-3">
-                                    <span class="tag is-info">IBM Watson</span>
-                                    <span class="tag is-info">AI</span>
-                                    <span class="tag is-info">JavaScript</span>
-                                    <span class="tag is-info">Web Integration</span>
+                                    <span class="tag is-success">Groq OSS</span>
+                                    <span class="tag is-success">AI</span>
+                                    <span class="tag is-success">Python</span>
+                                    <span class="tag is-success">Web Integration</span>
                                 </div>
                                 <div class="buttons mt-3">
                                     <a href="#" class="button is-primary" id="chatbot-toggle">
@@ -983,7 +1028,7 @@
                                         </span>
                                         <span>Try Chatbot</span>
                                     </a>
-                                    <a href="https://www.ibm.com/watson/assistant" class="button is-info" target="_blank">
+                                    <a href="https://www.groq.com/" class="button is-info" target="_blank">
                                         <span class="icon">
                                             <i class="fas fa-external-link-alt"></i>
                                         </span>
@@ -1893,6 +1938,24 @@ fetchAISuggestions('experience', userInput).then((suggestions) => {
         </div>
     </footer>
 
+    <!-- Floating Chat Window -->
+    <button id="chat-button" style="position: fixed; bottom: 20px; right: 20px; z-index:1000; background-color:#007bff; color:white; border:none; padding:12px 16px; border-radius:50px; cursor:pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+        <span class="icon"><i class="fas fa-robot"></i></span>
+        <span>Chat</span>
+    </button>
+
+    <div id="chat-window" style="display:none; position:fixed; bottom:80px; right:20px; width:350px; max-height:500px; border:1px solid #ccc; border-radius:10px; background:white; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:1000; overflow:hidden;">
+        <div style="background: #007bff; color: white; padding: 15px; text-align: center; font-weight: bold;">
+            <span class="icon"><i class="fas fa-robot"></i></span>
+            Portfolio Chatbot
+        </div>
+        <div id="chat" style="height:350px; overflow-y:auto; padding:15px; background: #f8f9fa;"></div>
+        <div style="display: flex; border-top: 1px solid #ccc;">
+            <input id="input" type="text" placeholder="Type a message..." style="flex: 1; padding: 12px; border: none; outline: none; font-size: 14px;" />
+            <button id="send" style="padding: 12px 20px; border: none; background-color: #007bff; color: white; cursor: pointer; font-size: 14px;">Send</button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -1904,16 +1967,144 @@ fetchAISuggestions('experience', userInput).then((suggestions) => {
             once: true
         });
 
-        // Chatbot Toggle Functionality
+        // Portfolio Chatbot Functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatButton = document.getElementById("chat-button");
+            const chatWindow = document.getElementById("chat-window");
+            const input = document.getElementById("input");
+            const sendButton = document.getElementById("send");
+            const chatDiv = document.getElementById("chat");
+            const chatbotToggle = document.getElementById("chatbot-toggle");
+
+            // Toggle chat window
+            chatButton.addEventListener("click", () => {
+                chatWindow.style.display = chatWindow.style.display === "none" ? "block" : "none";
+                if (chatWindow.style.display === "block") {
+                    input.focus();
+                }
+            });
+
+            // Also link the card button to the floating chat
             if (chatbotToggle) {
-                chatbotToggle.addEventListener('click', function(e) {
+                chatbotToggle.addEventListener("click", function(e) {
                     e.preventDefault();
-                    if (window.watsonAssistantInstance) {
-                        window.watsonAssistantInstance.openWindow();
-                    }
+                    chatWindow.style.display = "block";
+                    input.focus();
                 });
+            }
+
+            // Append message with better styling
+            function appendMessage(role, text) {
+                const div = document.createElement("div");
+                div.className = "msg " + role;
+                div.style.cssText = `
+                    margin: 8px 0;
+                    padding: 10px 15px;
+                    border-radius: 18px;
+                    max-width: 80%;
+                    word-wrap: break-word;
+                    font-size: 14px;
+                    line-height: 1.4;
+                `;
+                
+                if (role === "user") {
+                    div.style.cssText += `
+                        background-color: #007bff;
+                        color: white;
+                        margin-left: auto;
+                        text-align: right;
+                    `;
+                    div.textContent = text;
+                } else {
+                    div.style.cssText += `
+                        background-color: #e9ecef;
+                        color: #333;
+                        margin-right: auto;
+                    `;
+                    div.textContent = "Bot: " + text;
+                }
+                
+                chatDiv.appendChild(div);
+                chatDiv.scrollTop = chatDiv.scrollHeight;
+            }
+
+            // Send message to backend
+            async function sendMessage() {
+                const message = input.value.trim();
+                if (!message) return;
+
+                appendMessage("user", message);
+                input.value = "";
+
+                try {
+                    // Use production URL if available, fallback to localhost for development
+                    const apiUrl = window.location.hostname === 'localhost' 
+                        ? "http://localhost:8000/chat" 
+                        : "https://portfolio-chatbot.onrender.com/chat";
+                    
+                    const response = await fetch(apiUrl, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ message: message })
+                    });
+
+                    if (response.ok) {
+                        const reader = response.body.getReader();
+                        const decoder = new TextDecoder();
+                        let botResponse = "";
+
+                        while (true) {
+                            const { done, value } = await reader.read();
+                            if (done) break;
+
+                            const chunk = decoder.decode(value);
+                            const lines = chunk.split('\n');
+
+                            for (const line of lines) {
+                                if (line.startsWith('data: ')) {
+                                    try {
+                                        const data = JSON.parse(line.slice(6));
+                                        if (data.content === '[DONE]') {
+                                            if (botResponse) {
+                                                appendMessage("bot", botResponse);
+                                            }
+                                            return;
+                                        } else if (data.content) {
+                                            botResponse += data.content;
+                                        }
+                                    } catch (e) {
+                                        console.error('Error parsing SSE data:', e);
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        appendMessage("bot", "Sorry, I'm having trouble connecting to the server. Please try again later.");
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    appendMessage("bot", "Sorry, there was an error processing your request. Please try again.");
+                }
+            }
+
+            sendButton.addEventListener("click", sendMessage);
+            input.addEventListener("keypress", (e) => { 
+                if (e.key === "Enter") sendMessage(); 
+            });
+
+            // Add welcome message when chat is first opened
+            let welcomeShown = false;
+            function showWelcomeMessage() {
+                if (!welcomeShown) {
+                    appendMessage("bot", "👋 Hi! I'm your Portfolio Chatbot. I can answer questions about Keawin's projects, skills, and experience. How can I help you today?");
+                    welcomeShown = true;
+                }
+            }
+
+            // Show welcome message when chat is opened
+            chatButton.addEventListener("click", showWelcomeMessage);
+            if (chatbotToggle) {
+                chatbotToggle.addEventListener("click", showWelcomeMessage);
             }
         });
 
