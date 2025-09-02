@@ -35,9 +35,10 @@ import sys
 try:
     from dotenv import load_dotenv
     load_dotenv()
+    print('✅ python-dotenv loaded successfully')
 except ImportError:
-    print('❌ python-dotenv not installed; please pip install python-dotenv')
-    sys.exit(1)
+    print('⚠️  python-dotenv not installed; environment variables must be provided by the environment')
+    print('   Continuing without .env file support...')
 
 if not os.getenv('GROQ_API_KEY'):
     print('❌ GROQ_API_KEY not found')

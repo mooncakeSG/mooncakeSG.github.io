@@ -37,7 +37,8 @@ def setup_environment():
                 print("✅ GROQ_API_KEY set for current session only")
                 print("⚠️  IMPORTANT: This only affects the current terminal process")
                 print("   To make it persistent, add to your shell profile:")
-                print("   - Linux/Mac: export GROQ_API_KEY='your_key_here' >> ~/.bashrc")
+                print("   - Linux/Mac: echo \"export GROQ_API_KEY='your_key_here'\" >> ~/.bashrc")
+                print("   - zsh users: echo \"export GROQ_API_KEY='your_key_here'\" >> ~/.zshrc")
                 print("   - Windows: setx GROQ_API_KEY 'your_key_here'")
                 print("   - Or restart this script and choose option 2 to create a .env file")
                 return True
