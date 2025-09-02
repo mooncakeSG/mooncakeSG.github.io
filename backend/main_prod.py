@@ -5,6 +5,8 @@ from groq import Groq
 import os
 import json
 import asyncio
+from datetime import datetime, timezone
+from pathlib import Path
 
 # Load environment variables
 from dotenv import load_dotenv
@@ -42,11 +44,18 @@ except Exception as e:
 
 # Load configuration
 def load_config():
+    # Check environment variable first, then fall back to file-relative path
+    config_path = os.getenv("CONFIG_PATH")
+    if not config_path:
+        # Build absolute path relative to this file
+        config_path = Path(__file__).resolve().parent / "config.json"
+    
     try:
-        with open("config.json", "r") as f:
+        with open(config_path, "r") as f:
             return json.load(f)
     except FileNotFoundError:
         # Fallback configuration if config.json is not found
+        print(f"⚠️  Configuration file not found at {config_path}, using fallback configuration")
         return {
             "agent": {
                 "name": "Portfolio Chatbot",
@@ -64,6 +73,10 @@ def load_config():
                 }
             ]
         }
+    except (json.JSONDecodeError, PermissionError) as e:
+        raise RuntimeError(f"Failed to read configuration file {config_path}: {e}")
+    except Exception as e:
+        raise RuntimeError(f"Unexpected error reading configuration file {config_path}: {e}")
 
 config = load_config()
 
@@ -144,7 +157,7 @@ async def root():
 @app.get("/health")
 async def health_check():
     """Health check endpoint for Render"""
-    return {"status": "healthy", "timestamp": asyncio.get_event_loop().time()}
+    return {"status": "healthy", "timestamp": datetime.now(timezone.utc).isoformat()}
 
 @app.get("/config")
 async def get_config():

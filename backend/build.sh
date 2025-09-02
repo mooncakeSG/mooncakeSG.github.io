@@ -29,19 +29,26 @@ echo "⚙️  Setting up production configuration..."
 echo "🧪 Testing application startup..."
 python -c "
 import os
-from dotenv import load_dotenv
-load_dotenv()
+import sys
+
+# Try to import dotenv, handle missing dependency gracefully
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    print('❌ python-dotenv not installed; please pip install python-dotenv')
+    sys.exit(1)
 
 if not os.getenv('GROQ_API_KEY'):
     print('❌ GROQ_API_KEY not found')
-    exit(1)
+    sys.exit(1)
 
 try:
     from main_prod import app
     print('✅ Application imports successfully')
 except Exception as e:
     print(f'❌ Application import failed: {e}')
-    exit(1)
+    sys.exit(1)
 "
 
 if [ $? -eq 0 ]; then

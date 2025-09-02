@@ -23,7 +23,7 @@ def setup_environment():
     print("1. Get a Groq API key from https://console.groq.com/")
     print("2. Set the environment variable before running the backend")
     print("\nChoose an option:")
-    print("1. Set environment variable for current session")
+    print("1. Set environment variable for current session only")
     print("2. Create a .env file (recommended for development)")
     print("3. Exit setup")
     
@@ -34,8 +34,12 @@ def setup_environment():
             api_key = input("Enter your Groq API key: ").strip()
             if api_key:
                 os.environ["GROQ_API_KEY"] = api_key
-                print("✅ GROQ_API_KEY set for current session")
-                print("Note: This will only work for the current terminal session")
+                print("✅ GROQ_API_KEY set for current session only")
+                print("⚠️  IMPORTANT: This only affects the current terminal process")
+                print("   To make it persistent, add to your shell profile:")
+                print("   - Linux/Mac: export GROQ_API_KEY='your_key_here' >> ~/.bashrc")
+                print("   - Windows: setx GROQ_API_KEY 'your_key_here'")
+                print("   - Or restart this script and choose option 2 to create a .env file")
                 return True
             else:
                 print("❌ API key cannot be empty")
@@ -53,11 +57,16 @@ PORT=8000
                 with open(".env", "w") as f:
                     f.write(env_content)
                 print("✅ .env file created successfully")
-                print("Please edit the .env file and replace 'your_groq_api_key_here' with your actual API key")
-                print("Then restart your terminal or run: source .env (Linux/Mac) or .env (Windows)")
+                print("\n📝 Next steps:")
+                print("1. Edit the .env file and replace 'your_groq_api_key_here' with your actual API key")
+                print("2. The backend will automatically load this file using python-dotenv")
+                print("3. No need to 'source .env' - just restart your backend server")
+                print("\n💡 Tip: python-dotenv is already included in requirements.txt")
+                print("   The backend will automatically load environment variables from .env")
                 return False
             except Exception as e:
                 print(f"❌ Failed to create .env file: {e}")
+                print("   Make sure you have write permissions in the current directory")
         
         elif choice == "3":
             print("Setup cancelled")
@@ -77,14 +86,15 @@ def check_dependencies():
         "uvicorn",
         "groq",
         "python-multipart",
-        "requests"
+        "requests",
+        "python-dotenv"
     ]
     
     missing_packages = []
     
     for package in required_packages:
         try:
-            __import__(package)
+            __import__(package.replace("-", "_"))
             print(f"✅ {package}")
         except ImportError:
             print(f"❌ {package} - not installed")
@@ -96,6 +106,7 @@ def check_dependencies():
         return False
     
     print("\n✅ All dependencies are installed")
+    print("   python-dotenv is available for automatic .env loading")
     return True
 
 def main():
@@ -112,11 +123,16 @@ def main():
     
     if deps_ok and env_ok:
         print("\n🎉 Setup complete! You can now run the backend:")
-        print("python main.py")
+        print("   cd backend && python main_prod.py")
+        print("\n💡 The backend will automatically load your .env file if it exists")
     elif deps_ok:
         print("\n⚠️  Setup partially complete. Please configure your API key and try again.")
+        print("\n📝 To complete setup:")
+        print("1. Edit the .env file with your actual API key")
+        print("2. Run: cd backend && python main_prod.py")
     else:
         print("\n❌ Setup incomplete. Please install missing dependencies and try again.")
+        print("   Run: pip install -r requirements.txt")
     
     print("\nFor more help, see CHATBOT_INTEGRATION.md")
 

@@ -29,7 +29,7 @@ def test_chatbot():
             return False
     except requests.exceptions.ConnectionError:
         print("❌ Cannot connect to server. Make sure the backend is running:")
-        print("   cd backend && python main.py")
+        print("   cd backend && python main_prod.py")
         return False
     except Exception as e:
         print(f"❌ Error connecting to server: {e}")

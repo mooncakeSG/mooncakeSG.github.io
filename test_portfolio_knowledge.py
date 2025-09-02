@@ -42,7 +42,7 @@ def test_chatbot_knowledge():
             return False
     except requests.exceptions.ConnectionError:
         print("❌ Cannot connect to server. Make sure the backend is running:")
-        print("   cd backend && python run.py")
+        print("   cd backend && python main_prod.py")
         return False
     
     # Test each question
