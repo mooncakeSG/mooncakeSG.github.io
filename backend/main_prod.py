@@ -24,6 +24,7 @@ app.add_middleware(
     allow_origins=[
         "https://mooncakesg.github.io",
         "https://mooncakeSG.github.io",
+        "https://chatbotportfolio1.vercel.app",
         "http://localhost:3000",
         "http://localhost:8000"
     ],

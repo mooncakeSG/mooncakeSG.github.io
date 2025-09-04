@@ -2040,7 +2040,7 @@ fetchAISuggestions('experience', userInput).then((suggestions) => {
                     // Use production URL if available, fallback to localhost for development
                     const apiUrl = window.location.hostname === 'localhost' 
                         ? "http://localhost:8000/chat" 
-                        : "https://portfolio-chatbot-rvep.onrender.com/chat";
+                        : "https://chatbotportfolio1.vercel.app/chat";
                     
                     const response = await fetch(apiUrl, {
                         method: "POST",
