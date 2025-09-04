@@ -7,19 +7,12 @@ echo "Building Portfolio Chatbot for Render..."
 echo "Installing Python dependencies..."
 pip install -r requirements.txt
 
-# Verify gunicorn installation
-echo "Verifying gunicorn installation..."
-if ! command -v gunicorn &> /dev/null; then
-    echo "ERROR: gunicorn not found in PATH"
-    echo "Installing gunicorn directly..."
-    pip install gunicorn==21.2.0
-    if ! command -v gunicorn &> /dev/null; then
-        echo "ERROR: Failed to install gunicorn"
-        exit 1
-    fi
-else
-    echo "SUCCESS: gunicorn is available"
-fi
+# Verify uvicorn installation
+echo "Verifying uvicorn installation..."
+python -c "import uvicorn; print('SUCCESS: uvicorn is available')" || {
+    echo "ERROR: uvicorn not available"
+    exit 1
+}
 
 # Verify configuration
 echo "Verifying configuration..."
@@ -65,19 +58,13 @@ except Exception as e:
     print(f'ERROR: Application import failed: {e}')
     sys.exit(1)
 
-# Test gunicorn can start the app
-print('Testing gunicorn startup...')
+# Test uvicorn can start the app
+print('Testing uvicorn startup...')
 try:
-    import subprocess
-    import sys
-    result = subprocess.run([sys.executable, '-c', 'import gunicorn; print("gunicorn import successful")'], 
-                          capture_output=True, text=True, timeout=10)
-    if result.returncode == 0:
-        print('SUCCESS: gunicorn can be imported')
-    else:
-        print(f'WARNING: gunicorn import test failed: {result.stderr}')
+    import uvicorn
+    print('SUCCESS: uvicorn can be imported')
 except Exception as e:
-    print(f'WARNING: gunicorn test failed: {e}')
+    print(f'WARNING: uvicorn import test failed: {e}')
 "
 
 if [ $? -eq 0 ]; then
