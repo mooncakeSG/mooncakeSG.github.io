@@ -22,8 +22,8 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://mooncakeSG.github.io",
         "https://mooncakesg.github.io",
+        "https://mooncakeSG.github.io",
         "http://localhost:3000",
         "http://localhost:8000"
     ],
