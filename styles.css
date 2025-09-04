@@ -2040,11 +2040,38 @@ img {
     margin: 0 auto;
     opacity: 1;
     transition: opacity 0.3s ease;
+    /* Image quality optimization */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    /* Fallback for better quality */
+    image-rendering: auto;
+    /* Prevent blur on scaling */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    /* Ensure high DPI support */
+    image-rendering: high-quality;
+    /* Force hardware acceleration */
+    will-change: transform;
 }
 
 .profile-image[data-aos] {
     opacity: 1;
     transform: none;
+}
+
+/* High DPI display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .profile-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Ensure crisp rendering on all devices */
+.profile-image {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -webkit-perspective: 1000;
 }
 
 .profile-image.aos-animate {
