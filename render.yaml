@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: cd backend && chmod +x build.sh && ./build.sh
-    startCommand: cd backend && gunicorn main_prod:app -c gunicorn.conf.py
+    startCommand: cd backend && python -m gunicorn main_prod:app -c gunicorn.conf.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
