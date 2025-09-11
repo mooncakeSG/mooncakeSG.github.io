@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Keawin Koesnel</title>
+    <meta name="description" content="Professional certificates and achievements of Keawin Koesnel">
+    <meta name="keywords" content="certificates, achievements, Microsoft Learn, Coursera, Keawin Koesnel">
+    <meta name="author" content="Keawin Koesnel">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .certificate-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .certificate-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .certificate-info {
+            padding: 1.5rem;
+        }
+        
+        .certificate-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .certificate-issuer {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .certificate-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-certificate {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view {
+            background: #3498db;
+            color: white;
+            border: none;
+        }
+        
+        .btn-view:hover {
+            background: #2980b9;
+            color: white;
+        }
+        
+        .btn-download {
+            background: transparent;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+        
+        .btn-download:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #3498db;
+            background: transparent;
+            color: #3498db;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: 70vh;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .back-to-portfolio {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            background: #3498db;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-to-portfolio:hover {
+            background: #2980b9;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .folder-cover {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+            text-align: center;
+        }
+        
+        .folder-cover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: #3498db;
+        }
+        
+        .folder-image {
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .folder-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .folder-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .folder-count {
+            font-size: 1.1rem;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .folder-description {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .folder-cover.active {
+            border-color: #3498db;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%);
+        }
+        
+        .subfolder-cover {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+        
+        .subfolder-cover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            border-color: #e74c3c;
+        }
+        
+        .subfolder-image {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+        }
+        
+        .subfolder-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        
+        .subfolder-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.4rem;
+        }
+        
+        .subfolder-count {
+            font-size: 1rem;
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        
+        .subfolder-description {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+        
+        .subfolder-cover.active {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+        }
+        
+        .subfolder-cover.ai-bootcamp {
+            border-color: transparent;
+        }
+        
+        .subfolder-cover.ai-bootcamp:hover {
+            border-color: #9b59b6;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.2);
+        }
+        
+        .subfolder-cover.ai-bootcamp .subfolder-image {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        }
+        
+        .subfolder-cover.ai-bootcamp .subfolder-count {
+            color: #9b59b6;
+        }
+        
+        .subfolder-cover.ai-bootcamp.active {
+            border-color: #9b59b6;
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        }
+        
+        .subfolder-cover.sfia-service-operations {
+            border-color: transparent;
+        }
+        
+        .subfolder-cover.sfia-service-operations:hover {
+            border-color: #27ae60;
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.2);
+        }
+        
+        .subfolder-cover.sfia-service-operations .subfolder-image {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d5f4d5 100%);
+        }
+        
+        .subfolder-cover.sfia-service-operations .subfolder-count {
+            color: #27ae60;
+        }
+        
+        .subfolder-cover.sfia-service-operations.active {
+            border-color: #27ae60;
+            background: linear-gradient(135deg, #e8f5e8 0%, #d5f4d5 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .back-to-portfolio {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 2rem;
+                display: inline-block;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .folder-cover {
+                margin-bottom: 2rem;
+            }
+            
+            .folder-image {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Portfolio Button -->
+    <a href="portfolio.html" class="back-to-portfolio">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero is-medium has-background-light">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-8 has-text-centered">
+                        <h1 class="title is-1 has-text-dark" data-aos="fade-up">
+                            <i class="fas fa-certificate has-text-primary"></i>
+                            Professional Certificates
+                        </h1>
+                        <p class="subtitle is-4 has-text-grey-dark" data-aos="fade-up" data-aos-delay="100">
+                            A comprehensive collection of my professional achievements and certifications
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid" data-aos="fade-up">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-certificates">32</div>
+                    <div class="stat-label">Total Certificates</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="microsoft-certificates">3</div>
+                    <div class="stat-label">Microsoft Learn</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="coursera-certificates">29</div>
+                    <div class="stat-label">Coursera</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completion-rate">100%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="section">
+        <div class="container">
+            <div class="has-text-centered">
+                <h2 class="title is-3 has-text-dark mb-5" data-aos="fade-up">Browse Certificates</h2>
+                <div class="filter-buttons" data-aos="fade-up" data-aos-delay="100">
+                    <button class="filter-btn active" data-filter="all">All Certificates</button>
+                    <button class="filter-btn" data-filter="microsoft">Microsoft Learn</button>
+                    <button class="filter-btn" data-filter="coursera">Coursera</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Folder Covers Section -->
+    <section class="section" id="folder-covers">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5">
+                    <div class="folder-cover" data-aos="fade-right" data-filter="microsoft">
+                        <div class="folder-image">
+                            <img src="https://i.ibb.co/m5NWbyzQ/Microsoft-Learn.webp" alt="Microsoft Learn" loading="lazy">
+                        </div>
+                        <div class="folder-info">
+                            <h3 class="folder-title">Microsoft Learn</h3>
+                            <p class="folder-count" id="microsoft-count">3 Certificates</p>
+                            <p class="folder-description">Microsoft cloud and productivity certifications</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-5">
+                    <div class="folder-cover" data-aos="fade-left" data-filter="coursera">
+                        <div class="folder-image">
+                            <img src="https://i.ibb.co/bkrnwGp/Coursera.jpg" alt="Coursera" loading="lazy">
+                        </div>
+                        <div class="folder-info">
+                            <h3 class="folder-title">Coursera</h3>
+                            <p class="folder-count" id="coursera-count">29 Certificates</p>
+                            <p class="folder-description">Professional development and technical skills</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subfolders -->
+            <div class="columns is-centered mt-6">
+                <div class="column is-4">
+                    <div class="subfolder-cover" data-aos="fade-up" data-filter="professional-development">
+                        <div class="subfolder-image">
+                            <img src="https://i.ibb.co/jk8JtL4B/Professional-Development.png" alt="Professional Development" loading="lazy">
+                        </div>
+                        <div class="subfolder-info">
+                            <h3 class="subfolder-title">Professional Development</h3>
+                            <p class="subfolder-count" id="professional-dev-count">12 Certificates</p>
+                            <p class="subfolder-description">Communication, leadership, and career skills</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="subfolder-cover ai-bootcamp" data-aos="fade-up" data-aos-delay="100" data-filter="ai-bootcamp">
+                        <div class="subfolder-image">
+                            <img src="https://i.ibb.co/0R3NBGyP/AI-Bootcamp.png" alt="AI Bootcamp" loading="lazy">
+                        </div>
+                        <div class="subfolder-info">
+                            <h3 class="subfolder-title">AI Bootcamp</h3>
+                            <p class="subfolder-count" id="ai-bootcamp-count">9 Certificates</p>
+                            <p class="subfolder-description">Artificial intelligence and machine learning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="subfolder-cover sfia-service-operations" data-aos="fade-up" data-aos-delay="200" data-filter="sfia-service-operations">
+                        <div class="subfolder-image">
+                            <img src="https://i.ibb.co/C3ZvBcJ8/SFIA-Service-Operations-Practitioner.png" alt="SFIA Service Operations Practitioner" loading="lazy">
+                        </div>
+                        <div class="subfolder-info">
+                            <h3 class="subfolder-title">SFIA Service Operations Practitioner</h3>
+                            <p class="subfolder-count" id="sfia-service-operations-count">6 Certificates</p>
+                            <p class="subfolder-description">IT support and service operations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="has-text-centered mb-5">
+                <h2 class="title is-3 has-text-dark" id="section-title" data-aos="fade-up">All Certificates</h2>
+                <p class="subtitle is-5 has-text-grey" id="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Browse through your professional achievements and certifications
+                </p>
+            </div>
+            <div class="columns is-multiline" id="certificates-grid">
+                <!-- Certificates will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Viewer Modal -->
+    <div class="modal" id="pdf-modal">
+        <div class="modal-background" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="box">
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <h3 class="title is-4" id="modal-title">Certificate</h3>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <button class="delete is-large" onclick="closeModal()"></button>
+                        </div>
+                    </div>
+                </div>
+                <iframe id="pdf-viewer" class="pdf-viewer" src=""></iframe>
+                <div class="has-text-centered mt-4">
+                    <a id="download-link" class="button is-primary" download>
+                        <i class="fas fa-download"></i> Download Certificate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="certificates.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
