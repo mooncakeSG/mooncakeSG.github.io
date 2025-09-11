@@ -192,7 +192,7 @@ class ScrollManager {
 // Form Management Module
 const FormManager = {
     init() {
-        this.form = document.querySelector('.contact-form');
+        this.form = document.getElementById('contactForm');
         this.formGroups = this.form.querySelectorAll('.form-group');
         this.submitButton = this.form.querySelector('button[type="submit"]');
         
@@ -895,7 +895,7 @@ const SectionManager = {
 // Contact Form Handler
 class ContactFormHandler {
     constructor() {
-        this.form = document.getElementById('contact-form');
+        this.form = document.getElementById('contactForm');
         this.submitButton = this.form?.querySelector('button[type="submit"]');
         this.spinner = this.form?.querySelector('.loading-spinner');
         this.feedback = this.form?.querySelector('.form-feedback');
@@ -1328,11 +1328,7 @@ document.addEventListener('DOMContentLoaded', () => {
         faders.forEach(fader => appearOnScroll.observe(fader));
     }
 
-    // Initialize Contact Form if it exists
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        new FormValidator('contact-form');
-    }
+    // Contact form is handled by the dedicated handler below
 
     // Initialize Resume Manager if elements exist
     const downloadBtn = document.querySelector('.download-resume .btn');
@@ -1408,6 +1404,23 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            // Basic form validation
+            const name = contactForm.querySelector('#name').value.trim();
+            const email = contactForm.querySelector('#email').value.trim();
+            const message = contactForm.querySelector('#message').value.trim();
+            
+            if (!name || !email || !message) {
+                showNotification('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showNotification('Please enter a valid email address.', 'error');
+                return;
+            }
+            
             const submitBtn = contactForm.querySelector('.submit-btn');
             const originalBtnText = submitBtn.innerHTML;
             
@@ -1436,8 +1449,16 @@ document.addEventListener('DOMContentLoaded', function() {
                         window.location.href = nextUrl;
                     }
                 } else {
-                    const data = await response.json();
-                    throw new Error(data.error || 'Failed to send message');
+                    // Formspree might return HTML or text, not JSON
+                    let errorMessage = 'Failed to send message';
+                    try {
+                        const data = await response.json();
+                        errorMessage = data.error || errorMessage;
+                    } catch (jsonError) {
+                        // If response is not JSON, use status text
+                        errorMessage = response.statusText || errorMessage;
+                    }
+                    throw new Error(errorMessage);
                 }
                 
             } catch (error) {
